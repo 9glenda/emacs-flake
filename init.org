@@ -96,20 +96,31 @@ Provide a location where Emacs can store data and cache.
     "Directory for pictures."))
 #+end_src
 
-** org-roam
+** org-mode
+Org mode 
+
+*** Style
+**** modern-org
+#+begin_src emacs-lisp :tangle yes
+(use-package org-modern :ensure t)
+#+end_src
+
+*** org-roam
 #+begin_src emacs-lisp :tangle yes
 (use-package org-roam :ensure t)
 #+end_src
-
-
 
 ** Magit
 #+begin_src emacs-lisp :tangle yes
 (use-package magit :ensure t)
 #+end_src
 
+
 ** Evil mode
-TODO: undo
+*** Tasks [1/3]
+- [X] undo
+- [ ] evil-commlection
+- [ ] org mode stuff
 #+begin_src emacs-lisp :tangle yes
   (use-package undo-fu
   :ensure t)

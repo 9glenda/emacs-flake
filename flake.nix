@@ -83,7 +83,7 @@
         packages = rec {
           inherit (pkgs) emacsConfig emacsEnv;
           emacs = pkgs.writeShellScriptBin "emacs" ''
-               ${pkgs.emacsEnv}/bin/emacs --init-directory ${pkgs.emacsConfig}
+               ${pkgs.emacsEnv}/bin/emacs --init-directory ${pkgs.emacsConfig} $@
            ''; 
           default = emacs;
         };

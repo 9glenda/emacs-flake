@@ -116,6 +116,12 @@
       repo = "nix-mode";
       type = "github";
     };
+    org-modern = {
+      flake = false;
+      owner = "minad";
+      repo = "org-modern";
+      type = "github";
+    };
     org-roam = {
       flake = false;
       owner = "org-roam";

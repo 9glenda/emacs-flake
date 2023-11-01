@@ -304,6 +304,22 @@
         "type": "github"
       }
     },
+    "org-modern": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697740989,
+        "narHash": "sha256-7qFuJHKhzRT7ON9BdhH74lbCDoqNciqvJ2+c6Idmpyo=",
+        "owner": "minad",
+        "repo": "org-modern",
+        "rev": "240026f0bef6dabff1e86ab092a678beddd301c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "org-modern",
+        "type": "github"
+      }
+    },
     "org-roam": {
       "flake": false,
       "locked": {
@@ -341,6 +357,7 @@
         "magit-section": "magit-section",
         "markdown-mode": "markdown-mode",
         "nix-mode": "nix-mode",
+        "org-modern": "org-modern",
         "org-roam": "org-roam",
         "s": "s",
         "spinner": "spinner",
