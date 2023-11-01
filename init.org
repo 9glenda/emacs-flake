@@ -135,10 +135,10 @@ Org mode
 
     (use-package evil-collection
       :ensure t
+      :hook (after-init-hook . evil-collection-init)
       :after evil
       :config
-      (eval-when-compile
-      (evil-collection-init)))
+      )
 #+end_src
 
 *** Ivy
