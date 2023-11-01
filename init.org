@@ -1,0 +1,218 @@
+#+TITLE: GNU Emacs Configuration
+
+* Base settings
+#+begin_src emacs-lisp :tangle early-init.el
+;;; init.el --- Initialization -*- lexical-binding: t; -*-
+#+end_src
+
+* Base settings
+#+begin_src emacs-lisp :tangle yes
+;;; init.el --- Initialization -*- lexical-binding: t; -*-
+#+end_src
+
+** Startup time
+Show the startup time.
+#+begin_src emacs-lisp :tangle early-init.el
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Loaded Emacs in %.03fs"
+                     (float-time (time-subtract after-init-time before-init-time)))))
+#+end_src
+*** Performance boost
+
+
+#+begin_src emacs-lisp :tangle yes
+(let ((normal-gc-cons-threshold gc-cons-threshold)
+      (normal-gc-cons-percentage gc-cons-percentage)
+      (normal-file-name-handler-alist file-name-handler-alist)
+      (init-gc-cons-threshold most-positive-fixnum)
+      (init-gc-cons-percentage 0.6))
+  (setq gc-cons-threshold init-gc-cons-threshold
+        gc-cons-percentage init-gc-cons-percentage
+        file-name-handler-alist nil)
+  (add-hook 'after-init-hook
+            `(lambda ()
+               (setq gc-cons-threshold ,normal-gc-cons-threshold
+                     gc-cons-percentage ,normal-gc-cons-percentage
+                     file-name-handler-alist ',normal-file-name-handler-alist))))
+#+end_src
+
+
+*** use-package
+#+begin_src emacs-lisp :tangle yes
+(eval-when-compile
+  (require 'use-package))
+
+(eval-and-compile
+  (defun use-package-ensure-ignore (&rest _args) t)
+  (setq use-package-ensure-function #'use-package-ensure-ignore)
+
+  (setq use-package-always-defer t)
+  (setq use-package-hook-name-suffix nil))
+
+(if init-file-debug
+    (setq use-package-verbose t
+          use-package-expand-minimally nil
+          use-package-compute-statistics t)
+  (setq use-package-verbose nil
+        use-package-expand-minimally t))
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+(setq inhibit-default-init t)
+(setq initial-major-mode 'fundamental-mode)
+#+end_src
+
+** Nix
+
+#+begin_src emacs-lisp :tangle yes
+(setq package-enable-at-startup nil)
+#+end_src
+
+*** Theme 
+
+#+begin_src emacs-lisp :tangle yes
+(load-theme 'tango-dark)
+#+end_src
+
+Provide a location where Emacs can store data and cache.
+#+begin_src emacs-lisp :tangle yes
+(eval-and-compile
+  (defvar data-dir
+    (if (getenv "XDG_DATA_HOME")
+        (concat (getenv "XDG_DATA_HOME") "/emacs/")
+      (expand-file-name "~/.local/share/emacs/"))
+    "Directory for data.")
+
+  (defvar cache-dir
+    (if (getenv "XDG_CACHE_HOME")
+        (concat (getenv "XDG_CACHE_HOME") "/emacs/")
+      (expand-file-name "~/.cache/emacs/"))
+    "Directory for cache.")
+
+  (defvar pictures-dir
+    (or (getenv "XDG_PICTURES_DIR")
+        (expand-file-name "~/Pictures/"))
+    "Directory for pictures."))
+#+end_src
+
+** org-roam
+#+begin_src emacs-lisp :tangle yes
+(use-package org-roam :ensure t)
+#+end_src
+
+
+
+** Magit
+#+begin_src emacs-lisp :tangle yes
+(use-package magit :ensure t)
+#+end_src
+
+** Evil mode
+TODO: undo
+#+begin_src emacs-lisp :tangle yes
+  (use-package undo-fu
+  :ensure t)
+    (use-package evil
+      :ensure t
+      :hook (after-init-hook . evil-mode)
+      :init
+      (setq evil-want-integration t)
+      (setq evil-want-keybinding nil)
+      (setq evil-undo-system 'undo-fu)
+      )
+
+    (use-package evil-collection
+      :ensure t
+      :after evil
+      :config
+      (eval-when-compile
+      (evil-collection-init)))
+#+end_src
+
+*** Ivy
+
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package ivy
+    :ensure t
+    :diminish
+    :hook (after-init-hook . ivy-mode)
+    :bind (("C-s" . swiper)
+	   :map ivy-minibuffer-map
+	   ("TAB" . ivy-alt-done)
+	   ("C-l" . ivy-alt-done)
+	   ("C-j" . ivy-next-line)
+	   ("C-k" . ivy-previous-line)
+	   :map ivy-switch-buffer-map
+	   ("C-k" . ivy-previous-line)
+	   ("C-l" . ivy-done)
+	   ("C-d" . ivy-switch-buffer-kill)
+	   :map ivy-reverse-i-search-map
+	   ("C-k" . ivy-previous-line)
+	   ("C-d" . ivy-reverse-i-search-kill)))
+#+end_src
+
+*** Which key
+
+#+begin_src emacs-lisp :tangle yes
+   (use-package which-key
+     :ensure t
+     :hook (after-init-hook . which-key-mode)
+   )
+#+end_src
+
+** LSP
+
+#+begin_src emacs-lisp :tangle yes
+    (use-package lsp-mode
+      :ensure t
+      :commands (lsp lsp-deferred)
+      :hook (lsp-mode . efs/lsp-mode-setup)
+      :init
+      (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+      :config
+      ;; (lsp-enable-which-key-integration t)
+  )
+
+    (use-package lsp-ui
+      :ensure t
+      :hook (lsp-mode . lsp-ui-mode)
+      :custom
+      (lsp-ui-doc-position 'bottom))
+
+
+
+(use-package company
+  :ensure t
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection))
+        (:map lsp-mode-map
+         ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+#+end_src
+
+*** Typescript
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package typescript-mode
+    :ensure t
+    :mode "\\.ts\\'"
+    :hook (typescript-mode . lsp-deferred)
+    :config
+    (setq typescript-indent-level 2))
+#+end_src
+
+
+*** Nix
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package nix-mode
+   :ensure t
+   :mode "\\.nix\\'")
+
+#+end_src
