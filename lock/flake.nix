@@ -2,10 +2,28 @@
   description =
     "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
+    ace-window = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "ace-window";
+      type = "github";
+    };
     annalist = {
       flake = false;
       owner = "noctuid";
       repo = "annalist.el";
+      type = "github";
+    };
+    avy = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "avy";
+      type = "github";
+    };
+    cfrs = {
+      flake = false;
+      owner = "Alexander-Miller";
+      repo = "cfrs";
       type = "github";
     };
     company = {
@@ -50,10 +68,10 @@
       repo = "evil-collection";
       type = "github";
     };
-    evil-goggles = {
+    evil-nerd-commenter = {
       flake = false;
-      owner = "edkolev";
-      repo = "evil-goggles";
+      owner = "redguardtoo";
+      repo = "evil-nerd-commenter";
       type = "github";
     };
     "f" = {
@@ -80,16 +98,34 @@
       repo = "ht.el";
       type = "github";
     };
+    hydra = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "hydra";
+      type = "github";
+    };
     ivy = {
       flake = false;
       owner = "abo-abo";
       repo = "swiper";
       type = "github";
     };
+    lsp-ivy = {
+      flake = false;
+      owner = "emacs-lsp";
+      repo = "lsp-ivy";
+      type = "github";
+    };
     lsp-mode = {
       flake = false;
       owner = "emacs-lsp";
       repo = "lsp-mode";
+      type = "github";
+    };
+    lsp-treemacs = {
+      flake = false;
+      owner = "emacs-lsp";
+      repo = "lsp-treemacs";
       type = "github";
     };
     lsp-ui = {
@@ -146,6 +182,18 @@
       repo = "org-reveal";
       type = "github";
     };
+    pfuture = {
+      flake = false;
+      owner = "Alexander-Miller";
+      repo = "pfuture";
+      type = "github";
+    };
+    posframe = {
+      flake = false;
+      owner = "tumashu";
+      repo = "posframe";
+      type = "github";
+    };
     "s" = {
       flake = false;
       owner = "magnars";
@@ -156,6 +204,12 @@
       flake = false;
       owner = "Malabarba";
       repo = "spinner.el";
+      type = "github";
+    };
+    treemacs = {
+      flake = false;
+      owner = "Alexander-Miller";
+      repo = "treemacs";
       type = "github";
     };
     typescript-mode = {

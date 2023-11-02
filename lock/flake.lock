@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "ace-window": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1662868721,
+        "narHash": "sha256-eGmOL272H5X7BmeXRCfMjB3ucf9GH2xThyozgkW62dA=",
+        "owner": "abo-abo",
+        "repo": "ace-window",
+        "rev": "77115afc1b0b9f633084cf7479c767988106c196",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abo-abo",
+        "repo": "ace-window",
+        "type": "github"
+      }
+    },
     "annalist": {
       "flake": false,
       "locked": {
@@ -13,6 +29,38 @@
       "original": {
         "owner": "noctuid",
         "repo": "annalist.el",
+        "type": "github"
+      }
+    },
+    "avy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681963449,
+        "narHash": "sha256-cZxerGMWKlKSrTEDkQh7cSY3185CmccMjlCXYEssZi8=",
+        "owner": "abo-abo",
+        "repo": "avy",
+        "rev": "be612110cb116a38b8603df367942e2bb3d9bdbe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abo-abo",
+        "repo": "avy",
+        "type": "github"
+      }
+    },
+    "cfrs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643456986,
+        "narHash": "sha256-EY+5E5QRwHlc1FmGFci32eyrpEJ1joO3D3V0LVD9xe0=",
+        "owner": "Alexander-Miller",
+        "repo": "cfrs",
+        "rev": "f3a21f237b2a54e6b9f8a420a9da42b4f0a63121",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Alexander-Miller",
+        "repo": "cfrs",
         "type": "github"
       }
     },
@@ -128,19 +176,19 @@
         "type": "github"
       }
     },
-    "evil-goggles": {
+    "evil-nerd-commenter": {
       "flake": false,
       "locked": {
-        "lastModified": 1697873907,
-        "narHash": "sha256-NYkf/7yomMe8pMuyJ6++zvQFZ3i/W0AefZCNWMU6nK0=",
-        "owner": "edkolev",
-        "repo": "evil-goggles",
-        "rev": "34ca276a85f615d2b45e714c9f8b5875bcb676f3",
+        "lastModified": 1687661696,
+        "narHash": "sha256-GZjG+68kWRxOCovp9RIukOf1KUShw09TYw/+W07TJPY=",
+        "owner": "redguardtoo",
+        "repo": "evil-nerd-commenter",
+        "rev": "3b197a2b559b06a7cf39978704b196f53dac802a",
         "type": "github"
       },
       "original": {
-        "owner": "edkolev",
-        "repo": "evil-goggles",
+        "owner": "redguardtoo",
+        "repo": "evil-nerd-commenter",
         "type": "github"
       }
     },
@@ -208,6 +256,22 @@
         "type": "github"
       }
     },
+    "hydra": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1662811567,
+        "narHash": "sha256-tZmYPUN6bgn+6zWbKmqhpCoD4kcrRCn9i6SC1e8Ed9k=",
+        "owner": "abo-abo",
+        "repo": "hydra",
+        "rev": "317e1de33086637579a7aeb60f77ed0405bf359b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abo-abo",
+        "repo": "hydra",
+        "type": "github"
+      }
+    },
     "ivy": {
       "flake": false,
       "locked": {
@@ -224,6 +288,22 @@
         "type": "github"
       }
     },
+    "lsp-ivy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661970237,
+        "narHash": "sha256-ENJqUhF05nIX40GSaiT+YFfBlq+b5bvKJB4/s7UrOM0=",
+        "owner": "emacs-lsp",
+        "repo": "lsp-ivy",
+        "rev": "9ecf4dd9b1207109802bd1882aa621eb1c385106",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-lsp",
+        "repo": "lsp-ivy",
+        "type": "github"
+      }
+    },
     "lsp-mode": {
       "flake": false,
       "locked": {
@@ -237,6 +317,22 @@
       "original": {
         "owner": "emacs-lsp",
         "repo": "lsp-mode",
+        "type": "github"
+      }
+    },
+    "lsp-treemacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691734284,
+        "narHash": "sha256-29C0KkI5CQL5haRXNRFfCEr/lLomA6QRosKgCSH1ePQ=",
+        "owner": "emacs-lsp",
+        "repo": "lsp-treemacs",
+        "rev": "e66ae2196503d4e84334519e56b4388feffa5060",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-lsp",
+        "repo": "lsp-treemacs",
         "type": "github"
       }
     },
@@ -384,9 +480,44 @@
         "type": "github"
       }
     },
+    "pfuture": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1663077673,
+        "narHash": "sha256-/UZ2nLJkogrd94CefY4bZntW59zpFZBQ3KDxVw2K7j8=",
+        "owner": "Alexander-Miller",
+        "repo": "pfuture",
+        "rev": "19b53aebbc0f2da31de6326c495038901bffb73c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Alexander-Miller",
+        "repo": "pfuture",
+        "type": "github"
+      }
+    },
+    "posframe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689301672,
+        "narHash": "sha256-iHXbO4X7JRxkr9/x1UzY/QEScnVRLy3ajgR438w3ZL8=",
+        "owner": "tumashu",
+        "repo": "posframe",
+        "rev": "017deece88360c7297265680d78a0bb316470716",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tumashu",
+        "repo": "posframe",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "ace-window": "ace-window",
         "annalist": "annalist",
+        "avy": "avy",
+        "cfrs": "cfrs",
         "company": "company",
         "compat": "compat",
         "dash": "dash",
@@ -394,13 +525,16 @@
         "emacsql": "emacsql",
         "evil": "evil",
         "evil-collection": "evil-collection",
-        "evil-goggles": "evil-goggles",
+        "evil-nerd-commenter": "evil-nerd-commenter",
         "f": "f",
         "git-commit": "git-commit",
         "goto-chg": "goto-chg",
         "ht": "ht",
+        "hydra": "hydra",
         "ivy": "ivy",
+        "lsp-ivy": "lsp-ivy",
         "lsp-mode": "lsp-mode",
+        "lsp-treemacs": "lsp-treemacs",
         "lsp-ui": "lsp-ui",
         "lv": "lv",
         "magit": "magit",
@@ -410,8 +544,11 @@
         "org-modern": "org-modern",
         "org-roam": "org-roam",
         "ox-reveal": "ox-reveal",
+        "pfuture": "pfuture",
+        "posframe": "posframe",
         "s": "s",
         "spinner": "spinner",
+        "treemacs": "treemacs",
         "typescript-mode": "typescript-mode",
         "undo-fu": "undo-fu",
         "which-key": "which-key",
@@ -447,6 +584,22 @@
       "original": {
         "owner": "Malabarba",
         "repo": "spinner.el",
+        "type": "github"
+      }
+    },
+    "treemacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698839400,
+        "narHash": "sha256-9p61pCnQs69telGkOFY/NWOkiIvH3H4lcIrj5qGSYkk=",
+        "owner": "Alexander-Miller",
+        "repo": "treemacs",
+        "rev": "92e173b3daac5e3f03fa7a63475f1d692e0c1958",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Alexander-Miller",
+        "repo": "treemacs",
         "type": "github"
       }
     },
