@@ -229,25 +229,51 @@ I'm way to used to pressing escape from vim.
 *** Ivy
 TODO: vertico???
 
+*** Vertico                                                                                                    
+Vertico is a minimal ivy alternative                                                                           
+#+begin_src emacs-lisp :tangle yes                                                                             
+    (use-package vertico
+    :ensure t
+  :hook (after-init-hook . vertico-mode)
+    )
+	    (use-package savehist                                                                                
+	  :hook (after-init-hook . savehist-mode)                                                                
+	     )                                                                                                   
+
+	;; (use-package marginalia                                                                                 
+	;;   :after vertico                                                                                        
+	;;   :ensure t                                                                                             
+	;;   :hook (after-init-hook . marginalia-mode)                                                             
+	;;   :custom                                                                                               
+	;; (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))                  
+	;; )                                                                                                       
+    (use-package marginalia                                                                                        
+      :ensure t                                                                                                    
+      :defer 2                                                                                                     
+      :commands                                                                                                    
+      (marginalia-mode)                                                                                            
+      :config                                                                                                      
+      (marginalia-mode 1))                                                                                         
+#+end_src
 
 #+begin_src emacs-lisp :tangle yes
-  (use-package ivy
-    :ensure t
-    :diminish
-    :hook (after-init-hook . ivy-mode)
-    :bind (("C-s" . swiper)
-	   :map ivy-minibuffer-map
-	   ("TAB" . ivy-alt-done)
-	   ("C-l" . ivy-alt-done)
-	   ("C-j" . ivy-next-line)
-	   ("C-k" . ivy-previous-line)
-	   :map ivy-switch-buffer-map
-	   ("C-k" . ivy-previous-line)
-	   ("C-l" . ivy-done)
-	   ;; ("C-d" . ivy-switch-buffer-kill)
-	   :map ivy-reverse-i-search-map
-	   ("C-k" . ivy-previous-line)
-	   ("C-d" . ivy-reverse-i-search-kill)))
+;;    (use-package ivy
+;;      :ensure t
+;;      :diminish
+;;      :hook (after-init-hook . ivy-mode)
+;;      :bind (("C-s" . swiper)
+;;	     :map ivy-minibuffer-map
+;;	     ("TAB" . ivy-alt-done)
+;;	     ("C-l" . ivy-alt-done)
+;;	     ("C-j" . ivy-next-line)
+;;	     ("C-k" . ivy-previous-line)
+;;	     :map ivy-switch-buffer-map
+;;	     ("C-k" . ivy-previous-line)
+;;	     ("C-l" . ivy-done)
+;;	     ;; ("C-d" . ivy-switch-buffer-kill)
+;;	     :map ivy-reverse-i-search-map
+;;	     ("C-k" . ivy-previous-line)
+;;	     ("C-d" . ivy-reverse-i-search-kill)))
 #+end_src
 
 *** Which key

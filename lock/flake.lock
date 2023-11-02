@@ -64,22 +64,6 @@
         "type": "github"
       }
     },
-    "company": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1698057193,
-        "narHash": "sha256-Rkdi0rFjToIOWBvdy+X/Jo1vh3JaWszrQD+owWJHKjI=",
-        "owner": "company-mode",
-        "repo": "company-mode",
-        "rev": "66201465a962ac003f320a1df612641b2b276ab5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "company-mode",
-        "repo": "company-mode",
-        "type": "github"
-      }
-    },
     "compat": {
       "flake": false,
       "locked": {
@@ -400,6 +384,22 @@
         "type": "github"
       }
     },
+    "marginalia": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698484071,
+        "narHash": "sha256-bXTvvsPD7Gql4OZFwU0xaMXv7NHXGI3qCVIC2IiKA2E=",
+        "owner": "minad",
+        "repo": "marginalia",
+        "rev": "e4ff0838da33bf5102ee009ff28d541f0b51c9a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "marginalia",
+        "type": "github"
+      }
+    },
     "markdown-mode": {
       "flake": false,
       "locked": {
@@ -518,7 +518,6 @@
         "annalist": "annalist",
         "avy": "avy",
         "cfrs": "cfrs",
-        "company": "company",
         "compat": "compat",
         "dash": "dash",
         "doom-themes": "doom-themes",
@@ -539,6 +538,7 @@
         "lv": "lv",
         "magit": "magit",
         "magit-section": "magit-section",
+        "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
         "nix-mode": "nix-mode",
         "org-modern": "org-modern",
@@ -551,6 +551,7 @@
         "treemacs": "treemacs",
         "typescript-mode": "typescript-mode",
         "undo-fu": "undo-fu",
+        "vertico": "vertico",
         "which-key": "which-key",
         "with-editor": "with-editor"
       }
@@ -633,6 +634,22 @@
       "original": {
         "type": "git",
         "url": "https://codeberg.org/ideasman42/emacs-undo-fu.git"
+      }
+    },
+    "vertico": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697362081,
+        "narHash": "sha256-dves63ffMCv5dcpmPG8AScq6TRboMuq84doUYBZsWkY=",
+        "owner": "minad",
+        "repo": "vertico",
+        "rev": "edbb370ad237781eb893a5c2b505cfa24e6b2d9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "vertico",
+        "type": "github"
       }
     },
     "which-key": {

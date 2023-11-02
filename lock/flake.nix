@@ -26,12 +26,6 @@
       repo = "cfrs";
       type = "github";
     };
-    company = {
-      flake = false;
-      owner = "company-mode";
-      repo = "company-mode";
-      type = "github";
-    };
     compat = {
       flake = false;
       owner = "emacs-compat";
@@ -152,6 +146,12 @@
       repo = "magit";
       type = "github";
     };
+    marginalia = {
+      flake = false;
+      owner = "minad";
+      repo = "marginalia";
+      type = "github";
+    };
     markdown-mode = {
       flake = false;
       owner = "jrblevin";
@@ -222,6 +222,12 @@
       flake = false;
       type = "git";
       url = "https://codeberg.org/ideasman42/emacs-undo-fu.git";
+    };
+    vertico = {
+      flake = false;
+      owner = "minad";
+      repo = "vertico";
+      type = "github";
     };
     which-key = {
       flake = false;
