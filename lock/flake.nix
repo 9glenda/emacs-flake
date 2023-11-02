@@ -26,6 +26,12 @@
       repo = "dash.el";
       type = "github";
     };
+    doom-themes = {
+      flake = false;
+      owner = "doomemacs";
+      repo = "themes";
+      type = "github";
+    };
     emacsql = {
       flake = false;
       owner = "magit";
@@ -42,6 +48,12 @@
       flake = false;
       owner = "emacs-evil";
       repo = "evil-collection";
+      type = "github";
+    };
+    evil-goggles = {
+      flake = false;
+      owner = "edkolev";
+      repo = "evil-goggles";
       type = "github";
     };
     "f" = {
@@ -126,6 +138,12 @@
       flake = false;
       owner = "org-roam";
       repo = "org-roam";
+      type = "github";
+    };
+    ox-reveal = {
+      flake = false;
+      owner = "yjwen";
+      repo = "org-reveal";
       type = "github";
     };
     "s" = {

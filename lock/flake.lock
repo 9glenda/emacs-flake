@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "doom-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694896337,
+        "narHash": "sha256-JbMrLpJ0cqDlKnuKUGJofQe/ao/K92lYKO9T2mmFNwU=",
+        "owner": "doomemacs",
+        "repo": "themes",
+        "rev": "4aee1f5a0e54552669f747aa7c25e6027e73d76d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doomemacs",
+        "repo": "themes",
+        "type": "github"
+      }
+    },
     "emacsql": {
       "flake": false,
       "locked": {
@@ -109,6 +125,22 @@
       "original": {
         "owner": "emacs-evil",
         "repo": "evil-collection",
+        "type": "github"
+      }
+    },
+    "evil-goggles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697873907,
+        "narHash": "sha256-NYkf/7yomMe8pMuyJ6++zvQFZ3i/W0AefZCNWMU6nK0=",
+        "owner": "edkolev",
+        "repo": "evil-goggles",
+        "rev": "34ca276a85f615d2b45e714c9f8b5875bcb676f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edkolev",
+        "repo": "evil-goggles",
         "type": "github"
       }
     },
@@ -336,15 +368,33 @@
         "type": "github"
       }
     },
+    "ox-reveal": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1669536864,
+        "narHash": "sha256-ajZkVH31cW3vgSWzVXQME+1Y8a20rrQi4WSQyXHaaLI=",
+        "owner": "yjwen",
+        "repo": "org-reveal",
+        "rev": "f55c851bf6aeb1bb2a7f6cf0f2b7bd0e79c4a5a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yjwen",
+        "repo": "org-reveal",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "annalist": "annalist",
         "company": "company",
         "compat": "compat",
         "dash": "dash",
+        "doom-themes": "doom-themes",
         "emacsql": "emacsql",
         "evil": "evil",
         "evil-collection": "evil-collection",
+        "evil-goggles": "evil-goggles",
         "f": "f",
         "git-commit": "git-commit",
         "goto-chg": "goto-chg",
@@ -359,6 +409,7 @@
         "nix-mode": "nix-mode",
         "org-modern": "org-modern",
         "org-roam": "org-roam",
+        "ox-reveal": "ox-reveal",
         "s": "s",
         "spinner": "spinner",
         "typescript-mode": "typescript-mode",
