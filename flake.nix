@@ -1,5 +1,5 @@
 {
-  description = "Emacs config of Terje";
+  description = "Emacs config of Terje"; 
 
   nixConfig = {
     extra-substituters = "https://terlar.cachix.org";

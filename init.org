@@ -5,6 +5,8 @@
 ;;; init.el --- Initialization -*- lexical-binding: t; -*-
 #+end_src
 
+
+
 * Base settings
 #+begin_src emacs-lisp :tangle yes
 ;;; init.el --- Initialization -*- lexical-binding: t; -*-
@@ -232,48 +234,70 @@ TODO: vertico???
 *** Vertico                                                                                                    
 Vertico is a minimal ivy alternative                                                                           
 #+begin_src emacs-lisp :tangle yes                                                                             
-    (use-package vertico
-    :ensure t
-  :hook (after-init-hook . vertico-mode)
-    )
-	    (use-package savehist                                                                                
-	  :hook (after-init-hook . savehist-mode)                                                                
-	     )                                                                                                   
+;; 		   (use-package vertico
+;; 		   :ensure t
+;; 		 :hook (after-init-hook . vertico-mode)
+;; 		   )
+;; 			   (use-package savehist                                                                                
+;; 			 :hook (after-init-hook . savehist-mode)                                                                
+;; 			    )                                                                                                   
+;; 
+;; 		       ;; (use-package marginalia                                                                                 
+;; 		       ;;   :after vertico                                                                                        
+;; 		       ;;   :ensure t                                                                                             
+;; 		       ;;   :hook (after-init-hook . marginalia-mode)                                                             
+;; 		       ;;   :custom                                                                                               
+;; 		       ;; (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))                  
+;; 		       ;; )                                                                                                       
+;; 		   (use-package marginalia                                                                                        
+;; 		     :ensure t                                                                                                    
+;; 		     :defer 2                                                                                                     
+;; 		     :commands                                                                                                    
+;; 		     (marginalia-mode)                                                                                            
+;; 		     :config                                                                                                      
+;; 		     (marginalia-mode 1))
+;; 
+;;        (eval-when-compile
+;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+;;   (add-to-list 'completion-at-point-functions #'cape-file)
+;;   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+;;   )
+;; 
+;; 		 (use-package corfu 
+;; 		     :ensure t
+;; 			 :hook (after-init-hook . global-corfu-mode)                                                                
+;;       :custom
+;; 
+;; 	       (corfu-auto t)
+;; 
+;; 
+;; 		 )
+;; 		     ;; corfu-quit-no-match 'separator) ;; or t
+;;       (use-package cape :ensure t)
+;; 
+;; 
+;; 	       (global-set-key (kbd "C-<tab>") 'completion-at-point)
+;; 	 ;; TAB cycle if there are only few candidates
+;;        (setq completion-cycle-threshold 3)
+;; 
+;;        ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
+;;        ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
+;;        ;; (setq read-extended-command-predicate
+;;        ;;       #'command-completion-default-include-p)
+;; 
+;;        ;; Enable indentation+completion using the TAB key.
+;;        ;; `completion-at-point' is often bound to M-TAB.
+;;        (setq tab-always-indent 'complete)
+;;       (eval-when-compile
+;;       (setq completion-at-point-functions (list (cape-capf-debug #'cape-dict)))
+;;       )
 
-	;; (use-package marginalia                                                                                 
-	;;   :after vertico                                                                                        
-	;;   :ensure t                                                                                             
-	;;   :hook (after-init-hook . marginalia-mode)                                                             
-	;;   :custom                                                                                               
-	;; (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))                  
-	;; )                                                                                                       
-    (use-package marginalia                                                                                        
-      :ensure t                                                                                                    
-      :defer 2                                                                                                     
-      :commands                                                                                                    
-      (marginalia-mode)                                                                                            
-      :config                                                                                                      
-      (marginalia-mode 1))                                                                                         
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
-;;    (use-package ivy
-;;      :ensure t
-;;      :diminish
-;;      :hook (after-init-hook . ivy-mode)
-;;      :bind (("C-s" . swiper)
-;;	     :map ivy-minibuffer-map
-;;	     ("TAB" . ivy-alt-done)
-;;	     ("C-l" . ivy-alt-done)
-;;	     ("C-j" . ivy-next-line)
-;;	     ("C-k" . ivy-previous-line)
-;;	     :map ivy-switch-buffer-map
-;;	     ("C-k" . ivy-previous-line)
-;;	     ("C-l" . ivy-done)
-;;	     ;; ("C-d" . ivy-switch-buffer-kill)
-;;	     :map ivy-reverse-i-search-map
-;;	     ("C-k" . ivy-previous-line)
-;;	     ("C-d" . ivy-reverse-i-search-kill)))
+  (use-package ivy
+     :hook (after-init-hook . ivy-mode)
+    :ensure t)
 #+end_src
 
 *** Which key
@@ -289,56 +313,43 @@ Vertico is a minimal ivy alternative
 
 #+begin_src emacs-lisp :tangle yes
 
+      (eval-and-compile (setq lsp-keymap-prefix "C-c l"))
+      (use-package lsp-mode
+	:ensure t
+	:commands (lsp lsp-deferred))
+;;
+;;	(defun lsp-mode-setup ()
+;;    (eval-when-compile
+;;  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols)) (lsp-headerline-breadcrumb-mode)))
 
-	  (use-package lsp-mode
-	    :ensure t
-	    :commands (lsp lsp-deferred)
-	    :hook (lsp-mode . efs/lsp-mode-setup))
-
-	  (setq lsp-keymap-prefix "C-c l")
-
-
-	  (use-package lsp-ui
-	    :ensure t
-	    :hook (lsp-mode . lsp-ui-mode)
-	    :custom
-	    (lsp-ui-doc-position 'bottom))
+(use-package lsp-ui
+:ensure t
+:hook (lsp-mode . lsp-ui-mode))
 
 
+(use-package lsp-ivy
+:ensure t)
 
 
+#+end_src
 
-;;      (use-package company
-;;	:ensure t
-;;	:after lsp-mode
-;;	:hook (lsp-mode . company-mode)
-;;	:bind (:map company-active-map
-;;	       ("<tab>" . company-complete-selection))
-;;	      (:map lsp-mode-map
-;;	       ("<tab>" . company-indent-or-complete-common))
-;;	:custom
-;;	(company-minimum-prefix-length 1)
-;;	(company-idle-delay 0.0))
-
-    ;; (global-set-key (kbd "<tab>") company-complete-selection)
-
-    (setq lsp-ui-sideline-enable nil)
-    (setq lsp-ui-sideline-show-hover nil)
-
-    (use-package lsp-treemacs
-    :ensure t
-    :after lsp)
-
-
-
-  (use-package lsp-ivy
-  :ensure t)
-
-  (use-package evil-nerd-commenter
+Company provied the ui for completion. Company-box improves up on this ui.
+#+begin_src emacs-lisp :tangle yes
+(use-package company
   :ensure t
-  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+  :after lsp-mode
+  :hook (prog-mode . company-mode)
+  :bind (:map company-active-map
+   ("<tab>" . company-complete-selection))
+  (:map lsp-mode-map
+   ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
 
-
+(use-package company-box
+  :ensure t
+  :hook (company-mode . company-box-mode))
 #+end_src
 
 *** Typescript

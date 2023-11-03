@@ -2,28 +2,22 @@
   description =
     "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
-    ace-window = {
-      flake = false;
-      owner = "abo-abo";
-      repo = "ace-window";
-      type = "github";
-    };
     annalist = {
       flake = false;
       owner = "noctuid";
       repo = "annalist.el";
       type = "github";
     };
-    avy = {
+    company = {
       flake = false;
-      owner = "abo-abo";
-      repo = "avy";
+      owner = "company-mode";
+      repo = "company-mode";
       type = "github";
     };
-    cfrs = {
+    company-box = {
       flake = false;
-      owner = "Alexander-Miller";
-      repo = "cfrs";
+      owner = "sebastiencs";
+      repo = "company-box";
       type = "github";
     };
     compat = {
@@ -62,16 +56,16 @@
       repo = "evil-collection";
       type = "github";
     };
-    evil-nerd-commenter = {
-      flake = false;
-      owner = "redguardtoo";
-      repo = "evil-nerd-commenter";
-      type = "github";
-    };
     "f" = {
       flake = false;
       owner = "rejeep";
       repo = "f.el";
+      type = "github";
+    };
+    frame-local = {
+      flake = false;
+      owner = "sebastiencs";
+      repo = "frame-local";
       type = "github";
     };
     git-commit = {
@@ -92,12 +86,6 @@
       repo = "ht.el";
       type = "github";
     };
-    hydra = {
-      flake = false;
-      owner = "abo-abo";
-      repo = "hydra";
-      type = "github";
-    };
     ivy = {
       flake = false;
       owner = "abo-abo";
@@ -114,12 +102,6 @@
       flake = false;
       owner = "emacs-lsp";
       repo = "lsp-mode";
-      type = "github";
-    };
-    lsp-treemacs = {
-      flake = false;
-      owner = "emacs-lsp";
-      repo = "lsp-treemacs";
       type = "github";
     };
     lsp-ui = {
@@ -144,12 +126,6 @@
       flake = false;
       owner = "magit";
       repo = "magit";
-      type = "github";
-    };
-    marginalia = {
-      flake = false;
-      owner = "minad";
-      repo = "marginalia";
       type = "github";
     };
     markdown-mode = {
@@ -182,18 +158,6 @@
       repo = "org-reveal";
       type = "github";
     };
-    pfuture = {
-      flake = false;
-      owner = "Alexander-Miller";
-      repo = "pfuture";
-      type = "github";
-    };
-    posframe = {
-      flake = false;
-      owner = "tumashu";
-      repo = "posframe";
-      type = "github";
-    };
     "s" = {
       flake = false;
       owner = "magnars";
@@ -206,12 +170,6 @@
       repo = "spinner.el";
       type = "github";
     };
-    treemacs = {
-      flake = false;
-      owner = "Alexander-Miller";
-      repo = "treemacs";
-      type = "github";
-    };
     typescript-mode = {
       flake = false;
       owner = "emacs-typescript";
@@ -222,12 +180,6 @@
       flake = false;
       type = "git";
       url = "https://codeberg.org/ideasman42/emacs-undo-fu.git";
-    };
-    vertico = {
-      flake = false;
-      owner = "minad";
-      repo = "vertico";
-      type = "github";
     };
     which-key = {
       flake = false;
