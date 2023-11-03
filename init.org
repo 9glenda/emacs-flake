@@ -1,5 +1,7 @@
 #+TITLE: GNU Emacs Configuration
 
+* TODO
+- [ ] backup file location
 * Base settings
 #+begin_src emacs-lisp :tangle early-init.el
 ;;; init.el --- Initialization -*- lexical-binding: t; -*-
@@ -74,18 +76,20 @@ Show the startup time.
 
 Provide a location where Emacs can store data and cache.
 #+begin_src emacs-lisp :tangle yes
-(eval-and-compile
-  (defvar data-dir
-    (if (getenv "XDG_DATA_HOME")
-        (concat (getenv "XDG_DATA_HOME") "/emacs/")
-      (expand-file-name "~/.local/share/emacs/"))
-    "Directory for data.")
+;;  (eval-and-compile
+;;    (defvar data-dir
+;;      (if (getenv "XDG_DATA_HOME")
+;;	  (concat (getenv "XDG_DATA_HOME") "/emacs/")
+;;	(expand-file-name "~/.local/share/emacs/"))
+;;      "Directory for data.")
+;;
+;;    (defvar cache-dir
+;;      (if (getenv "XDG_CACHE_HOME")
+;;	  (concat (getenv "XDG_CACHE_HOME") "/emacs/")
+;;	(expand-file-name "~/.cache/emacs/"))
+;;      "Directory for cache."))
 
-  (defvar cache-dir
-    (if (getenv "XDG_CACHE_HOME")
-        (concat (getenv "XDG_CACHE_HOME") "/emacs/")
-      (expand-file-name "~/.cache/emacs/"))
-    "Directory for cache."))
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs"))
 #+end_src
 
 
@@ -102,10 +106,8 @@ Mark the theme as safe and load it.
   (custom-set-variables
     '(custom-safe-themes
       '("88f7ee5594021c60a4a6a1c275614103de8c1435d6d08cc58882f920e0cec65e"
-	default))
-)
-
-    (load-theme 'doom-one)
+	default)))
+(load-theme 'doom-one)
 #+end_src
 
 ** org-mode
@@ -125,6 +127,7 @@ Mark the theme as safe and load it.
 #+begin_src emacs-lisp :tangle yes                                         
 (use-package ox-reveal :ensure t)                                          
 #+end_src
+
 **** Modern-org
 TODO: Should be replaced by prettyfy symbol mode.
 #+begin_src emacs-lisp :tangle yes
@@ -141,6 +144,17 @@ TODO: Should be replaced by prettyfy symbol mode.
 (use-package magit :ensure t)
 #+end_src
 
+
+** Quality of life
+*** TODO
+- [ ] Hex color
+*** Rainbow delimiters
+#+begin_src emacs-lisp :tangle yes
+  (use-package rainbow-delimiters
+    :ensure t
+    :hook (emacs-lisp-mode . rainbow-delimiters-mode))
+  ;; for other languages like closure this could also be enabled.
+#+end_src
 
 ** Evil mode
 
@@ -175,9 +189,7 @@ TODO: Should be replaced by prettyfy symbol mode.
     (use-package evil-collection
       :ensure t
       :hook (after-init-hook . evil-collection-init)
-      :after evil
-      :config
-      )
+      :after evil)
 #+end_src
 
 *** clipboard
@@ -232,7 +244,7 @@ I'm way to used to pressing escape from vim.
 TODO: vertico???
 
 *** Vertico                                                                                                    
-Vertico is a minimal ivy alternative                                                                           
+Vertico is a minimal ivy alternative.
 #+begin_src emacs-lisp :tangle yes                                                                             
 ;; 		   (use-package vertico
 ;; 		   :ensure t
@@ -295,9 +307,15 @@ Vertico is a minimal ivy alternative
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
-  (use-package ivy
-     :hook (after-init-hook . ivy-mode)
-    :ensure t)
+    (use-package ivy
+       :hook (after-init-hook . ivy-mode)
+      :ensure t)
+  (use-package counsel
+    :ensure t
+    :after ivy
+    :hook (after-init-hook . counsel-mode)
+    :config 
+      (setq ivy-initial-inputs-alist nil))
 #+end_src
 
 *** Which key
@@ -305,70 +323,91 @@ Vertico is a minimal ivy alternative
 #+begin_src emacs-lisp :tangle yes
    (use-package which-key
      :ensure t
-     :hook (after-init-hook . which-key-mode)
-   )
+     :hook (after-init-hook . which-key-mode))
 #+end_src
 
 ** LSP
 
 #+begin_src emacs-lisp :tangle yes
 
-      (eval-and-compile (setq lsp-keymap-prefix "C-c l"))
-      (use-package lsp-mode
-	:ensure t
-	:commands (lsp lsp-deferred))
-;;
-;;	(defun lsp-mode-setup ()
-;;    (eval-when-compile
+	(eval-and-compile (setq lsp-keymap-prefix "C-c l"))
+	(use-package lsp-mode
+	  :ensure t
+	  :commands (lsp lsp-deferred))
+
+;;  (eval-and-compile
+;;  (defun lsp-mode-setup ()
 ;;  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols)) (lsp-headerline-breadcrumb-mode)))
 
 (use-package lsp-ui
-:ensure t
-:hook (lsp-mode . lsp-ui-mode))
-
+  :ensure t
+  :hook (lsp-mode . lsp-ui-mode))
 
 (use-package lsp-ivy
-:ensure t)
+  :ensure t)
+#+end_src
 
-
+#+begin_src emacs-lisp :tangle yes
+  ;; (use-package command-log :ensure t)
 #+end_src
 
 Company provied the ui for completion. Company-box improves up on this ui.
 #+begin_src emacs-lisp :tangle yes
-(use-package company
-  :ensure t
-  :after lsp-mode
-  :hook (prog-mode . company-mode)
-  :bind (:map company-active-map
-   ("<tab>" . company-complete-selection))
-  (:map lsp-mode-map
-   ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
+  (use-package company
+    :ensure t
+    :after lsp-mode
+    :hook (prog-mode . company-mode)
+    :bind
+    (:map company-active-map ("<return>" . company-complete-selection))
 
-(use-package company-box
-  :ensure t
-  :hook (company-mode . company-box-mode))
+    (:map company-active-map ("C-e" . company-abort))
+
+    (:map company-active-map ("<tab>" . company-select-next))
+    (:map company-active-map ("<C-j>" . company-select-next))
+
+    (:map company-active-map ("<backtab>" . company-select-previous))
+    (:map company-active-map ("<C-k>" . company-select-previous))
+
+    ;; (:map lsp-mode-map ("<return>" . company-indent-or-complete-common))
+    :custom
+    (company-minimum-prefix-length 0)
+    (company-idle-delay 0.0))
+
+  (use-package company-box
+    :ensure t
+    :hook (company-mode . company-box-mode))
 #+end_src
 
 *** Typescript
 
 #+begin_src emacs-lisp :tangle yes
-  (use-package typescript-mode
-    :ensure t
-    :mode "\\.ts\\'"
-    :hook (typescript-mode . lsp-deferred)
-    :config
-    (setq typescript-indent-level 2))
+(use-package typescript-mode
+  :ensure t
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
 #+end_src
 
 
 *** Nix
 
 #+begin_src emacs-lisp :tangle yes
-  (use-package nix-mode
-   :ensure t
-   :mode "\\.nix\\'")
+(use-package nix-mode
+  :ensure t
+  :mode "\\.nix\\'")
+#+end_src
 
+*** Haskell 
+
+#+begin_src emacs-lisp :tangle yes
+(use-package lsp-haskell
+    :ensure t)
+#+end_src
+
+*** Ocaml
+
+#+begin_src emacs-lisp :tangle yes
+(use-package tuareg
+    :ensure t)
 #+end_src

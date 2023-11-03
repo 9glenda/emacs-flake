@@ -8,6 +8,12 @@
       repo = "annalist.el";
       type = "github";
     };
+    caml = {
+      flake = false;
+      owner = "ocaml";
+      repo = "caml-mode";
+      type = "github";
+    };
     company = {
       flake = false;
       owner = "company-mode";
@@ -24,6 +30,12 @@
       flake = false;
       owner = "emacs-compat";
       repo = "compat";
+      type = "github";
+    };
+    counsel = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "swiper";
       type = "github";
     };
     dash = {
@@ -80,6 +92,12 @@
       repo = "goto-chg";
       type = "github";
     };
+    haskell-mode = {
+      flake = false;
+      owner = "haskell";
+      repo = "haskell-mode";
+      type = "github";
+    };
     ht = {
       flake = false;
       owner = "Wilfred";
@@ -90,6 +108,12 @@
       flake = false;
       owner = "abo-abo";
       repo = "swiper";
+      type = "github";
+    };
+    lsp-haskell = {
+      flake = false;
+      owner = "emacs-lsp";
+      repo = "lsp-haskell";
       type = "github";
     };
     lsp-ivy = {
@@ -158,6 +182,12 @@
       repo = "org-reveal";
       type = "github";
     };
+    rainbow-delimiters = {
+      flake = false;
+      owner = "Fanael";
+      repo = "rainbow-delimiters";
+      type = "github";
+    };
     "s" = {
       flake = false;
       owner = "magnars";
@@ -168,6 +198,18 @@
       flake = false;
       owner = "Malabarba";
       repo = "spinner.el";
+      type = "github";
+    };
+    swiper = {
+      flake = false;
+      owner = "abo-abo";
+      repo = "swiper";
+      type = "github";
+    };
+    tuareg = {
+      flake = false;
+      owner = "ocaml";
+      repo = "tuareg";
       type = "github";
     };
     typescript-mode = {
