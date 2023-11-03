@@ -128,6 +128,22 @@
         "type": "github"
       }
     },
+    "editorconfig": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695157301,
+        "narHash": "sha256-2Ruf3f04s1lLt00mzOL7kKUp2avbMApNCa+LOGCexCo=",
+        "owner": "editorconfig",
+        "repo": "editorconfig-emacs",
+        "rev": "4bf871b7a2f2433d1032ef2b251bfb08c23347f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "editorconfig",
+        "repo": "editorconfig-emacs",
+        "type": "github"
+      }
+    },
     "emacsql": {
       "flake": false,
       "locked": {
@@ -506,6 +522,7 @@
         "counsel": "counsel",
         "dash": "dash",
         "doom-themes": "doom-themes",
+        "editorconfig": "editorconfig",
         "emacsql": "emacsql",
         "evil": "evil",
         "evil-collection": "evil-collection",

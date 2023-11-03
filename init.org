@@ -96,10 +96,7 @@ Provide a location where Emacs can store data and cache.
 *** Theme
 #+begin_src emacs-lisp :tangle yes
   (use-package doom-themes         
-    :ensure t)                     
-
-
-
+    :ensure t)
 #+end_src
 Mark the theme as safe and load it.
 #+begin_src emacs-lisp :tangle yes
@@ -156,6 +153,27 @@ TODO: Should be replaced by prettyfy symbol mode.
   ;; for other languages like closure this could also be enabled.
 #+end_src
 
+** RE-builder
+A interactive regex builder.
+re-builder is build in to emacs. We want an more up to date re-builder tho an
+** Editorconfig
+#+begin_src emacs-lisp :tangle yes
+    (use-package editorconfig
+      :ensure t
+      :defer 1
+      :commands
+      (editorconfig-mode)
+      :init
+      (setq editorconfig-trim-whitespaces-mode 'ws-butler-mode)
+      (setq editorconfig-exclude-modes '(
+    ;; emacs-lisp-mode
+					 ;; lisp-mode
+					 org-mode
+  ))
+      :config
+      (cl-pushnew '(plantuml-mode plantuml-indent-level) editorconfig-indentation-alist :test #'equal)
+      (editorconfig-mode 1))
+#+end_src
 ** Evil mode
 
 *** Tasks [1/3]
@@ -310,6 +328,7 @@ Vertico is a minimal ivy alternative.
     (use-package ivy
        :hook (after-init-hook . ivy-mode)
       :ensure t)
+
   (use-package counsel
     :ensure t
     :after ivy
@@ -329,7 +348,6 @@ Vertico is a minimal ivy alternative.
 ** LSP
 
 #+begin_src emacs-lisp :tangle yes
-
 	(eval-and-compile (setq lsp-keymap-prefix "C-c l"))
 	(use-package lsp-mode
 	  :ensure t

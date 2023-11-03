@@ -50,6 +50,12 @@
       repo = "themes";
       type = "github";
     };
+    editorconfig = {
+      flake = false;
+      owner = "editorconfig";
+      repo = "editorconfig-emacs";
+      type = "github";
+    };
     emacsql = {
       flake = false;
       owner = "magit";
