@@ -322,26 +322,27 @@ Vertico is a minimal ivy alternative.
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
-	  (use-package ivy
-	     :hook (after-init-hook . ivy-mode)
-	    :ensure t)
+	    (use-package ivy
+	       :hook (after-init-hook . ivy-mode)
+	      :ensure t)
 
 
-	(use-package counsel
-	  :ensure t
-	  :after ivy
-	  :hook (after-init-hook . counsel-mode)
-	  :config 
-	    (setq ivy-initial-inputs-alist nil))
+	  (use-package counsel
+	    :ensure t
+	    :after ivy
+	    :hook (after-init-hook . counsel-mode)
+	    :config 
+	      (setq ivy-initial-inputs-alist nil))
 
-      ;; remap M-x to counsel-M-x 
+	;; remap M-x to counsel-M-x 
 
 
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
-(global-set-key (kbd "C-c v") 'ivy-push-view)
-(global-set-key (kbd "C-c V") 'ivy-pop-view)
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
+  (global-set-key (kbd "C-c v") 'ivy-push-view)
+  (global-set-key (kbd "C-c V") 'ivy-pop-view)
+(global-set-key "\C-s" 'swiper)
 #+end_src
 
 *** Which key
