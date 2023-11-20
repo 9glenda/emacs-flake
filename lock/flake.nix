@@ -188,6 +188,12 @@
       repo = "org-reveal";
       type = "github";
     };
+    proof-general = {
+      flake = false;
+      owner = "ProofGeneral";
+      repo = "PG";
+      type = "github";
+    };
     rainbow-delimiters = {
       flake = false;
       owner = "Fanael";

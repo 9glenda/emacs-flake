@@ -496,6 +496,22 @@
         "type": "github"
       }
     },
+    "proof-general": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698784801,
+        "narHash": "sha256-I8M2TBXu7HfONqXhuL88VlElAtNYiysH9iMUlA1EmU8=",
+        "owner": "ProofGeneral",
+        "repo": "PG",
+        "rev": "0dd686ec46790e918896670b559b11d38a4bb115",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ProofGeneral",
+        "repo": "PG",
+        "type": "github"
+      }
+    },
     "rainbow-delimiters": {
       "flake": false,
       "locked": {
@@ -545,6 +561,7 @@
         "org-modern": "org-modern",
         "org-roam": "org-roam",
         "ox-reveal": "ox-reveal",
+        "proof-general": "proof-general",
         "rainbow-delimiters": "rainbow-delimiters",
         "s": "s",
         "spinner": "spinner",

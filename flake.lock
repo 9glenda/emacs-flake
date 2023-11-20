@@ -25,11 +25,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1698921055,
-        "narHash": "sha256-QKvhkk2Frdt+NcP5VPv7R6IILcLOBKewtVk3IXs8UBg=",
+        "lastModified": 1700502072,
+        "narHash": "sha256-AxfDQxRjfXCceD6l5dHnIka7/AqaI2/3fuvOhSaFPM4=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "271cf1c48c036ca3a40335b0ed3b04d8d44d3824",
+        "rev": "21926f291e61451d93c5f51b155f6f6507748c49",
         "type": "github"
       },
       "original": {
@@ -76,11 +76,11 @@
     "gnu-elpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1698870157,
-        "narHash": "sha256-6GQ8INA3qVoJKsVO4nFz1/ZzB7Sb88fm3NCfszElxsk=",
+        "lastModified": 1699345163,
+        "narHash": "sha256-WqyeglW9C6JoTss/ZkrQOfgCKBQBbA9vauuA9UbxRlY=",
         "ref": "main",
-        "rev": "f195bf043df88882a6776c907609ccb69a7eadb7",
-        "revCount": 548,
+        "rev": "fb9a4c9182d901519766e44cb16f886ef74bb7ad",
+        "revCount": 552,
         "type": "git",
         "url": "https://git.savannah.gnu.org/git/emacs/elpa.git"
       },
@@ -93,11 +93,11 @@
     "melpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1698606980,
-        "narHash": "sha256-J/Vmk42bD19ySnI/xGmp/RZNrNWeQZL61qceU6btQMw=",
+        "lastModified": 1700429727,
+        "narHash": "sha256-FxSCUxjfiOoQsF0FhLFNb7YDXkjvAlqnnVJCoT7+f4I=",
         "owner": "melpa",
         "repo": "melpa",
-        "rev": "327f330c9d7f07aa32a31ab45512e503947ca609",
+        "rev": "e0b516fcfb447d0cadcf90cd748b6cedba57000e",
         "type": "github"
       },
       "original": {
@@ -108,11 +108,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1698611440,
-        "narHash": "sha256-jPjHjrerhYDy3q9+s5EAsuhyhuknNfowY6yt6pjn9pc=",
+        "lastModified": 1700390070,
+        "narHash": "sha256-de9KYi8rSJpqvBfNwscWdalIJXPo8NjdIZcEJum1mH0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0cbe9f69c234a7700596e943bfae7ef27a31b735",
+        "rev": "e4ad989506ec7d71f7302cc3067abd82730a4beb",
         "type": "github"
       },
       "original": {
@@ -142,11 +142,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1698846319,
-        "narHash": "sha256-4jyW/dqFBVpWFnhl0nvP6EN4lP7/ZqPxYRjl6var0Oc=",
+        "lastModified": 1700403855,
+        "narHash": "sha256-Q0Uzjik9kUTN9pd/kp52XJi5kletBhy29ctBlAG+III=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "34bdaaf1f0b7fb6d9091472edc968ff10a8c2857",
+        "rev": "0c5678df521e1407884205fe3ce3cf1d7df297db",
         "type": "github"
       },
       "original": {
@@ -159,11 +159,11 @@
     "nongnu-elpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1697832115,
-        "narHash": "sha256-z5diveEOYJZF0EymLaQjoPnvRe/8JzS0rPD5rnis/Qc=",
+        "lastModified": 1699344087,
+        "narHash": "sha256-+JdGoqtQukYtjmA3pSkTLLOH/Y0a9XqrrZUX4sFOkNY=",
         "ref": "main",
-        "rev": "e5adab3409abfa69ecbaeb07bb88d48f78e03d3f",
-        "revCount": 296,
+        "rev": "e9d06c3dfe8b41a568dd1ba6fa10e284ef5380c1",
+        "revCount": 297,
         "type": "git",
         "url": "https://git.savannah.gnu.org/git/emacs/nongnu.git"
       },
@@ -220,11 +220,11 @@
         "elisp-helpers": "elisp-helpers"
       },
       "locked": {
-        "lastModified": 1698214736,
-        "narHash": "sha256-GQ0XSeh3AS+lp3GCrrZYg5Aok01YVgWdV3T01cXRtfU=",
+        "lastModified": 1699725197,
+        "narHash": "sha256-CG9iEXfvTmCIWh2G8RtZ+TpHdHhBugf9nVYRY30GJ3c=",
         "owner": "emacs-twist",
         "repo": "twist.nix",
-        "rev": "c9b24e09a175ff379783d260f5ab5eeef0590697",
+        "rev": "9c3c6ba7b07e84c38ee0eca3495c91ea4d0c18ce",
         "type": "github"
       },
       "original": {

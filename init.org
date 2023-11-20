@@ -429,3 +429,16 @@ Company provied the ui for completion. Company-box improves up on this ui.
 (use-package tuareg
     :ensure t)
 #+end_src
+
+
+*** coq
+
+#+begin_src emacs-lisp :tangle yes
+(use-package proof-general
+  :no-require t
+  :ensure t)
+#+end_src
+
+** Shell modes
+TODO
+
