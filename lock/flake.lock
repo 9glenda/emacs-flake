@@ -64,6 +64,38 @@
         "type": "github"
       }
     },
+    "company-coq": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1669786593,
+        "narHash": "sha256-TWqeFUGZXFvI/2TwB/LxjI8G5jqaGTXZoamD79fhKMQ=",
+        "owner": "cpitclaudel",
+        "repo": "company-coq",
+        "rev": "5affe7a96a25df9101f9e44bac8a828d8292c2fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cpitclaudel",
+        "repo": "company-coq",
+        "type": "github"
+      }
+    },
+    "company-math": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672147747,
+        "narHash": "sha256-Q5pMH3x6GYlBS6BjOnQ27BfMni0DIFfZ1aIVWk8EQd4=",
+        "owner": "vspinu",
+        "repo": "company-math",
+        "rev": "3eb006874e309ff4076d947fcbd61bb6806aa508",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vspinu",
+        "repo": "company-math",
+        "type": "github"
+      }
+    },
     "compat": {
       "flake": false,
       "locked": {
@@ -432,6 +464,22 @@
         "type": "github"
       }
     },
+    "math-symbol-lists": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661719674,
+        "narHash": "sha256-ylXCs6OAN56abxpPUp78ebL0xx2KrJ0KUfnrEqlX6Y4=",
+        "owner": "vspinu",
+        "repo": "math-symbol-lists",
+        "rev": "ac3eb053d3b576fcdd192b0ac6ad5090ea3a7079",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vspinu",
+        "repo": "math-symbol-lists",
+        "type": "github"
+      }
+    },
     "nix-mode": {
       "flake": false,
       "locked": {
@@ -534,6 +582,8 @@
         "caml": "caml",
         "company": "company",
         "company-box": "company-box",
+        "company-coq": "company-coq",
+        "company-math": "company-math",
         "compat": "compat",
         "counsel": "counsel",
         "dash": "dash",
@@ -557,6 +607,7 @@
         "magit": "magit",
         "magit-section": "magit-section",
         "markdown-mode": "markdown-mode",
+        "math-symbol-lists": "math-symbol-lists",
         "nix-mode": "nix-mode",
         "org-modern": "org-modern",
         "org-roam": "org-roam",
@@ -570,7 +621,8 @@
         "typescript-mode": "typescript-mode",
         "undo-fu": "undo-fu",
         "which-key": "which-key",
-        "with-editor": "with-editor"
+        "with-editor": "with-editor",
+        "yasnippet": "yasnippet"
       }
     },
     "s": {
@@ -698,6 +750,22 @@
       "original": {
         "owner": "magit",
         "repo": "with-editor",
+        "type": "github"
+      }
+    },
+    "yasnippet": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694700037,
+        "narHash": "sha256-7q3o495mOBeTCwxZxzB1lgj3dSK3KraSfVB/qtGGsz4=",
+        "owner": "capitaomorte",
+        "repo": "yasnippet",
+        "rev": "52a1c5031912243c791c55e0fe345d04f219b507",
+        "type": "github"
+      },
+      "original": {
+        "owner": "capitaomorte",
+        "repo": "yasnippet",
         "type": "github"
       }
     }

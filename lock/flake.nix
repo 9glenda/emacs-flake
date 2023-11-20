@@ -26,6 +26,18 @@
       repo = "company-box";
       type = "github";
     };
+    company-coq = {
+      flake = false;
+      owner = "cpitclaudel";
+      repo = "company-coq";
+      type = "github";
+    };
+    company-math = {
+      flake = false;
+      owner = "vspinu";
+      repo = "company-math";
+      type = "github";
+    };
     compat = {
       flake = false;
       owner = "emacs-compat";
@@ -164,6 +176,12 @@
       repo = "markdown-mode";
       type = "github";
     };
+    math-symbol-lists = {
+      flake = false;
+      owner = "vspinu";
+      repo = "math-symbol-lists";
+      type = "github";
+    };
     nix-mode = {
       flake = false;
       owner = "NixOS";
@@ -245,6 +263,12 @@
       flake = false;
       owner = "magit";
       repo = "with-editor";
+      type = "github";
+    };
+    yasnippet = {
+      flake = false;
+      owner = "capitaomorte";
+      repo = "yasnippet";
       type = "github";
     };
   };
