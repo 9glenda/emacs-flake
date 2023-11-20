@@ -448,7 +448,7 @@ Company provied the ui for completion. Company-box improves up on this ui.
 
   (use-package company-coq 
     ;; :no-require t
-    :hook (coq-mode . coq-company-mode)
+    ;; :hook (coq-mode . coq-company-mode)
     :ensure t)
 #+end_src
 
