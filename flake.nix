@@ -11,7 +11,7 @@
     nixpkgs.flake = true;
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs"; # use cache
     };
 
     twist.url = "github:emacs-twist/twist.nix";

@@ -218,6 +218,12 @@
       repo = "rainbow-delimiters";
       type = "github";
     };
+    rust-mode = {
+      flake = false;
+      owner = "rust-lang";
+      repo = "rust-mode";
+      type = "github";
+    };
     "s" = {
       flake = false;
       owner = "magnars";

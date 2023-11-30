@@ -614,6 +614,7 @@
         "ox-reveal": "ox-reveal",
         "proof-general": "proof-general",
         "rainbow-delimiters": "rainbow-delimiters",
+        "rust-mode": "rust-mode",
         "s": "s",
         "spinner": "spinner",
         "swiper": "swiper",
@@ -623,6 +624,22 @@
         "which-key": "which-key",
         "with-editor": "with-editor",
         "yasnippet": "yasnippet"
+      }
+    },
+    "rust-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691327890,
+        "narHash": "sha256-r888RkK1ec5Uzi1wB1dyszZThF23stQ/u08KnB4KrdI=",
+        "owner": "rust-lang",
+        "repo": "rust-mode",
+        "rev": "9c26dc1195ec05309ee15c014631fb9abd6cf5d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-lang",
+        "repo": "rust-mode",
+        "type": "github"
       }
     },
     "s": {
