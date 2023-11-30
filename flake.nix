@@ -1,5 +1,5 @@
 {
-  description = "Emacs config of Terje"; 
+  description = "Emacs config of Terje";
 
   nixConfig = {
     extra-substituters = "https://terlar.cachix.org";
@@ -43,24 +43,23 @@
           (final: prev: let
             emacs = final.emacs-pgtk;
           in {
-            emacsEnv =
-              (final.emacsTwist {
-                emacsPackage = emacs;
+            emacsEnv = final.emacsTwist {
+              emacsPackage = emacs;
 
-                initFiles = [(final.tangleOrgBabelFile "init.el" ./init.org {})];
+              initFiles = [(final.tangleOrgBabelFile "init.el" ./init.org {})];
 
-                lockDir = ./lock;
-                inventories = import ./nix/inventories.nix {
-                  inherit (inputs) self;
-                  emacsSrc = emacs.src;
-                };
-                # inputOverrides = import ./nix/inputOverrides.nix {inherit (inputs.nixpkgs) lib;};
-              });
-              # .overrideScope' (_tfinal: tprev: {
-              #   elispPackages = tprev.elispPackages.overrideScope' (
-              #     prev.callPackage ./nix/packageOverrides.nix {inherit (tprev) emacs;}
-              #   );
-              # });
+              lockDir = ./lock;
+              inventories = import ./nix/inventories.nix {
+                inherit (inputs) self;
+                emacsSrc = emacs.src;
+              };
+              # inputOverrides = import ./nix/inputOverrides.nix {inherit (inputs.nixpkgs) lib;};
+            };
+            # .overrideScope' (_tfinal: tprev: {
+            #   elispPackages = tprev.elispPackages.overrideScope' (
+            #     prev.callPackage ./nix/packageOverrides.nix {inherit (tprev) emacs;}
+            #   );
+            # });
 
             emacsConfig = prev.callPackage inputs.self {
               trivialBuild = final.callPackage "${inputs.nixpkgs}/pkgs/build-support/emacs/trivial.nix" {
@@ -83,9 +82,16 @@
 
         packages = rec {
           inherit (pkgs) emacsConfig emacsEnv;
-          emacs = pkgs.writeShellScriptBin "emacs" ''
-               ${pkgs.emacsEnv}/bin/emacs --init-directory ${pkgs.emacsConfig} $@
-           ''; 
+          emacs = pkgs.symlinkJoin {
+            name = "emacs";
+            paths = [pkgs.emacsEnv];
+            buildInputs = [pkgs.makeWrapper];
+            postBuild = ''
+              wrapProgram $out/bin/emacs \
+                --add-flags "--init-directory ${pkgs.emacsConfig}"
+            '';
+          };
+
           default = emacs;
         };
 

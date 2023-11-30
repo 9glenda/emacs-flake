@@ -72,7 +72,7 @@ in
 
     passthru.components = {
       inherit init initTreesit;
-   };
+    };
 
     installPhase = ''
       mkdir -p $out
