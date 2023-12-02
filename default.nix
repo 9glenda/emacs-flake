@@ -63,7 +63,7 @@ in
   stdenv.mkDerivation {
     name = "emacs-config";
 
-    src = lib.sourceByRegex ./. ["templates"];
+    src = lib.sourceByRegex ./. [""]; # add files to add int oemacs.d here
     dontUnpack = true;
 
     buildInputs = [

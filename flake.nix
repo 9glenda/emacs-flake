@@ -11,7 +11,6 @@
     nixpkgs.flake = true;
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
-      # inputs.nixpkgs.follows = "nixpkgs"; # use cache
     };
 
     twist.url = "github:emacs-twist/twist.nix";
@@ -49,17 +48,8 @@
               initFiles = [(final.tangleOrgBabelFile "init.el" ./init.org {})];
 
               lockDir = ./lock;
-              #inventories = import ./nix/inventories.nix {
-              #  inherit (inputs) self;
-              #  emacsSrc = emacs.src;
-              #};
               registries = import ./nix/registries.nix inputs;
             };
-            # .overrideScope' (_tfinal: tprev: {
-            #   elispPackages = tprev.elispPackages.overrideScope' (
-            #     prev.callPackage ./nix/packageOverrides.nix {inherit (tprev) emacs;}
-            #   );
-            # });
 
             emacsConfig = prev.callPackage inputs.self {
               trivialBuild = final.callPackage "${inputs.nixpkgs}/pkgs/build-support/emacs/trivial.nix" {
