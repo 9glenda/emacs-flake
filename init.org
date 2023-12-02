@@ -41,6 +41,10 @@ Show the startup time.
                      file-name-handler-alist ',normal-file-name-handler-alist))))
 #+end_src
 
+** emacs server
+#+begin_src emacs-lisp :tangle yes
+;; (server-start)
+#+end_src
 
 *** use-package
 #+begin_src emacs-lisp :tangle yes
