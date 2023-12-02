@@ -19,11 +19,11 @@
   #   '';
   # });
 
-  # haskell-mode = prev.haskell-mode.overrideAttrs (_: {
-  #   preBuild = ''
-  #     substituteInPlace haskell-mode.el --replace "(require 'flymake)" "(require 'flymake)${"\n"}(require 'flymake-proc)"
-  #   '';
-  # });
+  haskell-mode = prev.haskell-mode.overrideAttrs (_: {
+    preBuild = ''
+      substituteInPlace haskell-mode.el --replace "(require 'flymake)" "(require 'flymake)${"\n"}(require 'flymake-proc)"
+    '';
+  });
 
   # jinx = prev.jinx.overrideAttrs (old: {
   #   nativeBuildInputs = (old.nativeBuildInputs or []) ++ [pkg-config];
@@ -43,13 +43,13 @@
   #     '';
   # });
 
-  # magit = prev.magit.overrideAttrs (old: {
-  #   preBuild = ''
-  #     substituteInPlace Makefile --replace "include ../default.mk" ""
-  #     make PKG=magit VERSION="${old.version}" magit-version.el
-  #     rm Makefile
-  #   '';
-  # });
+  magit = prev.magit.overrideAttrs (old: {
+    preBuild = ''
+      substituteInPlace Makefile --replace "include ../default.mk" ""
+      make PKG=magit VERSION="${old.version}" magit-version.el
+      rm Makefile
+    '';
+  });
 
   # theme-magic = prev.theme-magic.overrideAttrs (_: {
   #   patches = [

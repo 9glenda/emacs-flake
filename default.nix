@@ -9,6 +9,7 @@
   writeText,
   xorg,
 }: let
+    # treesitter with all grammars
   initTreesit = writeText "init-treesit.el" ''
     (add-to-list 'treesit-extra-load-path  "${
       lib.pipe tree-sitter-grammars [
@@ -74,6 +75,7 @@ in
       inherit init initTreesit;
     };
 
+    # lndir is a tool for linking files and has nothing to do with wayland support
     installPhase = ''
       mkdir -p $out
       ${xorg.lndir}/bin/lndir -silent ${init}/share/emacs/site-lisp $out
@@ -82,7 +84,5 @@ in
         mkdir -p $out/eln-cache
         ${xorg.lndir}/bin/lndir -silent ${init}/share/emacs/native-lisp $out/eln-cache
       fi
-
-      install -D -t $out $src/templates
     '';
   }

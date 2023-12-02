@@ -49,11 +49,11 @@
               initFiles = [(final.tangleOrgBabelFile "init.el" ./init.org {})];
 
               lockDir = ./lock;
-              inventories = import ./nix/inventories.nix {
-                inherit (inputs) self;
-                emacsSrc = emacs.src;
-              };
-              # inputOverrides = import ./nix/inputOverrides.nix {inherit (inputs.nixpkgs) lib;};
+              #inventories = import ./nix/inventories.nix {
+              #  inherit (inputs) self;
+              #  emacsSrc = emacs.src;
+              #};
+              registries = import ./nix/registries.nix inputs;
             };
             # .overrideScope' (_tfinal: tprev: {
             #   elispPackages = tprev.elispPackages.overrideScope' (

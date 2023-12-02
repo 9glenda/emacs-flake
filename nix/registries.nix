@@ -1,23 +1,20 @@
-{
-  self,
-  emacsSrc,
-}: [
+inputs: [
   {
     name = "gnu";
     type = "elpa";
-    path = self.inputs.gnu-elpa.outPath + "/elpa-packages";
-    core-src = emacsSrc;
+    path = inputs.gnu-elpa.outPath + "/elpa-packages";
+    core-src = inputs.emacs.outPath;
     auto-sync-only = true;
   }
   {
     name = "melpa";
     type = "melpa";
-    path = self.inputs.melpa.outPath + "/recipes";
+    path = inputs.melpa.outPath + "/recipes";
   }
   {
     name = "nongnu";
     type = "elpa";
-    path = self.inputs.nongnu-elpa.outPath + "/elpa-packages";
+    path = inputs.nongnu-elpa.outPath + "/elpa-packages";
   }
   {
     name = "gnu-archive";
