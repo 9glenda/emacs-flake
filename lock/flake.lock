@@ -224,6 +224,22 @@
         "type": "github"
       }
     },
+    "evil-goggles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697873907,
+        "narHash": "sha256-NYkf/7yomMe8pMuyJ6++zvQFZ3i/W0AefZCNWMU6nK0=",
+        "owner": "edkolev",
+        "repo": "evil-goggles",
+        "rev": "34ca276a85f615d2b45e714c9f8b5875bcb676f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edkolev",
+        "repo": "evil-goggles",
+        "type": "github"
+      }
+    },
     "f": {
       "flake": false,
       "locked": {
@@ -592,6 +608,7 @@
         "emacsql": "emacsql",
         "evil": "evil",
         "evil-collection": "evil-collection",
+        "evil-goggles": "evil-goggles",
         "f": "f",
         "frame-local": "frame-local",
         "git-commit": "git-commit",

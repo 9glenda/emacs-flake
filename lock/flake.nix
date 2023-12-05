@@ -86,6 +86,12 @@
       repo = "evil-collection";
       type = "github";
     };
+    evil-goggles = {
+      flake = false;
+      owner = "edkolev";
+      repo = "evil-goggles";
+      type = "github";
+    };
     "f" = {
       flake = false;
       owner = "rejeep";

@@ -507,3 +507,31 @@ e^{i\pi} = -1
 
 e^2
 
+
+*** Tab bar
+#+begin_src emacs-lisp :tangle yes
+		(tab-bar-mode 1)
+		(setq tab-bar-close-button-show nil)
+		 (setq tab-bar-tab-hints t)
+		(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+	      (set-face-attribute 'mode-line nil
+				:background "#353644"
+				:foreground "white"
+				:box '(:line-width 8 :color "#353644")
+				:overline nil
+				:underline nil)
+
+       (use-package evil-goggles
+	 :ensure t
+	 :hook (after-init-hook . evil-goggles-mode)
+	 ;; (after-init-hook . evil-goggles-use-diff-faces)
+     )
+  (setq evil-goggles-blocking-duration 0.00)
+     (setq evil-goggles-duration 1.30)
+     ;; (custom-set-faces '(evil-goggles-default-face ((t (:inherit 'isearch-fail))))) ;; default is to inherit 'region
+(custom-set-faces
+ '(evil-goggles-delete-face ((t (:inherit 'shadow))))
+ '(evil-goggles-paste-face ((t (:inherit 'lazy-highlight))))
+ '(evil-goggles-yank-face ((t (:inherit 'isearch-fail)))))
+
+#+end_src
