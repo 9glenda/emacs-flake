@@ -560,6 +560,22 @@
         "type": "github"
       }
     },
+    "pdf-tools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686451166,
+        "narHash": "sha256-6u+uP865v6hMR9Q/ZiEidJrPkP8mnjPGex9lQCOvgQo=",
+        "owner": "vedang",
+        "repo": "pdf-tools",
+        "rev": "c69e7656a4678fe25afbd29f3503dd19ee7f9896",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vedang",
+        "repo": "pdf-tools",
+        "type": "github"
+      }
+    },
     "proof-general": {
       "flake": false,
       "locked": {
@@ -629,15 +645,16 @@
         "org-modern": "org-modern",
         "org-roam": "org-roam",
         "ox-reveal": "ox-reveal",
+        "pdf-tools": "pdf-tools",
         "proof-general": "proof-general",
         "rainbow-delimiters": "rainbow-delimiters",
         "rust-mode": "rust-mode",
         "s": "s",
         "spinner": "spinner",
         "swiper": "swiper",
+        "tablist": "tablist",
         "tuareg": "tuareg",
         "typescript-mode": "typescript-mode",
-        "undo-fu": "undo-fu",
         "which-key": "which-key",
         "with-editor": "with-editor",
         "yasnippet": "yasnippet"
@@ -707,6 +724,22 @@
         "type": "github"
       }
     },
+    "tablist": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697714774,
+        "narHash": "sha256-8XeE1pyrbkipBNBeoNMaOQN0RaOMgq6QNYbpjlLWMdg=",
+        "owner": "emacsorphanage",
+        "repo": "tablist",
+        "rev": "fcd37147121fabdf003a70279cf86fbe08cfac6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacsorphanage",
+        "repo": "tablist",
+        "type": "github"
+      }
+    },
     "tuareg": {
       "flake": false,
       "locked": {
@@ -737,22 +770,6 @@
         "owner": "emacs-typescript",
         "repo": "typescript.el",
         "type": "github"
-      }
-    },
-    "undo-fu": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1691502047,
-        "narHash": "sha256-XdAuNhPfCGDQavypIQZzQMwOVczhTdnryedtOdKQs1Q=",
-        "ref": "refs/heads/main",
-        "rev": "0e74116fd5c7797811a91ba4eadef50d67523eb6",
-        "revCount": 95,
-        "type": "git",
-        "url": "https://codeberg.org/ideasman42/emacs-undo-fu.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/ideasman42/emacs-undo-fu.git"
       }
     },
     "which-key": {

@@ -200,21 +200,40 @@ re-builder is build in to emacs. We want an more up to date re-builder tho an
 ;;             )
   #+end_src
 #+begin_src emacs-lisp :tangle yes
-  (use-package undo-fu
-  :ensure t)
-    (use-package evil
-      :ensure t
-      :hook (after-init-hook . evil-mode)
-      :init
-      (setq evil-want-integration t)
-      (setq evil-want-keybinding nil)
-      (setq evil-undo-system 'undo-fu)
-      )
+      ;;    (use-package undo-fu
+      ;;    :ensure t)
+      ;;      (use-package evil
+      ;;	:ensure t
+      ;;	:hook (after-init-hook . evil-mode))
+      ;;
+      ;;
+      ;;	(setq evil-want-integration t)
+      ;;	(setq evil-want-keybinding nil)
+      ;;	(setq evil-undo-system 'undo-fu)
+      ;;
+      ;;      (use-package evil-collection
+      ;;	:ensure t
+      ;;	:hook (after-init-hook . evil-collection-init)
+      ;;	:after evil)
 
     (use-package evil-collection
+      :after evil
+      :commands evil-collection-init
       :ensure t
-      :hook (after-init-hook . evil-collection-init)
-      :after evil)
+      :init
+      (evil-collection-init))
+    (use-package evil
+      :ensure t
+    :commands evil-mode
+      :init
+      (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+      (setq evil-want-keybinding nil)
+      :config
+
+      (evil-mode 1)
+
+  )
+
 #+end_src
 
 *** clipboard
@@ -534,4 +553,10 @@ e^2
  '(evil-goggles-paste-face ((t (:inherit 'lazy-highlight))))
  '(evil-goggles-yank-face ((t (:inherit 'isearch-fail)))))
 
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+(use-package pdf-tools 
+:ensure t
+)
 #+end_src

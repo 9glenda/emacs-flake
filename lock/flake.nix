@@ -212,6 +212,12 @@
       repo = "org-reveal";
       type = "github";
     };
+    pdf-tools = {
+      flake = false;
+      owner = "vedang";
+      repo = "pdf-tools";
+      type = "github";
+    };
     proof-general = {
       flake = false;
       owner = "ProofGeneral";
@@ -248,6 +254,12 @@
       repo = "swiper";
       type = "github";
     };
+    tablist = {
+      flake = false;
+      owner = "emacsorphanage";
+      repo = "tablist";
+      type = "github";
+    };
     tuareg = {
       flake = false;
       owner = "ocaml";
@@ -259,11 +271,6 @@
       owner = "emacs-typescript";
       repo = "typescript.el";
       type = "github";
-    };
-    undo-fu = {
-      flake = false;
-      type = "git";
-      url = "https://codeberg.org/ideasman42/emacs-undo-fu.git";
     };
     which-key = {
       flake = false;
