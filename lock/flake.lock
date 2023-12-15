@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "ace-window": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1662868721,
-        "narHash": "sha256-eGmOL272H5X7BmeXRCfMjB3ucf9GH2xThyozgkW62dA=",
-        "owner": "abo-abo",
-        "repo": "ace-window",
-        "rev": "77115afc1b0b9f633084cf7479c767988106c196",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abo-abo",
-        "repo": "ace-window",
-        "type": "github"
-      }
-    },
     "annalist": {
       "flake": false,
       "locked": {
@@ -29,22 +13,6 @@
       "original": {
         "owner": "noctuid",
         "repo": "annalist.el",
-        "type": "github"
-      }
-    },
-    "avy": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1681963449,
-        "narHash": "sha256-cZxerGMWKlKSrTEDkQh7cSY3185CmccMjlCXYEssZi8=",
-        "owner": "abo-abo",
-        "repo": "avy",
-        "rev": "be612110cb116a38b8603df367942e2bb3d9bdbe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abo-abo",
-        "repo": "avy",
         "type": "github"
       }
     },
@@ -173,6 +141,22 @@
       "original": {
         "owner": "magnars",
         "repo": "dash.el",
+        "type": "github"
+      }
+    },
+    "diminish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1662713265,
+        "narHash": "sha256-mPnjbTtumQAAjCRm+TDZ0ileiOi8YttNtOMIa6Hnj9g=",
+        "owner": "myrjola",
+        "repo": "diminish.el",
+        "rev": "fbd5d846611bad828e336b25d2e131d1bc06b83d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "myrjola",
+        "repo": "diminish.el",
         "type": "github"
       }
     },
@@ -608,6 +592,22 @@
         "type": "github"
       }
     },
+    "projectile": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701372892,
+        "narHash": "sha256-VqjfRgA4i+yEDJG0FyAs8Bu4XsnJ3n6AoKpNVVtYM5I=",
+        "owner": "bbatsov",
+        "repo": "projectile",
+        "rev": "e0fc464d1e41c8d7267636ea2b7330491087c19d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbatsov",
+        "repo": "projectile",
+        "type": "github"
+      }
+    },
     "proof-general": {
       "flake": false,
       "locked": {
@@ -642,9 +642,7 @@
     },
     "root": {
       "inputs": {
-        "ace-window": "ace-window",
         "annalist": "annalist",
-        "avy": "avy",
         "caml": "caml",
         "company": "company",
         "company-box": "company-box",
@@ -653,6 +651,7 @@
         "compat": "compat",
         "counsel": "counsel",
         "dash": "dash",
+        "diminish": "diminish",
         "doom-themes": "doom-themes",
         "editorconfig": "editorconfig",
         "emacsql": "emacsql",
@@ -680,6 +679,7 @@
         "org-roam": "org-roam",
         "ox-reveal": "ox-reveal",
         "pdf-tools": "pdf-tools",
+        "projectile": "projectile",
         "proof-general": "proof-general",
         "rainbow-delimiters": "rainbow-delimiters",
         "rust-mode": "rust-mode",

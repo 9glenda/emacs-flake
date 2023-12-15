@@ -2,22 +2,10 @@
   description =
     "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
-    ace-window = {
-      flake = false;
-      owner = "abo-abo";
-      repo = "ace-window";
-      type = "github";
-    };
     annalist = {
       flake = false;
       owner = "noctuid";
       repo = "annalist.el";
-      type = "github";
-    };
-    avy = {
-      flake = false;
-      owner = "abo-abo";
-      repo = "avy";
       type = "github";
     };
     caml = {
@@ -66,6 +54,12 @@
       flake = false;
       owner = "magnars";
       repo = "dash.el";
+      type = "github";
+    };
+    diminish = {
+      flake = false;
+      owner = "myrjola";
+      repo = "diminish.el";
       type = "github";
     };
     doom-themes = {
@@ -228,6 +222,12 @@
       flake = false;
       owner = "vedang";
       repo = "pdf-tools";
+      type = "github";
+    };
+    projectile = {
+      flake = false;
+      owner = "bbatsov";
+      repo = "projectile";
       type = "github";
     };
     proof-general = {

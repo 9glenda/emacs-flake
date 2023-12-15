@@ -148,6 +148,27 @@ TODO: Should be replaced by prettyfy symbol mode.
 (use-package magit :ensure t)
 #+end_src
 
+** diminish
+dont show minor modes in the modline.
+Delight is similar by showing custom text
+#+begin_src emacs-lisp :tangle yes
+(use-package diminish :ensure t)
+#+end_src
+
+** Projectile
+#+begin_src emacs-lisp :tangle yes
+  (use-package projectile
+    :diminish projectile-mode
+    :commands (projectile-mode projectile-dired)
+    :config (projectile-mode)
+    :bind-keymap
+    ("C-c p" . projectile-command-map)
+    :init
+    (when (file-directory-p "~/projects")
+      (setq projectile-project-search-path '("~/projects")))
+    (setq projectile-switch-project-action #'projectile-dired)
+      :ensure t)
+#+end_src
 
 ** Quality of life
 *** TODO
@@ -156,7 +177,7 @@ TODO: Should be replaced by prettyfy symbol mode.
 #+begin_src emacs-lisp :tangle yes
   (use-package rainbow-delimiters
     :ensure t
-    :hook (emacs-lisp-mode . rainbow-delimiters-mode))
+    :hook (after-init-hook . rainbow-delimiters-mode))
   ;; for other languages like closure this could also be enabled.
 #+end_src
 
@@ -248,31 +269,32 @@ TODO: fix kill ring is empty
       (cp old-c)))
 
     (defun cp (text) "Copy TEXT to the clipboard." (when text (kill-new text)))
-          (defun paste-from-clipboard ()
-            (interactive)
+	  (defun paste-from-clipboard ()
+	    (interactive)
 
   (preserve-clipboard 
   (lambda () 
-            (setq select-enable-clipboard t)
-            (yank)
-            (setq select-enable-clipboard nil))))
+	    (setq select-enable-clipboard t)
+	    (yank)
+	    (setq select-enable-clipboard nil))))
 
-        (defun copy-to-clipboard()
-          (interactive)
+	(defun copy-to-clipboard()
+	  (interactive)
   (preserve-clipboard 
   (lambda () 
-          (setq select-enable-clipboard t)
-          (kill-ring-save (region-beginning) (region-end))
-          (setq select-enable-clipboard nil)
+	  (setq select-enable-clipboard t)
+	  (kill-ring-save (region-beginning) (region-end))
+	  (setq select-enable-clipboard nil)
   ))
       )
 
-        (global-set-key (kbd "C-S-v") 'paste-from-clipboard)
-        (global-set-key (kbd "C-S-c") 'copy-to-clipboard)
+  (cp "")
+	(global-set-key (kbd "C-S-v") 'paste-from-clipboard)
+	(global-set-key (kbd "C-S-c") 'copy-to-clipboard)
 
-        ;; (global-set-key (kbd "C-S-<drag-mouse-1>") 'copy-to-clipboard)
-        ;; (global-set-key (kbd "S-<drag-mouse-1>") 'copy-to-clipboard)
-        ;; (global-set-key (kbd "C-<drag-mouse-1>") 'copy-to-clipboard)
+	;; (global-set-key (kbd "C-S-<drag-mouse-1>") 'copy-to-clipboard)
+	;; (global-set-key (kbd "S-<drag-mouse-1>") 'copy-to-clipboard)
+	;; (global-set-key (kbd "C-<drag-mouse-1>") 'copy-to-clipboard)
 
 
 
@@ -485,7 +507,6 @@ e^2
        (use-package evil-goggles
 	 :ensure t
 	 :hook (after-init-hook . evil-goggles-mode)
-	 ;; (after-init-hook . evil-goggles-use-diff-faces)
      )
   (setq evil-goggles-blocking-duration 0.00)
      (setq evil-goggles-duration 1.30)
@@ -498,15 +519,9 @@ e^2
 #+end_src
 
 *** pdf tools
+- [ ] broken
 #+begin_src emacs-lisp :tangle yes
 (use-package pdf-tools 
-:ensure t
-)
+ :ensure t)
 #+end_src
 
-*** ace window
-#+begin_src emacs-lisp :tangle yes
-;;  (use-package ace-window
-;;  :ensure t
-;;  )
-#+end_src
