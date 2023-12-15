@@ -285,90 +285,32 @@ I'm way to used to pressing escape from vim.
 
 
 *** Ivy
-TODO: vertico???
-
-*** Vertico                                                                                                    
-Vertico is a minimal ivy alternative.
-#+begin_src emacs-lisp :tangle yes                                                                             
-;; 		   (use-package vertico
-;; 		   :ensure t
-;; 		 :hook (after-init-hook . vertico-mode)
-;; 		   )
-;; 			   (use-package savehist                                                                                
-;; 			 :hook (after-init-hook . savehist-mode)                                                                
-;; 			    )                                                                                                   
-;; 
-;; 		       ;; (use-package marginalia                                                                                 
-;; 		       ;;   :after vertico                                                                                        
-;; 		       ;;   :ensure t                                                                                             
-;; 		       ;;   :hook (after-init-hook . marginalia-mode)                                                             
-;; 		       ;;   :custom                                                                                               
-;; 		       ;; (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))                  
-;; 		       ;; )                                                                                                       
-;; 		   (use-package marginalia                                                                                        
-;; 		     :ensure t                                                                                                    
-;; 		     :defer 2                                                                                                     
-;; 		     :commands                                                                                                    
-;; 		     (marginalia-mode)                                                                                            
-;; 		     :config                                                                                                      
-;; 		     (marginalia-mode 1))
-;; 
-;;        (eval-when-compile
-;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-;;   (add-to-list 'completion-at-point-functions #'cape-file)
-;;   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
-;;   )
-;; 
-;; 		 (use-package corfu 
-;; 		     :ensure t
-;; 			 :hook (after-init-hook . global-corfu-mode)                                                                
-;;       :custom
-;; 
-;; 	       (corfu-auto t)
-;; 
-;; 
-;; 		 )
-;; 		     ;; corfu-quit-no-match 'separator) ;; or t
-;;       (use-package cape :ensure t)
-;; 
-;; 
-;; 	       (global-set-key (kbd "C-<tab>") 'completion-at-point)
-;; 	 ;; TAB cycle if there are only few candidates
-;;        (setq completion-cycle-threshold 3)
-;; 
-;;        ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
-;;        ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
-;;        ;; (setq read-extended-command-predicate
-;;        ;;       #'command-completion-default-include-p)
-;; 
-;;        ;; Enable indentation+completion using the TAB key.
-;;        ;; `completion-at-point' is often bound to M-TAB.
-;;        (setq tab-always-indent 'complete)
-;;       (eval-when-compile ;;       (setq completion-at-point-functions (list (cape-capf-debug #'cape-dict))) ;;       )
-#+end_src
-
 #+begin_src emacs-lisp :tangle yes
-	    (use-package ivy
-	       :hook (after-init-hook . ivy-mode)
-	      :ensure t)
+	      (use-package ivy
+		 :hook (after-init-hook . ivy-mode)
+  :bind (:map ivy-mode-map
+              ("TAB" . ivy-alt-done)
+              ("C-j" . ivy-next-line)
+              ("C-k" . ivy-previous-line))
+		:ensure t)
 
 
-	  (use-package counsel
-	    :ensure t
-	    :after ivy
-	    :hook (after-init-hook . counsel-mode)
-	    :config 
-	      (setq ivy-initial-inputs-alist nil))
+	    (use-package counsel
+	      :ensure t
+	      :after ivy
+	      :hook (after-init-hook . counsel-mode)
+	      :config 
+		(setq ivy-initial-inputs-alist nil))
 
-	;; remap M-x to counsel-M-x 
+	  ;; remap M-x to counsel-M-x 
 
 
-    (global-set-key (kbd "M-x") 'counsel-M-x)
-    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
-  (global-set-key (kbd "C-c v") 'ivy-push-view)
-  (global-set-key (kbd "C-c V") 'ivy-pop-view)
-(global-set-key "\C-s" 'swiper)
+      (global-set-key (kbd "M-x") 'counsel-M-x)
+      (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+      (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
+    (global-set-key (kbd "C-c v") 'ivy-push-view)
+    (global-set-key (kbd "C-c V") 'ivy-pop-view)
+  (global-set-key "\C-s" 'swiper)
 #+end_src
 
 *** Which key
@@ -555,8 +497,16 @@ e^2
 
 #+end_src
 
+*** pdf tools
 #+begin_src emacs-lisp :tangle yes
 (use-package pdf-tools 
 :ensure t
 )
+#+end_src
+
+*** ace window
+#+begin_src emacs-lisp :tangle yes
+;;  (use-package ace-window
+;;  :ensure t
+;;  )
 #+end_src
