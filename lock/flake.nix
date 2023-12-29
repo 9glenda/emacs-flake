@@ -2,10 +2,22 @@
   description =
     "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
+    all-the-icons = {
+      flake = false;
+      owner = "domtronn";
+      repo = "all-the-icons.el";
+      type = "github";
+    };
     annalist = {
       flake = false;
       owner = "noctuid";
       repo = "annalist.el";
+      type = "github";
+    };
+    auto-minor-mode = {
+      flake = false;
+      owner = "joewreschnig";
+      repo = "auto-minor-mode";
       type = "github";
     };
     caml = {
@@ -26,18 +38,6 @@
       repo = "company-box";
       type = "github";
     };
-    company-coq = {
-      flake = false;
-      owner = "cpitclaudel";
-      repo = "company-coq";
-      type = "github";
-    };
-    company-math = {
-      flake = false;
-      owner = "vspinu";
-      repo = "company-math";
-      type = "github";
-    };
     compat = {
       flake = false;
       owner = "emacs-compat";
@@ -56,22 +56,10 @@
       repo = "dash.el";
       type = "github";
     };
-    diminish = {
-      flake = false;
-      owner = "myrjola";
-      repo = "diminish.el";
-      type = "github";
-    };
     doom-themes = {
       flake = false;
       owner = "doomemacs";
       repo = "themes";
-      type = "github";
-    };
-    editorconfig = {
-      flake = false;
-      owner = "editorconfig";
-      repo = "editorconfig-emacs";
       type = "github";
     };
     emacsql = {
@@ -92,12 +80,6 @@
       repo = "evil-collection";
       type = "github";
     };
-    evil-goggles = {
-      flake = false;
-      owner = "edkolev";
-      repo = "evil-goggles";
-      type = "github";
-    };
     "f" = {
       flake = false;
       owner = "rejeep";
@@ -110,10 +92,15 @@
       repo = "frame-local";
       type = "github";
     };
-    git-commit = {
+    gcmh = {
       flake = false;
-      owner = "magit";
-      repo = "magit";
+      type = "git";
+      url = "https://gitlab.com/koral/gcmh";
+    };
+    general = {
+      flake = false;
+      owner = "noctuid";
+      repo = "general.el";
       type = "github";
     };
     goto-chg = {
@@ -170,12 +157,6 @@
       repo = "hydra";
       type = "github";
     };
-    magit = {
-      flake = false;
-      owner = "magit";
-      repo = "magit";
-      type = "github";
-    };
     magit-section = {
       flake = false;
       owner = "magit";
@@ -186,12 +167,6 @@
       flake = false;
       owner = "jrblevin";
       repo = "markdown-mode";
-      type = "github";
-    };
-    math-symbol-lists = {
-      flake = false;
-      owner = "vspinu";
-      repo = "math-symbol-lists";
       type = "github";
     };
     nix-mode = {
@@ -218,30 +193,6 @@
       repo = "org-reveal";
       type = "github";
     };
-    pdf-tools = {
-      flake = false;
-      owner = "vedang";
-      repo = "pdf-tools";
-      type = "github";
-    };
-    projectile = {
-      flake = false;
-      owner = "bbatsov";
-      repo = "projectile";
-      type = "github";
-    };
-    proof-general = {
-      flake = false;
-      owner = "ProofGeneral";
-      repo = "PG";
-      type = "github";
-    };
-    rainbow-delimiters = {
-      flake = false;
-      owner = "Fanael";
-      repo = "rainbow-delimiters";
-      type = "github";
-    };
     rust-mode = {
       flake = false;
       owner = "rust-lang";
@@ -266,12 +217,6 @@
       repo = "swiper";
       type = "github";
     };
-    tablist = {
-      flake = false;
-      owner = "emacsorphanage";
-      repo = "tablist";
-      type = "github";
-    };
     tuareg = {
       flake = false;
       owner = "ocaml";
@@ -284,22 +229,15 @@
       repo = "typescript.el";
       type = "github";
     };
+    undo-fu = {
+      flake = false;
+      type = "git";
+      url = "https://codeberg.org/ideasman42/emacs-undo-fu.git";
+    };
     which-key = {
       flake = false;
       owner = "justbur";
       repo = "emacs-which-key";
-      type = "github";
-    };
-    with-editor = {
-      flake = false;
-      owner = "magit";
-      repo = "with-editor";
-      type = "github";
-    };
-    yasnippet = {
-      flake = false;
-      owner = "capitaomorte";
-      repo = "yasnippet";
       type = "github";
     };
   };

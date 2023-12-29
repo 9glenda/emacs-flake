@@ -1,31 +1,24 @@
 #+TITLE: GNU Emacs Configuration
 
-* TODO
-- [ ] backup file location
-* Base settings
+
+* Early init
 #+begin_src emacs-lisp :tangle early-init.el
 ;;; init.el --- Initialization -*- lexical-binding: t; -*-
 #+end_src
 
-
-
-* Base settings
-#+begin_src emacs-lisp :tangle yes
-;;; init.el --- Initialization -*- lexical-binding: t; -*-
-#+end_src
-
-** Startup time
+** Startup/Performance
+*** Startup time
 Show the startup time.
 #+begin_src emacs-lisp :tangle early-init.el
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (message "Loaded Emacs in %.03fs"
-                     (float-time (time-subtract after-init-time before-init-time)))))
+ (add-hook 'emacs-startup-hook
+           (lambda ()
+             (message "Loaded Emacs in %.03fs"
+                      (float-time (time-subtract after-init-time before-init-time)))))
 #+end_src
+
 *** Performance boost
 
-
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle early-init.el
 (let ((normal-gc-cons-threshold gc-cons-threshold)
       (normal-gc-cons-percentage gc-cons-percentage)
       (normal-file-name-handler-alist file-name-handler-alist)
@@ -40,13 +33,30 @@ Show the startup time.
                      gc-cons-percentage ,normal-gc-cons-percentage
                      file-name-handler-alist ',normal-file-name-handler-alist))))
 #+end_src
-
-** emacs server
-#+begin_src emacs-lisp :tangle yes
-;; (server-start)
+*** Startup screen
+#+begin_src emacs-lisp :tangle early-init.el
+(setq inhibit-startup-echo-area-message t)
+(setq inhibit-startup-screen t)
+(setq initial-scratch-message nil)
+#+end_src
+*** Fundamental mode
+#+begin_src emacs-lisp :tangle early-init.el
+(setq inhibit-default-init t)
+(setq initial-major-mode 'fundamental-mode)
 #+end_src
 
-*** use-package
+*** Disable package.el support
+#+begin_src emacs-lisp :tangle early-init.el
+(setq package-enable-at-startup nil)
+#+end_src
+
+
+* Init
+#+begin_src emacs-lisp :tangle yes
+;;; init.el --- Initialization -*- lexical-binding: t; -*-
+#+end_src
+
+** use-package
 #+begin_src emacs-lisp :tangle yes
 (eval-when-compile
   (require 'use-package))
@@ -66,202 +76,188 @@ Show the startup time.
         use-package-expand-minimally t))
 #+end_src
 
+*** auto-minor-mode
+Enable minor modes by buffer name and contents. It provides the ~use-package~ keyword
+~:minor~ and ~:magic-minor~ where you can specify these rules.
 #+begin_src emacs-lisp :tangle yes
-(setq inhibit-default-init t)
-(setq initial-major-mode 'fundamental-mode)
+(use-package auto-minor-mode
+  :ensure t
+  :init
+  (eval-when-compile
+    (require 'auto-minor-mode)))
 #+end_src
 
-** Nix
 
+
+** Performance
+*** gcmh
+Adjust Garbage Collector threshold depending on activity and try to run garbage collection
+during idle instead.
 #+begin_src emacs-lisp :tangle yes
-(setq package-enable-at-startup nil)
+(use-package gcmh
+  :ensure t
+  :hook
+  (after-init-hook . gcmh-mode)
+  :init
+  (setq gcmh-idle-delay 5)
+  (setq gcmh-high-cons-threshold (* 16 1024 1024)) ; 16MB
+  (setq gcmh-verbose init-file-debug))
 #+end_src
 
 
+
+** Keep folders clean
+
+#+begin_src emacs-lisp :tangle yes
+  (setq backup-directory-alist `(("." . ,(expand-file-name "/tmp/emacs"))))
+  
+  (setq auto-save-list-file-prefix (expand-file-name "/tmp/emacs/sessions/")
+      auto-save-file-name-transforms `((".*" ,(expand-file-name "/tmp/emacs/auto-saves/") t)))
+#+end_src
 Provide a location where Emacs can store data and cache.
 #+begin_src emacs-lisp :tangle yes
-;;  (eval-and-compile
-;;    (defvar data-dir
-;;      (if (getenv "XDG_DATA_HOME")
-;;	  (concat (getenv "XDG_DATA_HOME") "/emacs/")
-;;	(expand-file-name "~/.local/share/emacs/"))
-;;      "Directory for data.")
-;;
-;;    (defvar cache-dir
-;;      (if (getenv "XDG_CACHE_HOME")
-;;	  (concat (getenv "XDG_CACHE_HOME") "/emacs/")
-;;	(expand-file-name "~/.cache/emacs/"))
-;;      "Directory for cache."))
-
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs"))
 #+end_src
 
 
+** Visuals
 *** Theme
-#+begin_src emacs-lisp :tangle yes
-  (use-package doom-themes         
-    :ensure t)
-#+end_src
-Mark the theme as safe and load it.
-#+begin_src emacs-lisp :tangle yes
-  (custom-set-variables
-    '(custom-safe-themes
-      '("88f7ee5594021c60a4a6a1c275614103de8c1435d6d08cc58882f920e0cec65e"
-	default)))
-(load-theme 'doom-one)
-#+end_src
-
-** org-mode
-*** Style
-**** Heading size                                                          
 #+begin_src emacs-lisp :tangle yes                                         
-  (custom-set-faces                                                          
-    '(org-level-1 ((t (:inherit outline-1 :height 1.5))))                    
-    '(org-level-2 ((t (:inherit outline-2 :height 1.4))))                    
-    '(org-level-3 ((t (:inherit outline-3 :height 1.3))))                    
-    '(org-level-4 ((t (:inherit outline-4 :height 1.2))))                    
-    '(org-level-5 ((t (:inherit outline-5 :height 1.1))))                    
-  )
-;; (with-eval-after-load 'org-mode (define-key org-mode-map (kbd "<tab>") nil)   )
+   (use-package doom-themes
+     :ensure t)
+       (load-theme 'doom-one t)
+#+end_src
+*** Tab bar
+#+begin_src emacs-lisp :tangle yes
+(tab-bar-mode 1)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-tab-hints t)
+(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 
-#+end_src                                                                  
-                                                                           
-
-**** ox-reveal                                                             
-#+begin_src emacs-lisp :tangle yes                                         
-(use-package ox-reveal :ensure t)                                          
+(set-face-attribute 'mode-line nil
+  :background "#353644"
+  :foreground "white"
+  :box '(:line-width 8 :color "#353644")
+  :overline nil
+  :underline nil)
 #+end_src
 
-**** Modern-org
-TODO: Should be replaced by prettyfy symbol mode.
+*** all-the-icons
+Libary for displaying icons.
 #+begin_src emacs-lisp :tangle yes
-(use-package org-modern :ensure t)
+(use-package all-the-icons
+  :ensure t
+  :commands
+  (all-the-icons-faicon all-the-icons-octicon))
 #+end_src
 
-*** org-roam
+
+** UX
+*** Confirmation prompts
+Use =y= / =n= instead of =yes= / =no.=
 #+begin_src emacs-lisp :tangle yes
-(use-package org-roam :ensure t)
+(setq confirm-kill-emacs #'y-or-n-p)
+(fset #'yes-or-no-p #'y-or-n-p)
 #+end_src
 
-** Magit
+
+
+** Keybindings
+*** whichkey
 #+begin_src emacs-lisp :tangle yes
-(use-package magit :ensure t)
+   (use-package which-key
+     :ensure t
+     :hook (after-init-hook . which-key-mode))
 #+end_src
 
-** diminish
-dont show minor modes in the modline.
-Delight is similar by showing custom text
+*** General.el
 #+begin_src emacs-lisp :tangle yes
-(use-package diminish :ensure t)
+(use-package general
+  :ensure t
+  :commands (general-evil-setup general-create-definer)
+    :config
+    (general-evil-setup t))
+
+#+end_src
+**** Leader keybindings
+TODO
+#+begin_src emacs-lisp :tangle yes
+;; (cfg/leader-keys
+;; "t"  '(:ignore t :which-key "toggles")
+;; )
 #+end_src
 
-** Projectile
-#+begin_src emacs-lisp :tangle yes
-  (use-package projectile
-    :diminish projectile-mode
-    :commands (projectile-mode projectile-dired)
-    :config (projectile-mode)
-    :bind-keymap
-    ("C-c p" . projectile-command-map)
-    :init
-    (when (file-directory-p "~/projects")
-      (setq projectile-project-search-path '("~/projects")))
-    (setq projectile-switch-project-action #'projectile-dired)
-      :ensure t)
-#+end_src
-
-** Quality of life
-*** TODO
-- [ ] Hex color
-*** Rainbow delimiters
-#+begin_src emacs-lisp :tangle yes
-  (use-package rainbow-delimiters
-    :ensure t
-    :hook (after-init-hook . rainbow-delimiters-mode))
-  ;; for other languages like closure this could also be enabled.
-#+end_src
-
-** RE-builder
-A interactive regex builder.
-re-builder is build in to emacs. We want an more up to date re-builder tho an
-** Editorconfig
-#+begin_src emacs-lisp :tangle yes
-    (use-package editorconfig
-      :ensure t
-      :defer 1
-      :commands
-      (editorconfig-mode)
-      :init
-      (setq editorconfig-trim-whitespaces-mode 'ws-butler-mode)
-      (setq editorconfig-exclude-modes '(
-    ;; emacs-lisp-mode
-					 ;; lisp-mode
-					 org-mode
-  ))
-      :config
-      (cl-pushnew '(plantuml-mode plantuml-indent-level) editorconfig-indentation-alist :test #'equal)
-      (editorconfig-mode 1))
-#+end_src
-** Evil mode
-
-*** Tasks [1/3]
-- [X] undo
-- [ ] evil-commlection
-- [ ] org mode stuff
-  #+begin_src emacs-lisp :tange yes
-
-;; (use-package evil-goggles
-;;              :ensure t
-;;             :hook (after-init-hook . evil-goggles-mode)
-;;     :config
-;; 
-;;     (custom-set-faces
-;;      '(evil-goggles-default-face ((t (:inherit 'highlight)))))
-;;         (setq evil-goggles-duration 1)
-;;             )
-  #+end_src
-#+begin_src emacs-lisp :tangle yes
-      ;;    (use-package undo-fu
-      ;;    :ensure t)
-      ;;      (use-package evil
-      ;;	:ensure t
-      ;;	:hook (after-init-hook . evil-mode))
-      ;;
-      ;;
-      ;;	(setq evil-want-integration t)
-      ;;	(setq evil-want-keybinding nil)
-      ;;	(setq evil-undo-system 'undo-fu)
-      ;;
-      ;;      (use-package evil-collection
-      ;;	:ensure t
-      ;;	:hook (after-init-hook . evil-collection-init)
-      ;;	:after evil)
-
-    (use-package evil-collection
-      :after evil
-      :commands evil-collection-init
-      :ensure t
-      :init
-      (evil-collection-init))
+*** Evil mode
+**** Evil
+#+begin_src emacs-lisp :tange yes
     (use-package evil
-      :ensure t
-    :commands evil-mode
-      :init
-      (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-      (setq evil-want-keybinding nil)
-      :config
+    :ensure t
 
-      (evil-mode 1)
-
+        :hook (after-init-hook . evil-mode)
   )
+      ;;  (use-package evil
+      ;;  :ensure t
+      ;;  :init
+      ;;  (setq evil-want-integration t)
+      ;;  (setq evil-want-keybinding nil)
+      ;;  (setq evil-want-C-u-scroll t)
+      ;;  (setq evil-want-C-i-jump nil)
+      ;;  :commands (evil-mode)
+      ;;  :hook (after-init-hook . evil-mode)
+      ;;  :config
+      ;;  (evil-mode 1)
+      ;;  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+      ;;  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+      ;;
+      ;;  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+      ;;  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+      ;;
+      ;;  (evil-set-initial-state 'messages-buffer-mode 'normal)
+      ;;  (evil-set-initial-state 'dashboard-mode 'normal))
+#+end_src
+**** Undo
+#+begin_src emacs-lisp :tangle yes
+(use-package undo-fu
+  :ensure t)
+#+end_src
+**** Evil collection
+#+begin_src emacs-lisp :tange yes
+  (use-package evil-collection
+    :after evil
+:ensure t
+    :config
+    (evil-collection-init))
+
+  
+    ;;  (use-package evil-collection
+    ;;     :ensure t
+    ;;     :after evil
+    ;;     :custom (evil-collection-setup-minibuffer t)
+    ;;     :commands evil-collection-init
+    ;;     :config
+    ;;     (evil-collection-init))
+#+end_src
+**** Evil goggles
+#+begin_src emacs-lisp :tangle yes
+;;    (use-package evil-goggles
+;;    :ensure t
+;;    :hook (after-init-hook . evil-goggles-mode))
+;;
+;;  (setq evil-goggles-blocking-duration 0.00)
+;;  (setq evil-goggles-duration 1.30)
+;;      (custom-set-faces
+;;       '(evil-goggles-delete-face ((t (:inherit 'shadow))))
+;;       '(evil-goggles-paste-face ((t (:inherit 'lazy-highlight))))
+;;       '(evil-goggles-yank-face ((t (:inherit 'isearch-fail)))))
+
 
 #+end_src
+
 
 *** clipboard
-TODO: shift select
-TODO: fix kill ring is empty
+Custom elisp function for C-S-v pasting.
 #+begin_src emacs-lisp :tangle yes
-      (setq select-enable-clipboard nil)
+ (setq select-enable-clipboard nil)
 
   (defun preserve-clipboard (input-function) "executes the function but preserves the clipboard"
     (let ((old-c (current-kill 0 t)))
@@ -291,21 +287,15 @@ TODO: fix kill ring is empty
   (cp "")
 	(global-set-key (kbd "C-S-v") 'paste-from-clipboard)
 	(global-set-key (kbd "C-S-c") 'copy-to-clipboard)
-
-	;; (global-set-key (kbd "C-S-<drag-mouse-1>") 'copy-to-clipboard)
-	;; (global-set-key (kbd "S-<drag-mouse-1>") 'copy-to-clipboard)
-	;; (global-set-key (kbd "C-<drag-mouse-1>") 'copy-to-clipboard)
-
-
-
 #+end_src
-*** ESC C-g                                                 
+*** ESC C-g quit
 I'm way to used to pressing escape from vim.                
 #+begin_src emacs-lisp :tangle yes                          
-  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)   
+  ;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)   
 #+end_src
 
 
+** Ivy
 *** Ivy
 #+begin_src emacs-lisp :tangle yes
 	      (use-package ivy
@@ -335,36 +325,32 @@ I'm way to used to pressing escape from vim.
   (global-set-key "\C-s" 'swiper)
 #+end_src
 
-*** Which key
-
-#+begin_src emacs-lisp :tangle yes
-   (use-package which-key
-     :ensure t
-     :hook (after-init-hook . which-key-mode))
-#+end_src
 
 ** LSP
 
 #+begin_src emacs-lisp :tangle yes
-	(eval-and-compile (setq lsp-keymap-prefix "C-c l"))
-	(use-package lsp-mode
-	  :ensure t
-	  :commands (lsp lsp-deferred))
+	  ;;  (eval-and-compile (setq lsp-keymap-prefix "C-c l"))
+	  ;;  (use-package lsp-mode
+	  ;;  :ensure t
+	  ;;  :commands (lsp lsp-deferred))
 
-;;  (eval-and-compile
-;;  (defun lsp-mode-setup ()
-;;  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols)) (lsp-headerline-breadcrumb-mode)))
 
-(use-package lsp-ui
-  :ensure t
-  :hook (lsp-mode . lsp-ui-mode))
+      (use-package lsp-mode
+	:ensure t
+	:commands (lsp lsp-deferred)
+	:init
+	(setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+	;; :config
+	;; (lsp-enable-which-key-integration t)
+  )
 
-(use-package lsp-ivy
-  :ensure t)
-#+end_src
 
-#+begin_src emacs-lisp :tangle yes
-  ;; (use-package command-log :ensure t)
+	    (use-package lsp-ui
+	      :ensure t
+	      :hook (lsp-mode . lsp-ui-mode))
+
+	    (use-package lsp-ivy
+	      :ensure t)
 #+end_src
 
 
@@ -377,20 +363,15 @@ Company provied the ui for completion. Company-box improves up on this ui.
     :hook (prog-mode . company-mode)
     :bind
     (:map company-active-map ("<return>" . company-complete-selection))
-
     (:map company-active-map ("C-e" . company-abort))
-
     (:map company-active-map ("<tab>" . company-select-next))
     (:map company-active-map ("<C-j>" . company-select-next))
-
     (:map company-active-map ("<backtab>" . company-select-previous))
     (:map company-active-map ("<C-k>" . company-select-previous))
 
-    ;; (:map lsp-mode-map ("<return>" . company-indent-or-complete-common))
     :custom
     (company-minimum-prefix-length 0)
     (company-idle-delay 0.0))
-
 
   (use-package company-box
     :ensure t
@@ -439,89 +420,30 @@ Company provied the ui for completion. Company-box improves up on this ui.
 #+end_src
 
 
-*** coq
+** org-mode
+*** Style
+**** Heading size                                                          
+#+begin_src emacs-lisp :tangle yes                                         
+  (custom-set-faces                                                          
+    '(org-level-1 ((t (:inherit outline-1 :height 1.5))))                    
+    '(org-level-2 ((t (:inherit outline-2 :height 1.4))))                    
+    '(org-level-3 ((t (:inherit outline-3 :height 1.3))))                    
+    '(org-level-4 ((t (:inherit outline-4 :height 1.2))))                    
+    '(org-level-5 ((t (:inherit outline-5 :height 1.1))))                    
+  )
+#+end_src
+**** ox-reveal                                                             
+#+begin_src emacs-lisp :tangle yes                                         
+(use-package ox-reveal :ensure t)                                          
+#+end_src
 
+**** Modern-org
+TODO: Should be replaced by prettyfy symbol mode.
 #+begin_src emacs-lisp :tangle yes
-  (use-package proof-general
-    :no-require t
-    :ensure t)
-
-  (use-package company-coq 
-    ;; :no-require t
-    :hook (coq-mode . company-coq-mode)
-    :ensure t)
+(use-package org-modern :ensure t)
 #+end_src
 
-** Shell modes
-TODO
-
-** Keep folders clean
-
+*** org-roam
 #+begin_src emacs-lisp :tangle yes
-  (setq backup-directory-alist `(("." . ,(expand-file-name "/tmp/emacs"))))
-
-  ;; (setq make-backup-files nil)
-
-  (setq auto-save-list-file-prefix (expand-file-name "/tmp/emacs/sessions/")
-      auto-save-file-name-transforms `((".*" ,(expand-file-name "/tmp/emacs/auto-saves/") t)))
+(use-package org-roam :ensure t)
 #+end_src
-
-** LaTeX
-#+begin_src emacs-lisp :tangle yes
-#+end_src
-install the tetex package
-\[
-  \LaTeX
-\]
-
-C-c C-x C-l to render a latex snippet.
-latex is inside
-
-#+begin_src latex
-\[
- e^{i\pi} = -1
-\]
-#+end_src
-
-*** Math
-\[
-e^{i\pi} = -1
-\]
-
-e^2
-
-
-*** Tab bar
-#+begin_src emacs-lisp :tangle yes
-		(tab-bar-mode 1)
-		(setq tab-bar-close-button-show nil)
-		 (setq tab-bar-tab-hints t)
-		(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
-	      (set-face-attribute 'mode-line nil
-				:background "#353644"
-				:foreground "white"
-				:box '(:line-width 8 :color "#353644")
-				:overline nil
-				:underline nil)
-
-       (use-package evil-goggles
-	 :ensure t
-	 :hook (after-init-hook . evil-goggles-mode)
-     )
-  (setq evil-goggles-blocking-duration 0.00)
-     (setq evil-goggles-duration 1.30)
-     ;; (custom-set-faces '(evil-goggles-default-face ((t (:inherit 'isearch-fail))))) ;; default is to inherit 'region
-(custom-set-faces
- '(evil-goggles-delete-face ((t (:inherit 'shadow))))
- '(evil-goggles-paste-face ((t (:inherit 'lazy-highlight))))
- '(evil-goggles-yank-face ((t (:inherit 'isearch-fail)))))
-
-#+end_src
-
-*** pdf tools
-- [ ] broken
-#+begin_src emacs-lisp :tangle yes
-(use-package pdf-tools 
- :ensure t)
-#+end_src
-
