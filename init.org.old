@@ -1,0 +1,451 @@
+#+TITLE: GNU Emacs Configuration
+
+
+* Early init
+#+begin_src emacs-lisp :tangle early-init.el
+;;; init.el ---  -*- lexical-binding: t; no-byte-compile: t -*-
+#+end_src
+
+;;; early-init.el --- Early Initialization -*- lexical-binding: t; -*-
+
+** Startup/Performance
+*** Startup time
+Show the startup time.
+#+begin_src emacs-lisp :tangle early-init.el
+ (add-hook 'emacs-startup-hook
+           (lambda ()
+             (message "Loaded Emacs in %.03fs"
+                      (float-time (time-subtract after-init-time before-init-time)))))
+#+end_src
+
+*** Performance boost
+
+#+begin_src emacs-lisp :tangle early-init.el
+(let ((normal-gc-cons-threshold gc-cons-threshold)
+      (normal-gc-cons-percentage gc-cons-percentage)
+      (normal-file-name-handler-alist file-name-handler-alist)
+      (init-gc-cons-threshold most-positive-fixnum)
+      (init-gc-cons-percentage 0.6))
+  (setq gc-cons-threshold init-gc-cons-threshold
+        gc-cons-percentage init-gc-cons-percentage
+        file-name-handler-alist nil)
+  (add-hook 'after-init-hook
+            `(lambda ()
+               (setq gc-cons-threshold ,normal-gc-cons-threshold
+                     gc-cons-percentage ,normal-gc-cons-percentage
+                     file-name-handler-alist ',normal-file-name-handler-alist))))
+#+end_src
+*** Startup screen
+#+begin_src emacs-lisp :tangle early-init.el
+(setq inhibit-startup-echo-area-message t)
+(setq inhibit-startup-screen t)
+(setq initial-scratch-message nil)
+#+end_src
+*** Fundamental mode
+#+begin_src emacs-lisp :tangle early-init.el
+(setq inhibit-default-init t)
+(setq initial-major-mode 'fundamental-mode)
+#+end_src
+
+*** Disable package.el support
+#+begin_src emacs-lisp :tangle early-init.el
+(setq package-enable-at-startup nil)
+#+end_src
+
+
+* Init
+#+begin_src emacs-lisp :tangle yes
+;;; init.el --- Initialization -*- lexical-binding: t; -*-
+#+end_src
+
+** use-package
+#+begin_src emacs-lisp :tangle yes
+(eval-when-compile
+  (require 'use-package))
+
+(eval-and-compile
+  (defun use-package-ensure-ignore (&rest _args) t)
+  (setq use-package-ensure-function #'use-package-ensure-ignore)
+
+  (setq use-package-always-defer t)
+  (setq use-package-hook-name-suffix nil))
+
+(if init-file-debug
+    (setq use-package-verbose t
+          use-package-expand-minimally nil
+          use-package-compute-statistics t)
+  (setq use-package-verbose nil
+        use-package-expand-minimally t))
+#+end_src
+
+*** auto-minor-mode
+Enable minor modes by buffer name and contents. It provides the ~use-package~ keyword
+~:minor~ and ~:magic-minor~ where you can specify these rules.
+#+begin_src emacs-lisp :tangle yes
+(use-package auto-minor-mode
+  :ensure t
+  :init
+  (eval-when-compile
+    (require 'auto-minor-mode)))
+#+end_src
+
+
+
+** Performance
+*** gcmh
+Adjust Garbage Collector threshold depending on activity and try to run garbage collection
+during idle instead.
+#+begin_src emacs-lisp :tangle yes
+(use-package gcmh
+  :ensure t
+  :hook
+  (after-init-hook . gcmh-mode)
+  :init
+  (setq gcmh-idle-delay 5)
+  (setq gcmh-high-cons-threshold (* 16 1024 1024)) ; 16MB
+  (setq gcmh-verbose init-file-debug))
+#+end_src
+
+
+
+** Keep folders clean
+
+#+begin_src emacs-lisp :tangle yes
+  (setq backup-directory-alist `(("." . ,(expand-file-name "/tmp/emacs"))))
+  
+  (setq auto-save-list-file-prefix (expand-file-name "/tmp/emacs/sessions/")
+      auto-save-file-name-transforms `((".*" ,(expand-file-name "/tmp/emacs/auto-saves/") t)))
+#+end_src
+Provide a location where Emacs can store data and cache.
+#+begin_src emacs-lisp :tangle yes
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs"))
+#+end_src
+
+
+** Visuals
+*** Theme
+#+begin_src emacs-lisp :tangle yes                                         
+   (use-package doom-themes
+     :ensure t)
+       (load-theme 'doom-one t)
+#+end_src
+*** Tab bar
+#+begin_src emacs-lisp :tangle yes
+(tab-bar-mode 1)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-tab-hints t)
+(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+
+(set-face-attribute 'mode-line nil
+  :background "#353644"
+  :foreground "white"
+  :box '(:line-width 8 :color "#353644")
+  :overline nil
+  :underline nil)
+#+end_src
+
+*** all-the-icons
+Libary for displaying icons.
+#+begin_src emacs-lisp :tangle yes
+(use-package all-the-icons
+  :ensure t
+  :commands
+  (all-the-icons-faicon all-the-icons-octicon))
+#+end_src
+
+
+** UX
+*** Confirmation prompts
+Use =y= / =n= instead of =yes= / =no.=
+#+begin_src emacs-lisp :tangle yes
+(setq confirm-kill-emacs #'y-or-n-p)
+(fset #'yes-or-no-p #'y-or-n-p)
+#+end_src
+
+
+
+** Keybindings
+*** whichkey
+#+begin_src emacs-lisp :tangle yes
+   (use-package which-key
+     :ensure t
+     :hook (after-init-hook . which-key-mode))
+#+end_src
+
+*** General.el
+#+begin_src emacs-lisp :tangle yes
+(use-package general
+  :ensure t
+  :commands (general-evil-setup general-create-definer)
+    :config
+    (general-evil-setup t))
+
+#+end_src
+**** Leader keybindings
+TODO
+#+begin_src emacs-lisp :tangle yes
+;; (cfg/leader-keys
+;; "t"  '(:ignore t :which-key "toggles")
+;; )
+#+end_src
+
+*** Evil mode
+**** Evil
+#+begin_src emacs-lisp :tange yes
+    (use-package evil
+    :ensure t
+
+        :hook (after-init-hook . evil-mode)
+  )
+      ;;  (use-package evil
+      ;;  :ensure t
+      ;;  :init
+      ;;  (setq evil-want-integration t)
+      ;;  (setq evil-want-keybinding nil)
+      ;;  (setq evil-want-C-u-scroll t)
+      ;;  (setq evil-want-C-i-jump nil)
+      ;;  :commands (evil-mode)
+      ;;  :hook (after-init-hook . evil-mode)
+      ;;  :config
+      ;;  (evil-mode 1)
+      ;;  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+      ;;  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+      ;;
+      ;;  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+      ;;  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+      ;;
+      ;;  (evil-set-initial-state 'messages-buffer-mode 'normal)
+      ;;  (evil-set-initial-state 'dashboard-mode 'normal))
+#+end_src
+**** Undo
+#+begin_src emacs-lisp :tangle yes
+(use-package undo-fu
+  :ensure t)
+#+end_src
+**** Evil collection
+#+begin_src emacs-lisp :tange yes
+  (use-package evil-collection
+    :after evil
+:ensure t
+    :config
+    (evil-collection-init))
+
+  
+    ;;  (use-package evil-collection
+    ;;     :ensure t
+    ;;     :after evil
+    ;;     :custom (evil-collection-setup-minibuffer t)
+    ;;     :commands evil-collection-init
+    ;;     :config
+    ;;     (evil-collection-init))
+#+end_src
+**** Evil goggles
+#+begin_src emacs-lisp :tangle yes
+;;    (use-package evil-goggles
+;;    :ensure t
+;;    :hook (after-init-hook . evil-goggles-mode))
+;;
+;;  (setq evil-goggles-blocking-duration 0.00)
+;;  (setq evil-goggles-duration 1.30)
+;;      (custom-set-faces
+;;       '(evil-goggles-delete-face ((t (:inherit 'shadow))))
+;;       '(evil-goggles-paste-face ((t (:inherit 'lazy-highlight))))
+;;       '(evil-goggles-yank-face ((t (:inherit 'isearch-fail)))))
+
+
+#+end_src
+
+
+*** clipboard
+Custom elisp function for C-S-v pasting.
+#+begin_src emacs-lisp :tangle yes
+ (setq select-enable-clipboard nil)
+
+  (defun preserve-clipboard (input-function) "executes the function but preserves the clipboard"
+    (let ((old-c (current-kill 0 t)))
+      (funcall input-function)
+      (cp old-c)))
+
+    (defun cp (text) "Copy TEXT to the clipboard." (when text (kill-new text)))
+	  (defun paste-from-clipboard ()
+	    (interactive)
+
+  (preserve-clipboard 
+  (lambda () 
+	    (setq select-enable-clipboard t)
+	    (yank)
+	    (setq select-enable-clipboard nil))))
+
+	(defun copy-to-clipboard()
+	  (interactive)
+  (preserve-clipboard 
+  (lambda () 
+	  (setq select-enable-clipboard t)
+	  (kill-ring-save (region-beginning) (region-end))
+	  (setq select-enable-clipboard nil)
+  ))
+      )
+
+  (cp "")
+	(global-set-key (kbd "C-S-v") 'paste-from-clipboard)
+	(global-set-key (kbd "C-S-c") 'copy-to-clipboard)
+#+end_src
+*** ESC C-g quit
+I'm way to used to pressing escape from vim.                
+#+begin_src emacs-lisp :tangle yes                          
+  ;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)   
+#+end_src
+
+
+** Ivy
+*** Ivy
+#+begin_src emacs-lisp :tangle yes
+	      (use-package ivy
+		 :hook (after-init-hook . ivy-mode)
+  :bind (:map ivy-mode-map
+              ("TAB" . ivy-alt-done)
+              ("C-j" . ivy-next-line)
+              ("C-k" . ivy-previous-line))
+		:ensure t)
+
+
+	    (use-package counsel
+	      :ensure t
+	      :after ivy
+	      :hook (after-init-hook . counsel-mode)
+	      :config 
+		(setq ivy-initial-inputs-alist nil))
+
+	  ;; remap M-x to counsel-M-x 
+
+
+      (global-set-key (kbd "M-x") 'counsel-M-x)
+      (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+      (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
+    (global-set-key (kbd "C-c v") 'ivy-push-view)
+    (global-set-key (kbd "C-c V") 'ivy-pop-view)
+  (global-set-key "\C-s" 'swiper)
+#+end_src
+
+
+** LSP
+
+#+begin_src emacs-lisp :tangle yes
+	  ;;  (eval-and-compile (setq lsp-keymap-prefix "C-c l"))
+	  ;;  (use-package lsp-mode
+	  ;;  :ensure t
+	  ;;  :commands (lsp lsp-deferred))
+
+
+      (use-package lsp-mode
+	:ensure t
+	:commands (lsp lsp-deferred)
+	:init
+	(setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+	;; :config
+	;; (lsp-enable-which-key-integration t)
+  )
+
+
+	    (use-package lsp-ui
+	      :ensure t
+	      :hook (lsp-mode . lsp-ui-mode))
+
+	    (use-package lsp-ivy
+	      :ensure t)
+#+end_src
+
+
+Company provied the ui for completion. Company-box improves up on this ui.
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package company
+    :ensure t
+    :after lsp-mode
+    :hook (prog-mode . company-mode)
+    :bind
+    (:map company-active-map ("<return>" . company-complete-selection))
+    (:map company-active-map ("C-e" . company-abort))
+    (:map company-active-map ("<tab>" . company-select-next))
+    (:map company-active-map ("<C-j>" . company-select-next))
+    (:map company-active-map ("<backtab>" . company-select-previous))
+    (:map company-active-map ("<C-k>" . company-select-previous))
+
+    :custom
+    (company-minimum-prefix-length 0)
+    (company-idle-delay 0.0))
+
+  (use-package company-box
+    :ensure t
+    :hook (company-mode . company-box-mode))
+#+end_src
+
+*** Typescript
+
+#+begin_src emacs-lisp :tangle yes
+(use-package typescript-mode
+  :ensure t
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
+#+end_src
+
+
+*** Nix
+
+#+begin_src emacs-lisp :tangle yes
+(use-package nix-mode
+  :ensure t
+  :mode "\\.nix\\'")
+#+end_src
+
+*** Haskell 
+
+#+begin_src emacs-lisp :tangle yes
+(use-package lsp-haskell
+    :ensure t)
+#+end_src
+
+*** Rust
+
+#+begin_src emacs-lisp :tangle yes
+(use-package rust-mode
+    :ensure t)
+#+end_src
+
+*** Ocaml
+
+#+begin_src emacs-lisp :tangle yes
+(use-package tuareg
+    :ensure t)
+#+end_src
+
+
+** org-mode
+*** Style
+**** Heading size                                                          
+#+begin_src emacs-lisp :tangle yes                                         
+  (custom-set-faces                                                          
+    '(org-level-1 ((t (:inherit outline-1 :height 1.5))))                    
+    '(org-level-2 ((t (:inherit outline-2 :height 1.4))))                    
+    '(org-level-3 ((t (:inherit outline-3 :height 1.3))))                    
+    '(org-level-4 ((t (:inherit outline-4 :height 1.2))))                    
+    '(org-level-5 ((t (:inherit outline-5 :height 1.1))))                    
+  )
+#+end_src
+**** ox-reveal                                                             
+#+begin_src emacs-lisp :tangle yes                                         
+(use-package ox-reveal :ensure t)                                          
+#+end_src
+
+**** Modern-org
+TODO: Should be replaced by prettyfy symbol mode.
+#+begin_src emacs-lisp :tangle yes
+(use-package org-modern :ensure t)
+#+end_src
+
+*** org-roam
+#+begin_src emacs-lisp :tangle yes
+(use-package org-roam :ensure t)
+#+end_src

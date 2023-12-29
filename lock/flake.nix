@@ -2,30 +2,6 @@
   description =
     "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
-    all-the-icons = {
-      flake = false;
-      owner = "domtronn";
-      repo = "all-the-icons.el";
-      type = "github";
-    };
-    annalist = {
-      flake = false;
-      owner = "noctuid";
-      repo = "annalist.el";
-      type = "github";
-    };
-    auto-minor-mode = {
-      flake = false;
-      owner = "joewreschnig";
-      repo = "auto-minor-mode";
-      type = "github";
-    };
-    caml = {
-      flake = false;
-      owner = "ocaml";
-      repo = "caml-mode";
-      type = "github";
-    };
     company = {
       flake = false;
       owner = "company-mode";
@@ -36,12 +12,6 @@
       flake = false;
       owner = "sebastiencs";
       repo = "company-box";
-      type = "github";
-    };
-    compat = {
-      flake = false;
-      owner = "emacs-compat";
-      repo = "compat";
       type = "github";
     };
     counsel = {
@@ -56,28 +26,16 @@
       repo = "dash.el";
       type = "github";
     };
-    doom-themes = {
-      flake = false;
-      owner = "doomemacs";
-      repo = "themes";
-      type = "github";
-    };
-    emacsql = {
-      flake = false;
-      owner = "magit";
-      repo = "emacsql";
-      type = "github";
-    };
     evil = {
       flake = false;
       owner = "emacs-evil";
       repo = "evil";
       type = "github";
     };
-    evil-collection = {
+    evil-nerd-commenter = {
       flake = false;
-      owner = "emacs-evil";
-      repo = "evil-collection";
+      owner = "redguardtoo";
+      repo = "evil-nerd-commenter";
       type = "github";
     };
     "f" = {
@@ -92,27 +50,10 @@
       repo = "frame-local";
       type = "github";
     };
-    gcmh = {
-      flake = false;
-      type = "git";
-      url = "https://gitlab.com/koral/gcmh";
-    };
-    general = {
-      flake = false;
-      owner = "noctuid";
-      repo = "general.el";
-      type = "github";
-    };
     goto-chg = {
       flake = false;
       owner = "emacs-evil";
       repo = "goto-chg";
-      type = "github";
-    };
-    haskell-mode = {
-      flake = false;
-      owner = "haskell";
-      repo = "haskell-mode";
       type = "github";
     };
     ht = {
@@ -127,28 +68,10 @@
       repo = "swiper";
       type = "github";
     };
-    lsp-haskell = {
-      flake = false;
-      owner = "emacs-lsp";
-      repo = "lsp-haskell";
-      type = "github";
-    };
-    lsp-ivy = {
-      flake = false;
-      owner = "emacs-lsp";
-      repo = "lsp-ivy";
-      type = "github";
-    };
     lsp-mode = {
       flake = false;
       owner = "emacs-lsp";
       repo = "lsp-mode";
-      type = "github";
-    };
-    lsp-ui = {
-      flake = false;
-      owner = "emacs-lsp";
-      repo = "lsp-ui";
       type = "github";
     };
     lv = {
@@ -157,47 +80,17 @@
       repo = "hydra";
       type = "github";
     };
-    magit-section = {
-      flake = false;
-      owner = "magit";
-      repo = "magit";
-      type = "github";
-    };
     markdown-mode = {
       flake = false;
       owner = "jrblevin";
       repo = "markdown-mode";
       type = "github";
     };
-    nix-mode = {
+    org = {
       flake = false;
-      owner = "NixOS";
-      repo = "nix-mode";
-      type = "github";
-    };
-    org-modern = {
-      flake = false;
-      owner = "minad";
-      repo = "org-modern";
-      type = "github";
-    };
-    org-roam = {
-      flake = false;
-      owner = "org-roam";
-      repo = "org-roam";
-      type = "github";
-    };
-    ox-reveal = {
-      flake = false;
-      owner = "yjwen";
-      repo = "org-reveal";
-      type = "github";
-    };
-    rust-mode = {
-      flake = false;
-      owner = "rust-lang";
-      repo = "rust-mode";
-      type = "github";
+      ref = "bugfix";
+      type = "git";
+      url = "https://git.savannah.gnu.org/git/emacs/org-mode.git";
     };
     "s" = {
       flake = false;
@@ -217,22 +110,10 @@
       repo = "swiper";
       type = "github";
     };
-    tuareg = {
-      flake = false;
-      owner = "ocaml";
-      repo = "tuareg";
-      type = "github";
-    };
-    typescript-mode = {
-      flake = false;
-      owner = "emacs-typescript";
-      repo = "typescript.el";
-      type = "github";
-    };
-    undo-fu = {
+    undo-tree = {
       flake = false;
       type = "git";
-      url = "https://codeberg.org/ideasman42/emacs-undo-fu.git";
+      url = "https://gitlab.com/tsc25/undo-tree";
     };
     which-key = {
       flake = false;
