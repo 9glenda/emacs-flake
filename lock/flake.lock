@@ -1,5 +1,53 @@
 {
   "nodes": {
+    "annalist": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1571577135,
+        "narHash": "sha256-jLVWU3gLMSN+O9UYmdkDOwPblm7FXXXQsxKv0eCZuxk=",
+        "owner": "noctuid",
+        "repo": "annalist.el",
+        "rev": "134fa3f0fb91a636a1c005c483516d4b64905a6d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctuid",
+        "repo": "annalist.el",
+        "type": "github"
+      }
+    },
+    "caml": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696994899,
+        "narHash": "sha256-go0e2LwdPI5N5QVg0ITeHZ2wyhDBAhtgpLo0mfA1DXg=",
+        "owner": "ocaml",
+        "repo": "caml-mode",
+        "rev": "47defafa2b08fb680e89bfee9cb9ce82bd9e3bcf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ocaml",
+        "repo": "caml-mode",
+        "type": "github"
+      }
+    },
+    "command-log-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1460522845,
+        "narHash": "sha256-MYZ3KiBTQa47GcBUOeXSkQif8I1HjSBdepp0mp2gFBo=",
+        "owner": "lewang",
+        "repo": "command-log-mode",
+        "rev": "af600e6b4129c8115f464af576505ea8e789db27",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lewang",
+        "repo": "command-log-mode",
+        "type": "github"
+      }
+    },
     "company": {
       "flake": false,
       "locked": {
@@ -29,6 +77,22 @@
       "original": {
         "owner": "sebastiencs",
         "repo": "company-box",
+        "type": "github"
+      }
+    },
+    "compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700762318,
+        "narHash": "sha256-MabxHZbUriKTUznDr2o9qQa2/F0i1OrU0X6oOvSLZtw=",
+        "owner": "emacs-compat",
+        "repo": "compat",
+        "rev": "ea8de2ea18cf7c348aadb6eb2aeb2a9d840bd064",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-compat",
+        "repo": "compat",
         "type": "github"
       }
     },
@@ -64,6 +128,22 @@
         "type": "github"
       }
     },
+    "elisp-refs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695175312,
+        "narHash": "sha256-VpIK1SvznrEejK9ImloArBcTVHCHTt2KVPHs3Jkx78E=",
+        "owner": "Wilfred",
+        "repo": "elisp-refs",
+        "rev": "541a064c3ce27867872cf708354a65d83baf2a6d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Wilfred",
+        "repo": "elisp-refs",
+        "type": "github"
+      }
+    },
     "evil": {
       "flake": false,
       "locked": {
@@ -80,6 +160,22 @@
         "type": "github"
       }
     },
+    "evil-collection": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703537132,
+        "narHash": "sha256-IYAKdDFzHeiU33Rp1L3G5D9hn358ULaw7ClnBDQ8PMY=",
+        "owner": "emacs-evil",
+        "repo": "evil-collection",
+        "rev": "cf1a11912d1e77a197fab0e4f82d0c2268084455",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-evil",
+        "repo": "evil-collection",
+        "type": "github"
+      }
+    },
     "evil-nerd-commenter": {
       "flake": false,
       "locked": {
@@ -93,6 +189,22 @@
       "original": {
         "owner": "redguardtoo",
         "repo": "evil-nerd-commenter",
+        "type": "github"
+      }
+    },
+    "evil-visualstar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1456188495,
+        "narHash": "sha256-jHRgtzdTa+KYiNTPD0fGXcFSRxKCrchiIWkrJwL/a1Y=",
+        "owner": "bling",
+        "repo": "evil-visualstar",
+        "rev": "06c053d8f7381f91c53311b1234872ca96ced752",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bling",
+        "repo": "evil-visualstar",
         "type": "github"
       }
     },
@@ -144,6 +256,22 @@
         "type": "github"
       }
     },
+    "helpful": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698470180,
+        "narHash": "sha256-5d693e1Ix13w5Cdfl8bE0uNACkAQPWK2/WhomsEuG+o=",
+        "owner": "Wilfred",
+        "repo": "helpful",
+        "rev": "a32a5b3d959a7fccf09a71d97b3d7c888ac31c69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Wilfred",
+        "repo": "helpful",
+        "type": "github"
+      }
+    },
     "ht": {
       "flake": false,
       "locked": {
@@ -189,6 +317,22 @@
       "original": {
         "owner": "emacs-lsp",
         "repo": "lsp-mode",
+        "type": "github"
+      }
+    },
+    "lsp-ui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691733175,
+        "narHash": "sha256-JmnfmDNl5xp3e+uu45W45fBXpc5r1R7U2XTgvHbP1Nw=",
+        "owner": "emacs-lsp",
+        "repo": "lsp-ui",
+        "rev": "0dd39900c8ed8145d207985cb2f65cedd1ffb410",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-lsp",
+        "repo": "lsp-ui",
         "type": "github"
       }
     },
@@ -243,25 +387,38 @@
     },
     "root": {
       "inputs": {
+        "annalist": "annalist",
+        "caml": "caml",
+        "command-log-mode": "command-log-mode",
         "company": "company",
         "company-box": "company-box",
+        "compat": "compat",
         "counsel": "counsel",
         "dash": "dash",
+        "elisp-refs": "elisp-refs",
         "evil": "evil",
+        "evil-collection": "evil-collection",
         "evil-nerd-commenter": "evil-nerd-commenter",
+        "evil-visualstar": "evil-visualstar",
         "f": "f",
         "frame-local": "frame-local",
         "goto-chg": "goto-chg",
+        "helpful": "helpful",
         "ht": "ht",
         "ivy": "ivy",
         "lsp-mode": "lsp-mode",
+        "lsp-ui": "lsp-ui",
         "lv": "lv",
         "markdown-mode": "markdown-mode",
         "org": "org",
         "s": "s",
         "spinner": "spinner",
         "swiper": "swiper",
+        "tuareg": "tuareg",
         "undo-tree": "undo-tree",
+        "vertico": "vertico",
+        "visual-regexp": "visual-regexp",
+        "visual-regexp-steroids": "visual-regexp-steroids",
         "which-key": "which-key"
       }
     },
@@ -313,6 +470,22 @@
         "type": "github"
       }
     },
+    "tuareg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696887822,
+        "narHash": "sha256-W9CREajLvlZ7HVmOaJ5gjWZ31o8OdjLNyOOpJHuMThU=",
+        "owner": "ocaml",
+        "repo": "tuareg",
+        "rev": "1d53723e39f22ab4ab76d31f2b188a2879305092",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ocaml",
+        "repo": "tuareg",
+        "type": "github"
+      }
+    },
     "undo-tree": {
       "flake": false,
       "locked": {
@@ -327,6 +500,54 @@
       "original": {
         "type": "git",
         "url": "https://gitlab.com/tsc25/undo-tree"
+      }
+    },
+    "vertico": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703887629,
+        "narHash": "sha256-h71jL045jEtw/ZxRwLLoRcZgwJsc51fCZFpLVCjmVLk=",
+        "owner": "minad",
+        "repo": "vertico",
+        "rev": "2cf3de8579ae32c536288af090e84320e941a878",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "vertico",
+        "type": "github"
+      }
+    },
+    "visual-regexp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619986774,
+        "narHash": "sha256-X7DyfbiwaWbUAFTSwlTNxxd7PBHI8NrcWflXj5z5TPw=",
+        "owner": "benma",
+        "repo": "visual-regexp.el",
+        "rev": "48457d42a5e0fe10fa3a9c15854f1f127ade09b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "benma",
+        "repo": "visual-regexp.el",
+        "type": "github"
+      }
+    },
+    "visual-regexp-steroids": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1487732020,
+        "narHash": "sha256-kk/chLZ6arBoQw7grNmdkhiDJA4P5JnZ9KReMxlRWMc=",
+        "owner": "benma",
+        "repo": "visual-regexp-steroids.el",
+        "rev": "a6420b25ec0fbba43bf57875827092e1196d8a9e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "benma",
+        "repo": "visual-regexp-steroids.el",
+        "type": "github"
       }
     },
     "which-key": {

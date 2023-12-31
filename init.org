@@ -22,6 +22,19 @@
 ;; (setq initial-scratch-message ";; Emacs Scratch buffer")
 #+end_src
 
+** Keep folders clean
+#+begin_src emacs-lisp :tangle yes
+(setq backup-directory-alist `(("." . ,(expand-file-name "/tmp/emacs"))))
+(setq auto-save-list-file-prefix (expand-file-name "/tmp/emacs/sessions/")
+   auto-save-file-name-transforms `((".*" ,(expand-file-name "/tmp/emacs/auto-saves/") t)))
+(setq lock-file-name-transforms
+      '(("\\`/.*/\\([^/]+\\)\\'" "/tmp/emacs/lock/\\1" t)))
+#+end_src
+
+*** Cache
+#+begin_src emacs-lisp :tangle yes
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs"))
+#+end_src
 ** use-package
 #+begin_src emacs-lisp :tangle yes
 (eval-when-compile
@@ -48,6 +61,17 @@
 #+begin_src emacs-lisp :tangle yes
 (load-theme 'modus-vivendi-tritanopia)
 #+end_src
+*** Line numbers
+#+begin_src emacs-lisp :tangle yes
+(column-number-mode)
+(global-display-line-numbers-mode t)
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
 
 ** Keybindings
 *** Evil
@@ -55,34 +79,39 @@
 (use-package evil
   :ensure t
   :demand t
-  :commands (evil-mode evil-global-set-key)
+  :init
+  (setq evil-want-integration t)
+  (progn
+    (setq evil-undo-system 'undo-tree)
+    (setq evil-want-keybinding nil))
+  :commands (evil-mode evil-global-set-key evil-previous-visual-line evil-visual-line evil-next-visual-line)
   :config
   (evil-mode 1)
 
   (setq evil-want-fine-undo t)
 
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-  ;; Keybindings for undo
-  (define-key evil-normal-state-map "u" 'undo-tree-undo)
-  (define-key evil-visual-state-map "u" 'undo-tree-undo)
-
-  (define-key evil-insert-state-map (kbd "C-r") 'undo-tree-redo)
-  (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
-  (define-key evil-visual-state-map (kbd "C-r") 'undo-tree-redo)
-  (define-key evil-motion-state-map (kbd "C-r") 'undo-tree-redo)
 
   ;; Keybindings for evilnc
   (define-key evil-normal-state-map (kbd "g c") 'evilnc-comment-or-uncomment-lines)
   (define-key evil-visual-state-map (kbd "g c") 'evilnc-comment-or-uncomment-lines)
   (define-key evil-motion-state-map (kbd "g c") 'evilnc-comment-or-uncomment-lines)
-  ;; (define-key evil-insert-state-map (kbd "gc") 'evilnc-comment-or-uncomment-lines) ;; insert mode
 )
 #+end_src
-
+**** evil-collection
+The warning can be ignored
+#+begin_src emacs-lisp :tangle yes
+(use-package evil-collection
+  :ensure t
+  :demand t
+  :after evil
+  :commands (evil-collection-init)
+  :config
+  (evil-collection-init)
+)
+#+end_src
 **** Undo Tree
-=C-x u= for a undo tree view.
+=C-x u= gives you a really nice tree view of your undo history.
+This is so useful. I often mess up my undo history which is not possibe anymore with =und-tree=.
 #+begin_src emacs-lisp :tangle yes
 (use-package undo-tree
   :ensure t
@@ -104,14 +133,29 @@
 )
 #+end_src
 
+**** Drag stuff
+#+begin_src emacs-lisp :tangle yes
+(use-package visual-regexp-steroids
+  :ensure t)
+
+(use-package evil-visualstar
+  :ensure t)
+
+#+end_src
 
 *** General keybindings
 **** which-key
 #+begin_src emacs-lisp :tangle yes
 (use-package which-key
-  :ensure t)
+  :ensure t
+  :commands (which-key-mode)
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1)
+)
 #+end_src
-**** Eval to kill ring
+**** Ehelloval to kill ring
 #+begin_src emacs-lisp :tangle yes
 (defun eval-to-kill-ring ()
   (interactive)
@@ -122,6 +166,7 @@
 
 
 **** Clipboard
+BUGS: if system clipboard is empty kill ring will be used.
 Custom elisp function for C-S-v pasting.
 #+begin_src emacs-lisp :tangle yes
 (setq select-enable-clipboard nil)
@@ -154,6 +199,7 @@ Custom elisp function for C-S-v pasting.
 (global-set-key (kbd "C-S-c") 'copy-to-clipboard)
 #+end_src
 
+
 ** Completion
 *** Company mode
 
@@ -161,6 +207,14 @@ Custom elisp function for C-S-v pasting.
 (use-package company
   :ensure t
   :demand t
+  :after lsp-mode
+  :bind (:map company-active-map
+         ("<tab>" . company-select-next)
+         ("<backtab>" . company-select-previous)
+         ("C-j" . company-select-next)
+         ("C-k" . company-select-previous)
+         ("C-e" . company-abort)
+         ("<return>" . company-complete-selection))
   :commands (global-company-mode)
   :config
   (global-company-mode 1)
@@ -169,48 +223,61 @@ Custom elisp function for C-S-v pasting.
   (add-to-list 'company-backends 'company-yasnippet)
   (add-to-list 'company-backends 'company-dabbrev-code)
   (add-to-list 'company-backends 'company-dabbrev)
+  (add-to-list 'company-backends 'company-capf)
 
   (setq company-begin-commands '(self-insert-command))
-  (setq company-minimum-prefix-length 0
-     company-idle-delay 0)
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0.01)
   (setq company-tooltip-align-annotations t)
-  ;; no automatic word completion
-  (setq company-insertion-triggers '())
-
-  (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
-  (define-key company-active-map (kbd "<backtab>") 'company-select-previous)
-
-  (define-key company-active-map (kbd "<return>") 'company-complete-selection)
+  ;; (setq company-insertion-triggers '())
 )
+
 (use-package company-box
   :ensure t
   :demand t
+  :after company
   :hook (company-mode . company-box-mode))
 #+end_src
 
-** Ivy
+*** Vertico
 #+begin_src emacs-lisp :tangle yes
-(use-package ivy
+(use-package vertico
   :ensure t
-  :demand t
-  :commands (ivy-mode)
-  :config
-  (ivy-mode 1)
-
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-)
+  :commands (vertico-mode)
+  :init
+  (vertico-mode)
+  :custom
+  (vertico-cycle t))
 #+end_src
 
+
+
+*** counsel
 #+begin_src emacs-lisp :tangle yes
 (use-package counsel
   :ensure t
-   :bind (("M-x" . counsel-M-x)
+  :commands (counsel-minnibuffer-history)
+  :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
-         ("C-x b" . counsel-switch-buffer)
-         ("C-c f" . counsel-recentf))
-)
+         ("C-x b" . counsel-ibuffer)
+         ("C-c f" . counsel-recentf)
+         :map minibuffer-local-map
+         ("C-r" . counsel-minibuffer-history)))
 #+end_src
+** Helpful
+#+begin_src emacs-lisp :tangle yes
+(use-package helpful
+  :ensure t
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function) ;; =C-h f=
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable) ;; =C-h v=
+  ([remap describe-key] . helpful-key))
+#+end_src
+
 ** Org
 *** No indentation 
 #+begin_src emacs-lisp :tangle yes
@@ -220,44 +287,52 @@ Custom elisp function for C-S-v pasting.
   (setq org-src-preserve-indentation nil
      org-edit-src-content-indentation 0)
   (setq org-ellipsis " ▾"
-      org-hide-emphasis-markers t)
-)
-
-
-(dolist (face '((org-level-1 . 1.2)
-                (org-level-2 . 1.1)
-                (org-level-3 . 1.05)
-                (org-level-4 . 1.0)
-                (org-level-5 . 1.1)
-                (org-level-6 . 1.1)
-                (org-level-7 . 1.1)
-                (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "DejaVu Sans Mono" :weight 'regular :height (cdr face)))
-
-
-(font-lock-add-keywords 'org-mode
-                        '(("^ *\\([-]\\) "
-                          (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-(require 'org-indent)
-
-(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-(set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
-(set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
-(set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-(set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-(set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-(set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+      org-hide-emphasis-markers t))
 #+end_src
+
+** Scroll
+Scroll line by line.
+#+begin_src emacs-lisp :tangle yes
+(setq scroll-conservatively 100)
+#+end_src
+
+** Terminal
+*** Ansi term
+#+begin_src emacs-lisp :tangle yes
+(defvar my-term-shell "/run/current-system/sw/bin/bash")
+#+end_src
+
+** Debugging
+#+begin_src emacs-lisp :tangle yes
+(use-package command-log-mode
+  :ensure t)
+#+end_src
+
 
 ** LSP
 #+begin_src emacs-lisp :tangle yes
 (use-package lsp-mode
   :ensure t
-  :commands lsp
+  :init
+  (setq lsp-keymap-prefix "C-c l") 
+  :config
+  (lsp-enable-which-key-integration t)
+  :commands (lsp lsp-deferred lsp-enable-which-key-integration)
   :hook
-  (prog-mode . lsp)
-)
+  (prog-mode . lsp))
+#+end_src
+**** LSP UI
+#+begin_src emacs-lisp :tangle yes
+(use-package lsp-ui
+  :ensure t
+  :hook (lsp-mode . lsp-ui-mode))
+#+end_src
+*** Langs
+**** Ocaml
+#+begin_src emacs-lisp :tangle yes
+(use-package tuareg
+  :mode "\\.ml\\'"
+  :ensure t)
 #+end_src
 
 
