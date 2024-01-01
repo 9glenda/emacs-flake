@@ -205,12 +205,13 @@ Custom elisp function for C-S-v pasting.
    (lambda ()
      (setq select-enable-clipboard t)
      ;; simulate vim behaviour.
-   (cond
-    ((eq evil-state 'normal)
-      (goto-char (+ (point) 1))
-      (yank)
-      (goto-char (- (point) 1)))
-    ((eq evil-state 'insert) (yank)))
+   (if
+    (and (eq evil-state 'normal) (= (current-column) 0))
+      (progn  
+        (goto-char (+ (point) 1))
+        (yank)
+        (goto-char (- (point) 1)))
+      (yank))
      (setq select-enable-clipboard nil))))
 
 (global-set-key (kbd "C-S-v") 'paste-from-clipboard)
@@ -424,6 +425,7 @@ The main advantage of org-modern is it not using images for the prettifying.
 #+begin_src emacs-lisp :tangle yes
 (defun unlock-gpg () "run echo 1 | gpg -s inside term to unlock to gpg key."
    (interactive)
+    (maximize-window)
    (with-temp-file "/tmp/emacs-gpg-script"
     (insert "#!/usr/bin/env bash
 { echo 1 | gpg -s; } && exit 0")
@@ -566,5 +568,17 @@ Use =y= / =n= instead of =yes= / =no.=
   #+end_src
 
 
+** IRC
+TODO: broken
+#+begin_src emacs-lisp :tangle yes
+;; (require 'erc)
+;; (setq erc-server "irc.libera.chat"
+;;       erc-nick "cookieconsent"
+;;       erc-user-full-name "cookieconsent"
+;;       ;; erc-track-shorten-start 8
+;;       erc-autojoin-channels-alist '(("irc.libera.chat" "#systemcrafters" "#systemcrafters-emacs" "#emacs"))
+;;       erc-kill-buffer-on-part t
+;;       erc-auto-query 'bury)
+	    #+end_src
 * Keybingings
 =M-:= eval-expression
