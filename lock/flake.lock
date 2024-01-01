@@ -400,6 +400,22 @@
         "type": "github"
       }
     },
+    "nix-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1682109415,
+        "narHash": "sha256-W/bxCAn4cvzKGbhILxtTiWJ5Wln2w6g4TPgk+ziCXsQ=",
+        "owner": "NixOS",
+        "repo": "nix-mode",
+        "rev": "719feb7868fb567ecfe5578f6119892c771ac5e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nix-mode",
+        "type": "github"
+      }
+    },
     "orderless": {
       "flake": false,
       "locked": {
@@ -449,19 +465,19 @@
         "type": "github"
       }
     },
-    "pinentry": {
+    "projectile": {
       "flake": false,
       "locked": {
-        "lastModified": 1701008042,
-        "narHash": "sha256-xgzdwLEsjjkyPB6z1WM/N+rZNbndKXMPNUZ7Uaa8zT8=",
-        "owner": "ueno",
-        "repo": "pinentry-el",
-        "rev": "a6441224da04656370e993e2616185cc31afaff9",
+        "lastModified": 1701372892,
+        "narHash": "sha256-VqjfRgA4i+yEDJG0FyAs8Bu4XsnJ3n6AoKpNVVtYM5I=",
+        "owner": "bbatsov",
+        "repo": "projectile",
+        "rev": "e0fc464d1e41c8d7267636ea2b7330491087c19d",
         "type": "github"
       },
       "original": {
-        "owner": "ueno",
-        "repo": "pinentry-el",
+        "owner": "bbatsov",
+        "repo": "projectile",
         "type": "github"
       }
     },
@@ -508,11 +524,13 @@
         "magit-section": "magit-section",
         "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
+        "nix-mode": "nix-mode",
         "orderless": "orderless",
         "org": "org",
         "org-modern": "org-modern",
-        "pinentry": "pinentry",
+        "projectile": "projectile",
         "rainbow-delimiters": "rainbow-delimiters",
+        "rust-mode": "rust-mode",
         "s": "s",
         "spinner": "spinner",
         "transient": "transient",
@@ -523,6 +541,22 @@
         "visual-regexp-steroids": "visual-regexp-steroids",
         "which-key": "which-key",
         "with-editor": "with-editor"
+      }
+    },
+    "rust-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691327890,
+        "narHash": "sha256-r888RkK1ec5Uzi1wB1dyszZThF23stQ/u08KnB4KrdI=",
+        "owner": "rust-lang",
+        "repo": "rust-mode",
+        "rev": "9c26dc1195ec05309ee15c014631fb9abd6cf5d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-lang",
+        "repo": "rust-mode",
+        "type": "github"
       }
     },
     "s": {

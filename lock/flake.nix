@@ -152,6 +152,12 @@
       repo = "markdown-mode";
       type = "github";
     };
+    nix-mode = {
+      flake = false;
+      owner = "NixOS";
+      repo = "nix-mode";
+      type = "github";
+    };
     orderless = {
       flake = false;
       owner = "oantolin";
@@ -170,16 +176,22 @@
       repo = "org-modern";
       type = "github";
     };
-    pinentry = {
+    projectile = {
       flake = false;
-      owner = "ueno";
-      repo = "pinentry-el";
+      owner = "bbatsov";
+      repo = "projectile";
       type = "github";
     };
     rainbow-delimiters = {
       flake = false;
       owner = "Fanael";
       repo = "rainbow-delimiters";
+      type = "github";
+    };
+    rust-mode = {
+      flake = false;
+      owner = "rust-lang";
+      repo = "rust-mode";
       type = "github";
     };
     "s" = {

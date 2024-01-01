@@ -413,11 +413,15 @@ The main advantage of org-modern is it not using images for the prettifying.
 
   (set-face-attribute 'org-modern-symbol nil :family "Iosevka")
 )
-
 #+end_src
 
 
-** Git
+** Project managment/Git
+*** Pojectile
+#+begin_src emacs-lisp :tangle yes
+(use-package projectile
+  :ensure t)
+#+end_src
 *** Magit
 #+begin_src emacs-lisp :tangle yes
 (use-package magit
@@ -505,6 +509,18 @@ Use =y= / =n= instead of =yes= / =no.=
 #+begin_src emacs-lisp :tangle yes
 (use-package tuareg
   :mode "\\.ml\\'"
+  :ensure t)
+  #+end_src
+**** Rust
+#+begin_src emacs-lisp :tangle yes
+(use-package rust-mode
+  :mode "\\.rs\\'"
+  :ensure t)
+  #+end_src
+**** Nix
+#+begin_src emacs-lisp :tangle yes
+(use-package nix-mode
+  :mode "\\.nix\\'"
   :ensure t)
   #+end_src
 
