@@ -86,6 +86,12 @@
       repo = "f.el";
       type = "github";
     };
+    git-commit = {
+      flake = false;
+      owner = "magit";
+      repo = "magit";
+      type = "github";
+    };
     goto-chg = {
       flake = false;
       owner = "emacs-evil";
@@ -122,6 +128,18 @@
       repo = "hydra";
       type = "github";
     };
+    magit = {
+      flake = false;
+      owner = "magit";
+      repo = "magit";
+      type = "github";
+    };
+    magit-section = {
+      flake = false;
+      owner = "magit";
+      repo = "magit";
+      type = "github";
+    };
     marginalia = {
       flake = false;
       owner = "minad";
@@ -150,6 +168,12 @@
       flake = false;
       owner = "minad";
       repo = "org-modern";
+      type = "github";
+    };
+    pinentry = {
+      flake = false;
+      owner = "ueno";
+      repo = "pinentry-el";
       type = "github";
     };
     rainbow-delimiters = {
@@ -203,6 +227,12 @@
       flake = false;
       owner = "justbur";
       repo = "emacs-which-key";
+      type = "github";
+    };
+    with-editor = {
+      flake = false;
+      owner = "magit";
+      repo = "with-editor";
       type = "github";
     };
   };

@@ -224,6 +224,22 @@
         "type": "github"
       }
     },
+    "git-commit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703871242,
+        "narHash": "sha256-FpiLT0CnAMtV1+yEUuMCQova5LDjepwrBfAjhdf6lWk=",
+        "owner": "magit",
+        "repo": "magit",
+        "rev": "faa19075be7b640c1625cd74e6686344835ecb1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "magit",
+        "type": "github"
+      }
+    },
     "goto-chg": {
       "flake": false,
       "locked": {
@@ -320,6 +336,38 @@
         "type": "github"
       }
     },
+    "magit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703871242,
+        "narHash": "sha256-FpiLT0CnAMtV1+yEUuMCQova5LDjepwrBfAjhdf6lWk=",
+        "owner": "magit",
+        "repo": "magit",
+        "rev": "faa19075be7b640c1625cd74e6686344835ecb1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "magit",
+        "type": "github"
+      }
+    },
+    "magit-section": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703871242,
+        "narHash": "sha256-FpiLT0CnAMtV1+yEUuMCQova5LDjepwrBfAjhdf6lWk=",
+        "owner": "magit",
+        "repo": "magit",
+        "rev": "faa19075be7b640c1625cd74e6686344835ecb1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "magit",
+        "type": "github"
+      }
+    },
     "marginalia": {
       "flake": false,
       "locked": {
@@ -401,6 +449,22 @@
         "type": "github"
       }
     },
+    "pinentry": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701008042,
+        "narHash": "sha256-xgzdwLEsjjkyPB6z1WM/N+rZNbndKXMPNUZ7Uaa8zT8=",
+        "owner": "ueno",
+        "repo": "pinentry-el",
+        "rev": "a6441224da04656370e993e2616185cc31afaff9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ueno",
+        "repo": "pinentry-el",
+        "type": "github"
+      }
+    },
     "rainbow-delimiters": {
       "flake": false,
       "locked": {
@@ -433,17 +497,21 @@
         "evil-nerd-commenter": "evil-nerd-commenter",
         "evil-visualstar": "evil-visualstar",
         "f": "f",
+        "git-commit": "git-commit",
         "goto-chg": "goto-chg",
         "helpful": "helpful",
         "ht": "ht",
         "lsp-mode": "lsp-mode",
         "lsp-ui": "lsp-ui",
         "lv": "lv",
+        "magit": "magit",
+        "magit-section": "magit-section",
         "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
         "orderless": "orderless",
         "org": "org",
         "org-modern": "org-modern",
+        "pinentry": "pinentry",
         "rainbow-delimiters": "rainbow-delimiters",
         "s": "s",
         "spinner": "spinner",
@@ -452,7 +520,8 @@
         "vertico": "vertico",
         "visual-regexp": "visual-regexp",
         "visual-regexp-steroids": "visual-regexp-steroids",
-        "which-key": "which-key"
+        "which-key": "which-key",
+        "with-editor": "with-editor"
       }
     },
     "s": {
@@ -580,6 +649,22 @@
       "original": {
         "owner": "justbur",
         "repo": "emacs-which-key",
+        "type": "github"
+      }
+    },
+    "with-editor": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702844739,
+        "narHash": "sha256-tXmm2Aa0dsSMaQEFrriN3t8K+sfyU7BDSvXMiQK2iMQ=",
+        "owner": "magit",
+        "repo": "with-editor",
+        "rev": "85c37d356355000de7e5992cf0ec0127868c090a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "with-editor",
         "type": "github"
       }
     }
