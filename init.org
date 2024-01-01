@@ -383,20 +383,7 @@ Regexp match completions.
  org-hide-emphasis-markers t
  org-pretty-entities t
  ;; org-ellipsis "…"
- org-ellipsis " ▾"
-
- ;; Agenda styling
- ;; org-agenda-tags-column 0
- ;; org-agenda-block-separator ?─
- ;; org-agenda-time-grid
- ;; '((daily today require-timed)
- ;;   (800 1000 1200 1400 1600 1800 2000)
- ;;   " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
- ;; org-agenda-current-time-string
- ;; "◀── now ─────────────────────────────────────────────────"
-)
-
-)
+ org-ellipsis " ▾"))
 #+end_src
 *** org-modern
 Make org mode look way more modern. This is another awesome package by minad. 
