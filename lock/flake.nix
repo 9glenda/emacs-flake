@@ -20,22 +20,16 @@
       repo = "command-log-mode";
       type = "github";
     };
-    company = {
-      flake = false;
-      owner = "company-mode";
-      repo = "company-mode";
-      type = "github";
-    };
-    company-box = {
-      flake = false;
-      owner = "sebastiencs";
-      repo = "company-box";
-      type = "github";
-    };
     compat = {
       flake = false;
       owner = "emacs-compat";
       repo = "compat";
+      type = "github";
+    };
+    corfu = {
+      flake = false;
+      owner = "minad";
+      repo = "corfu";
       type = "github";
     };
     counsel = {
@@ -84,12 +78,6 @@
       flake = false;
       owner = "rejeep";
       repo = "f.el";
-      type = "github";
-    };
-    frame-local = {
-      flake = false;
-      owner = "sebastiencs";
-      repo = "frame-local";
       type = "github";
     };
     goto-chg = {

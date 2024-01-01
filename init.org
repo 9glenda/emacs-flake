@@ -204,39 +204,96 @@ Custom elisp function for C-S-v pasting.
 *** Company mode
 
 #+begin_src emacs-lisp :tangle yes
-(use-package company
+;; (use-package company
+;;   :ensure t
+;;   :demand t
+;;   :after lsp-mode
+;;   :bind (:map company-active-map
+;;          ("<tab>" . company-select-next)
+;;          ("<backtab>" . company-select-previous)
+;;          ("C-j" . company-select-next)
+;;          ("C-k" . company-select-previous)
+;;          ("C-e" . company-abort)
+;;          ("<return>" . company-complete-selection))
+;;   :commands (global-company-mode)
+;;   :config
+;;   (global-company-mode 1)
+;; 
+;;   (add-to-list 'company-backends 'company-elisp)
+;;   (add-to-list 'company-backends 'company-yasnippet)
+;;   (add-to-list 'company-backends 'company-dabbrev-code)
+;;   (add-to-list 'company-backends 'company-dabbrev)
+;;   (add-to-list 'company-backends 'company-capf)
+;; 
+;;   (setq company-begin-commands '(self-insert-command))
+;;   (setq company-minimum-prefix-length 1)
+;;   (setq company-idle-delay 0.01)
+;;   (setq company-tooltip-align-annotations t)
+;;   ;; (setq company-insertion-triggers '())
+;; )
+
+;; (use-package company-box
+;;   :ensure t
+;;   :demand t
+;;   :after company
+;;   :hook (company-mode . company-box-mode))
+#+end_src
+*** Corfu
+#+begin_src emacs-lisp :tangle yes
+(use-package corfu
   :ensure t
-  :demand t
-  :after lsp-mode
-  :bind (:map company-active-map
-         ("<tab>" . company-select-next)
-         ("<backtab>" . company-select-previous)
-         ("C-j" . company-select-next)
-         ("C-k" . company-select-previous)
-         ("C-e" . company-abort)
-         ("<return>" . company-complete-selection))
-  :commands (global-company-mode)
-  :config
-  (global-company-mode 1)
+  :commands (global-corfu-mode  corfu-popupinfo-mode)
+  :bind
+  (:map corfu-map 
+   ;; ("SPC" . corfu-insert-separator)
+  ("<tab>" . corfu-next)
+  ("<backtab>" . corfu-previous)
+  ("C-j" . corfu-next)
+  ("C-k" . corfu-previous)
+  ("C-e" . corfu-quit)
+  ("<return>" . corfu-insert))
 
-  (add-to-list 'company-backends 'company-elisp)
-  (add-to-list 'company-backends 'company-yasnippet)
-  (add-to-list 'company-backends 'company-dabbrev-code)
-  (add-to-list 'company-backends 'company-dabbrev)
-  (add-to-list 'company-backends 'company-capf)
+  ;; Optional customizations
+  :custom
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-auto t)
+  (corfu-auto-delay 0.01)
+  (corfu-auto-prefix 0)
+  ;; (corfu-separator ?\s)          ;; Orderless field separator
+  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
+  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
+  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
 
-  (setq company-begin-commands '(self-insert-command))
-  (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0.01)
-  (setq company-tooltip-align-annotations t)
-  ;; (setq company-insertion-triggers '())
-)
+  ;; Enable Corfu only for certain modes.
+  ;; :hook ((prog-mode . corfu-mode)
+  ;;         (shell-mode . corfu-mode)
+  ;;         (eshell-mode . corfu-mode))
 
-(use-package company-box
-  :ensure t
-  :demand t
-  :after company
-  :hook (company-mode . company-box-mode))
+  ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
+  ;; be used globally (M-/).  See also the customization variable
+  ;; `global-corfu-modes' to exclude certain modes.
+  :init
+  (corfu-popupinfo-mode)
+  (global-corfu-mode))
+
+;; A few more useful configurations...
+(use-package emacs
+  :init
+  ;; TAB cycle if there are only few candidates
+  (setq completion-cycle-threshold 3)
+
+  ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
+  ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
+  ;; (setq read-extended-command-predicate
+  ;;       #'command-completion-default-include-p)
+
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (setq tab-always-indent 'complete))
 #+end_src
 
 *** Vertico

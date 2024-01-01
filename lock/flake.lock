@@ -48,38 +48,6 @@
         "type": "github"
       }
     },
-    "company": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1703114164,
-        "narHash": "sha256-ZLHi5GoEI+of3gO03N9HpEK3QcXWCD8givV/1EjSG3Q=",
-        "owner": "company-mode",
-        "repo": "company-mode",
-        "rev": "d04e665d8ca01a5baa42b5e2dad88d5bbe5a9b8f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "company-mode",
-        "repo": "company-mode",
-        "type": "github"
-      }
-    },
-    "company-box": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1678616884,
-        "narHash": "sha256-9WyOHXwVKxZ4bfRPTaQFo5qCWpDK4EgfzojDmP9uH2o=",
-        "owner": "sebastiencs",
-        "repo": "company-box",
-        "rev": "b6f53e26adf948aca55c3ff6c22c21a6a6614253",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sebastiencs",
-        "repo": "company-box",
-        "type": "github"
-      }
-    },
     "compat": {
       "flake": false,
       "locked": {
@@ -93,6 +61,22 @@
       "original": {
         "owner": "emacs-compat",
         "repo": "compat",
+        "type": "github"
+      }
+    },
+    "corfu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703963641,
+        "narHash": "sha256-1yi9Grnd+0GaDNX6BJXxcQR5hqnCj5jfZ2cveBnOOWI=",
+        "owner": "minad",
+        "repo": "corfu",
+        "rev": "f9b9d87a6d1f9321d37f80745d3f685a36586ff5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "corfu",
         "type": "github"
       }
     },
@@ -221,22 +205,6 @@
       "original": {
         "owner": "rejeep",
         "repo": "f.el",
-        "type": "github"
-      }
-    },
-    "frame-local": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1524410258,
-        "narHash": "sha256-98XPoNpZ7RrPMJTPx4hDq9wRrl+AfmNKc6OtAVvX3X0=",
-        "owner": "sebastiencs",
-        "repo": "frame-local",
-        "rev": "7ee1106c3bcd4022f48421f8cb1ef4f995da816e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sebastiencs",
-        "repo": "frame-local",
         "type": "github"
       }
     },
@@ -390,9 +358,8 @@
         "annalist": "annalist",
         "caml": "caml",
         "command-log-mode": "command-log-mode",
-        "company": "company",
-        "company-box": "company-box",
         "compat": "compat",
+        "corfu": "corfu",
         "counsel": "counsel",
         "dash": "dash",
         "elisp-refs": "elisp-refs",
@@ -401,7 +368,6 @@
         "evil-nerd-commenter": "evil-nerd-commenter",
         "evil-visualstar": "evil-visualstar",
         "f": "f",
-        "frame-local": "frame-local",
         "goto-chg": "goto-chg",
         "helpful": "helpful",
         "ht": "ht",
