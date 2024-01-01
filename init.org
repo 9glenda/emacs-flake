@@ -131,7 +131,7 @@ This is so useful. I often mess up my undo history which is not possibe anymore 
   :commands (global-undo-tree-mode)
   :config
   (global-undo-tree-mode)
-)
+  (setq undo-tree-history-directory-alist '(("." . "/tmp/emacs/undo-tree"))))
 #+end_src
 
 **** Evil Commenter
@@ -407,14 +407,60 @@ The main advantage of org-modern is it not using images for the prettifying.
 *** Pojectile
 #+begin_src emacs-lisp :tangle yes
 (use-package projectile
-  :ensure t)
-#+end_src
+  :ensure t
+  :diminish projectile-mode
+  :commands (projectile-mode projectile-dired)
+  :config (projectile-mode)
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; set the project dir to ~/prjects
+  (when (file-directory-p "~/projects")
+    (setq projectile-project-search-path '("~/projects")))
+  ;; open dired when switching the project
+  (setq projectile-switch-project-action #'projectile-dired))
+  #+end_src
 *** Magit
 #+begin_src emacs-lisp :tangle yes
+(defun unlock-gpg () "run echo 1 | gpg -s inside term to unlock to gpg key."
+   (interactive)
+   (with-temp-file "/tmp/emacs-gpg-script"
+    (insert "#!/usr/bin/env bash
+{ echo 1 | gpg -s; } && exit 0")
+    (term "/var/run/current-system/sw/bin/bash -i /tmp/emacs-gpg-script")
+    (delete-file "/tmp/emacs-gpg-script")))
+
 (use-package magit
-  :ensure t)
+  :ensure t
+  :commands (magit-run-git-with-editor magit-toplevel magit-commit-assert magit-commit-arguments)
+  :config
+;;;###autoload
+(defun magit-commit-create (&optional args)
+  "[CUSTOM] Create a new commit on `HEAD'.
+With a prefix argument, amend to the commit at `HEAD' instead.
+\n(git commit [--amend] ARGS)"
+  (interactive (if current-prefix-arg
+                   (list (cons "--amend" (magit-commit-arguments)))
+                 (list (magit-commit-arguments))))
+  (cond ((member "--all" args)
+         (setq this-command 'magit-commit--all))
+        ((member "--allow-empty" args)
+         (setq this-command 'magit-commit--allow-empty)))
+  (when (setq args (magit-commit-assert args))
+    (let ((default-directory (magit-toplevel)))
+      (progn ;; custom
+        (unlock-gpg) ;; custom
+        (magit-run-git-with-editor "commit" args)))))
+)
 (use-package transient
   :ensure t)
+#+end_src
+**** gpg
+
+#+begin_src emacs-lisp :tangle yes
+
+
+
 #+end_src
 ** UX
 *** Evil Googles
@@ -465,6 +511,14 @@ Use =y= / =n= instead of =yes= / =no.=
 *** Ansi term
 #+begin_src emacs-lisp :tangle yes
 (defvar my-term-shell "/run/current-system/sw/bin/bash")
+#+end_src
+*** Kill buffer on exit
+#+begin_src emacs-lisp :tangle yes
+(defun my-term-handle-exit (&optional process-name msg)
+  (message "%s | %s" process-name msg)
+  (kill-buffer (current-buffer)))
+
+(advice-add 'term-handle-exit :after 'my-term-handle-exit)
 #+end_src
 
 ** Debugging
