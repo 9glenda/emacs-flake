@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "consult": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704067302,
+        "narHash": "sha256-nP7448aF9U4XAF2jp5opokVqc5cnZZzBhlnzRpFIkQY=",
+        "owner": "minad",
+        "repo": "consult",
+        "rev": "c9e6bfefb8665a77f7a82e028ed47d4be9bf1921",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "consult",
+        "type": "github"
+      }
+    },
     "corfu": {
       "flake": false,
       "locked": {
@@ -77,22 +93,6 @@
       "original": {
         "owner": "minad",
         "repo": "corfu",
-        "type": "github"
-      }
-    },
-    "counsel": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1698275516,
-        "narHash": "sha256-yIwaCCRnxCXeobkqSyEHPnzwUgM7iQEdrztGwe4REsc=",
-        "owner": "abo-abo",
-        "repo": "swiper",
-        "rev": "8c30f4cab5948aa8d942a3b2bbf5fb6a94d9441d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abo-abo",
-        "repo": "swiper",
         "type": "github"
       }
     },
@@ -157,6 +157,22 @@
       "original": {
         "owner": "emacs-evil",
         "repo": "evil-collection",
+        "type": "github"
+      }
+    },
+    "evil-goggles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697873907,
+        "narHash": "sha256-NYkf/7yomMe8pMuyJ6++zvQFZ3i/W0AefZCNWMU6nK0=",
+        "owner": "edkolev",
+        "repo": "evil-goggles",
+        "rev": "34ca276a85f615d2b45e714c9f8b5875bcb676f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edkolev",
+        "repo": "evil-goggles",
         "type": "github"
       }
     },
@@ -256,22 +272,6 @@
         "type": "github"
       }
     },
-    "ivy": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1698275516,
-        "narHash": "sha256-yIwaCCRnxCXeobkqSyEHPnzwUgM7iQEdrztGwe4REsc=",
-        "owner": "abo-abo",
-        "repo": "swiper",
-        "rev": "8c30f4cab5948aa8d942a3b2bbf5fb6a94d9441d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abo-abo",
-        "repo": "swiper",
-        "type": "github"
-      }
-    },
     "lsp-mode": {
       "flake": false,
       "locked": {
@@ -320,6 +320,22 @@
         "type": "github"
       }
     },
+    "marginalia": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703887579,
+        "narHash": "sha256-CCBL4tlWLRiKYmtNT8vEUuM3+r8+9jgNYSrBF4bHP4k=",
+        "owner": "minad",
+        "repo": "marginalia",
+        "rev": "018898dc1b6770bc5aa78ab63ea0899aacb8e117",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "marginalia",
+        "type": "github"
+      }
+    },
     "markdown-mode": {
       "flake": false,
       "locked": {
@@ -333,6 +349,22 @@
       "original": {
         "owner": "jrblevin",
         "repo": "markdown-mode",
+        "type": "github"
+      }
+    },
+    "orderless": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699627697,
+        "narHash": "sha256-xB9AFpa/IP2Q3LugvDRNDW6fF8KDONX+0P3YzT+LrJQ=",
+        "owner": "oantolin",
+        "repo": "orderless",
+        "rev": "b24748093b00b37c3a572c4909f61c08fa27504f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oantolin",
+        "repo": "orderless",
         "type": "github"
       }
     },
@@ -353,33 +385,68 @@
         "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
       }
     },
+    "org-modern": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703963587,
+        "narHash": "sha256-hChAserqPbXKXELjM7UDxpcPZJ2Y5O9yBRBq8+3eC2Q=",
+        "owner": "minad",
+        "repo": "org-modern",
+        "rev": "0fd111d1f086a681aa68f323e337c256c3070305",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "org-modern",
+        "type": "github"
+      }
+    },
+    "rainbow-delimiters": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1693411222,
+        "narHash": "sha256-JcNRW0+L65NtOBronwyT7SHP9QsNa3ysj4cHv88yfoI=",
+        "owner": "Fanael",
+        "repo": "rainbow-delimiters",
+        "rev": "f40ece58df8b2f0fb6c8576b527755a552a5e763",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fanael",
+        "repo": "rainbow-delimiters",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "annalist": "annalist",
         "caml": "caml",
         "command-log-mode": "command-log-mode",
         "compat": "compat",
+        "consult": "consult",
         "corfu": "corfu",
-        "counsel": "counsel",
         "dash": "dash",
         "elisp-refs": "elisp-refs",
         "evil": "evil",
         "evil-collection": "evil-collection",
+        "evil-goggles": "evil-goggles",
         "evil-nerd-commenter": "evil-nerd-commenter",
         "evil-visualstar": "evil-visualstar",
         "f": "f",
         "goto-chg": "goto-chg",
         "helpful": "helpful",
         "ht": "ht",
-        "ivy": "ivy",
         "lsp-mode": "lsp-mode",
         "lsp-ui": "lsp-ui",
         "lv": "lv",
+        "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
+        "orderless": "orderless",
         "org": "org",
+        "org-modern": "org-modern",
+        "rainbow-delimiters": "rainbow-delimiters",
         "s": "s",
         "spinner": "spinner",
-        "swiper": "swiper",
         "tuareg": "tuareg",
         "undo-tree": "undo-tree",
         "vertico": "vertico",
@@ -417,22 +484,6 @@
       "original": {
         "owner": "Malabarba",
         "repo": "spinner.el",
-        "type": "github"
-      }
-    },
-    "swiper": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1698275516,
-        "narHash": "sha256-yIwaCCRnxCXeobkqSyEHPnzwUgM7iQEdrztGwe4REsc=",
-        "owner": "abo-abo",
-        "repo": "swiper",
-        "rev": "8c30f4cab5948aa8d942a3b2bbf5fb6a94d9441d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abo-abo",
-        "repo": "swiper",
         "type": "github"
       }
     },

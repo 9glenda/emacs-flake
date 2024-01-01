@@ -19,7 +19,12 @@
 #+begin_src emacs-lisp :tangle yes
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
-;; (setq initial-scratch-message ";; Emacs Scratch buffer")
+#+end_src
+*** Menu bar
+#+begin_src emacs-lisp :tangle yes
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 #+end_src
 
 ** Keep folders clean
@@ -58,8 +63,10 @@
 
 ** Visuals
 *** Theme
+=modus-operandi= is a light theme.
 #+begin_src emacs-lisp :tangle yes
-(load-theme 'modus-vivendi-tritanopia)
+;; (load-theme 'modus-vivendi-tritanopia)
+(load-theme 'modus-operandi)
 #+end_src
 *** Line numbers
 #+begin_src emacs-lisp :tangle yes
@@ -194,50 +201,12 @@ Custom elisp function for C-S-v pasting.
      (setq select-enable-clipboard t)
      (yank)
      (setq select-enable-clipboard nil))))
-
 (global-set-key (kbd "C-S-v") 'paste-from-clipboard)
 (global-set-key (kbd "C-S-c") 'copy-to-clipboard)
 #+end_src
 
 
 ** Completion
-*** Company mode
-
-#+begin_src emacs-lisp :tangle yes
-;; (use-package company
-;;   :ensure t
-;;   :demand t
-;;   :after lsp-mode
-;;   :bind (:map company-active-map
-;;          ("<tab>" . company-select-next)
-;;          ("<backtab>" . company-select-previous)
-;;          ("C-j" . company-select-next)
-;;          ("C-k" . company-select-previous)
-;;          ("C-e" . company-abort)
-;;          ("<return>" . company-complete-selection))
-;;   :commands (global-company-mode)
-;;   :config
-;;   (global-company-mode 1)
-;; 
-;;   (add-to-list 'company-backends 'company-elisp)
-;;   (add-to-list 'company-backends 'company-yasnippet)
-;;   (add-to-list 'company-backends 'company-dabbrev-code)
-;;   (add-to-list 'company-backends 'company-dabbrev)
-;;   (add-to-list 'company-backends 'company-capf)
-;; 
-;;   (setq company-begin-commands '(self-insert-command))
-;;   (setq company-minimum-prefix-length 1)
-;;   (setq company-idle-delay 0.01)
-;;   (setq company-tooltip-align-annotations t)
-;;   ;; (setq company-insertion-triggers '())
-;; )
-
-;; (use-package company-box
-;;   :ensure t
-;;   :demand t
-;;   :after company
-;;   :hook (company-mode . company-box-mode))
-#+end_src
 *** Corfu
 #+begin_src emacs-lisp :tangle yes
 (use-package corfu
@@ -248,23 +217,22 @@ Custom elisp function for C-S-v pasting.
    ;; ("SPC" . corfu-insert-separator)
   ("<tab>" . corfu-next)
   ("<backtab>" . corfu-previous)
+  ("<return>" . corfu-insert)
   ("C-j" . corfu-next)
   ("C-k" . corfu-previous)
-  ("C-e" . corfu-quit)
-  ("<return>" . corfu-insert))
+  ("C-e" . corfu-quit))
 
   ;; Optional customizations
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
-  (corfu-auto t)
-  (corfu-auto-delay 0.01)
+  ;; (corfu-auto-delay 0.01)
   (corfu-auto-prefix 0)
   ;; (corfu-separator ?\s)          ;; Orderless field separator
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
+  (corfu-preselect 'prompt)      ;; Preselect the prompt
   ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
 
@@ -279,10 +247,15 @@ Custom elisp function for C-S-v pasting.
   :init
   (corfu-popupinfo-mode)
   (global-corfu-mode))
+#+end_src
 
-;; A few more useful configurations...
+*** Emacs 
+#+begin_src  emacs-lisp :tangle yes
 (use-package emacs
   :init
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; corfu
+
   ;; TAB cycle if there are only few candidates
   (setq completion-cycle-threshold 3)
 
@@ -293,9 +266,35 @@ Custom elisp function for C-S-v pasting.
 
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
-  (setq tab-always-indent 'complete))
-#+end_src
+  (setq tab-always-indent 'complete)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; vertico
+  ;; Add prompt indicator to `completing-read-multiple'.
+  ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
+  ;; (defun crm-indicator (args)
+  ;;   (cons (format "[CRM%s] %s"
+  ;;                 (replace-regexp-in-string
+  ;;                  "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+  ;;                  crm-separator)
+  ;;                 (car args))
+  ;;         (cdr args)))
+  ;; (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
+  ;; Do not allow the cursor in the minibuffer prompt
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+  ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
+  ;; Vertico commands are hidden in normal buffers.
+  ;; (setq read-extended-command-predicate
+  ;;       #'command-completion-default-include-p)
+
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+)
+#+end_src
 *** Vertico
 #+begin_src emacs-lisp :tangle yes
 (use-package vertico
@@ -306,33 +305,48 @@ Custom elisp function for C-S-v pasting.
   :custom
   (vertico-cycle t))
 #+end_src
-
-
-
-*** counsel
+**** History
 #+begin_src emacs-lisp :tangle yes
-(use-package counsel
-  :ensure t
-  :commands (counsel-minnibuffer-history)
-  :bind (("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)
-         ("C-x b" . counsel-ibuffer)
-         ("C-c f" . counsel-recentf)
-         :map minibuffer-local-map
-         ("C-r" . counsel-minibuffer-history)))
+(use-package savehist
+  :commands (savehist-mode)
+  :init
+  (savehist-mode))
 #+end_src
+
+*** Marginalia
+Add extra information to minibuffer commands.
+#+begin_src emacs-lisp :tangle yes
+(use-package marginalia
+  :ensure t
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  :commands (marginalia-mode)
+  :init
+  (marginalia-mode))
+#+end_src
+*** Orderless
+Regexp match completions.
+#+begin_src emacs-lisp :tangle yes
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+#+end_src
+*** Consult
+#+begin_src emacs-lisp :tangle yes
+(use-package consult
+  :ensure t)
+#+end_src
+
 ** Helpful
 #+begin_src emacs-lisp :tangle yes
 (use-package helpful
-  :ensure t
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function) ;; =C-h f=
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable) ;; =C-h v=
-  ([remap describe-key] . helpful-key))
+  :ensure t)
 #+end_src
 
 ** Org
@@ -341,17 +355,95 @@ Custom elisp function for C-S-v pasting.
 (use-package org
   :ensure t
   :config
-  (setq org-src-preserve-indentation nil
-     org-edit-src-content-indentation 0)
-  (setq org-ellipsis " ▾"
-      org-hide-emphasis-markers t))
+
+(setq
+ ;; Indentation
+  org-src-preserve-indentation nil
+ org-edit-src-content-indentation 0
+
+ ;; Edit settings
+ org-auto-align-tags nil
+ org-tags-column 0
+ org-fold-catch-invisible-edits 'show-and-error ;; FIXME org-catch-invisible-edits in readme of org-modern
+ org-special-ctrl-a/e t
+ org-insert-heading-respect-content t
+
+ ;; Org styling, hide markup etc.
+ org-hide-emphasis-markers t
+ org-pretty-entities t
+ ;; org-ellipsis "…"
+ org-ellipsis " ▾"
+
+ ;; Agenda styling
+ ;; org-agenda-tags-column 0
+ ;; org-agenda-block-separator ?─
+ ;; org-agenda-time-grid
+ ;; '((daily today require-timed)
+ ;;   (800 1000 1200 1400 1600 1800 2000)
+ ;;   " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+ ;; org-agenda-current-time-string
+ ;; "◀── now ─────────────────────────────────────────────────"
+)
+
+)
+#+end_src
+*** org-modern
+Make org mode look way more modern. This is another awesome package by minad. 
+An alternative worth taking a look at is [[https://github.com/rougier/svg-tag-mode][svg-tag-mode]].
+The main advantage of org-modern is it not using images for the prettifying.
+#+begin_src emacs-lisp :tangle yes
+(use-package org-modern
+ :ensure t
+ ;; :hook (org-mode . org-modern-mode)
+ :commands (global-org-modern-mode)
+ :config
+(global-org-modern-mode)
+)
+
 #+end_src
 
-** Scroll
+** UX
+*** Googles
+Highlight yanked/pasted text. 
+#+begin_src emacs-lisp :tangle yes
+(use-package evil-goggles
+  :ensure t
+  :commands (evil-goggles-mode evil-goggles-use-diff-faces)
+  :init
+  (evil-goggles-mode)
+  :config
+  (setq 
+  evil-goggles-async-duration 1
+  evil-goggles-blocking-duration 0) ;; disable blocking
+  (evil-goggles-use-diff-faces))
+#+end_src
+*** Scrolling
 Scroll line by line.
 #+begin_src emacs-lisp :tangle yes
 (setq scroll-conservatively 100)
 #+end_src
+*** Parens
+**** Auto close
+#+begin_src emacs-lisp :tangle yes
+(electric-pair-mode)
+(electric-quote-mode)
+(electric-indent-mode)
+#+end_src
+**** Rainbow delimiters
+#+begin_src emacs-lisp :tangle yes
+(use-package rainbow-delimiters
+  :ensure t
+  :commands (rainbow-delimiters-mode)
+  :init
+  (rainbow-delimiters-mode))
+#+end_src
+*** Confirmation prompts
+Use =y= / =n= instead of =yes= / =no.=
+#+begin_src emacs-lisp :tangle yes
+(setq confirm-kill-emacs #'y-or-n-p)
+(fset #'yes-or-no-p #'y-or-n-p)
+#+end_src
+
 
 ** Terminal
 *** Ansi term
@@ -364,7 +456,6 @@ Scroll line by line.
 (use-package command-log-mode
   :ensure t)
 #+end_src
-
 
 ** LSP
 #+begin_src emacs-lisp :tangle yes

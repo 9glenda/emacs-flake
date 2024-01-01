@@ -26,16 +26,16 @@
       repo = "compat";
       type = "github";
     };
+    consult = {
+      flake = false;
+      owner = "minad";
+      repo = "consult";
+      type = "github";
+    };
     corfu = {
       flake = false;
       owner = "minad";
       repo = "corfu";
-      type = "github";
-    };
-    counsel = {
-      flake = false;
-      owner = "abo-abo";
-      repo = "swiper";
       type = "github";
     };
     dash = {
@@ -60,6 +60,12 @@
       flake = false;
       owner = "emacs-evil";
       repo = "evil-collection";
+      type = "github";
+    };
+    evil-goggles = {
+      flake = false;
+      owner = "edkolev";
+      repo = "evil-goggles";
       type = "github";
     };
     evil-nerd-commenter = {
@@ -98,12 +104,6 @@
       repo = "ht.el";
       type = "github";
     };
-    ivy = {
-      flake = false;
-      owner = "abo-abo";
-      repo = "swiper";
-      type = "github";
-    };
     lsp-mode = {
       flake = false;
       owner = "emacs-lsp";
@@ -122,10 +122,22 @@
       repo = "hydra";
       type = "github";
     };
+    marginalia = {
+      flake = false;
+      owner = "minad";
+      repo = "marginalia";
+      type = "github";
+    };
     markdown-mode = {
       flake = false;
       owner = "jrblevin";
       repo = "markdown-mode";
+      type = "github";
+    };
+    orderless = {
+      flake = false;
+      owner = "oantolin";
+      repo = "orderless";
       type = "github";
     };
     org = {
@@ -133,6 +145,18 @@
       ref = "bugfix";
       type = "git";
       url = "https://git.savannah.gnu.org/git/emacs/org-mode.git";
+    };
+    org-modern = {
+      flake = false;
+      owner = "minad";
+      repo = "org-modern";
+      type = "github";
+    };
+    rainbow-delimiters = {
+      flake = false;
+      owner = "Fanael";
+      repo = "rainbow-delimiters";
+      type = "github";
     };
     "s" = {
       flake = false;
@@ -144,12 +168,6 @@
       flake = false;
       owner = "Malabarba";
       repo = "spinner.el";
-      type = "github";
-    };
-    swiper = {
-      flake = false;
-      owner = "abo-abo";
-      repo = "swiper";
       type = "github";
     };
     tuareg = {
