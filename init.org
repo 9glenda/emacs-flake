@@ -204,8 +204,15 @@ Custom elisp function for C-S-v pasting.
   (preserve-clipboard
    (lambda ()
      (setq select-enable-clipboard t)
-     (yank)
+     ;; simulate vim behaviour.
+   (cond
+    ((eq evil-state 'normal)
+      (goto-char (+ (point) 1))
+      (yank)
+      (goto-char (- (point) 1)))
+    ((eq evil-state 'insert) (yank)))
      (setq select-enable-clipboard nil))))
+
 (global-set-key (kbd "C-S-v") 'paste-from-clipboard)
 (global-set-key (kbd "C-S-c") 'copy-to-clipboard)
 #+end_src

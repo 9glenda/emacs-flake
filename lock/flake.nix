@@ -194,6 +194,12 @@
       repo = "spinner.el";
       type = "github";
     };
+    transient = {
+      flake = false;
+      owner = "magit";
+      repo = "transient";
+      type = "github";
+    };
     tuareg = {
       flake = false;
       owner = "ocaml";

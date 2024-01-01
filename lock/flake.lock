@@ -515,6 +515,7 @@
         "rainbow-delimiters": "rainbow-delimiters",
         "s": "s",
         "spinner": "spinner",
+        "transient": "transient",
         "tuareg": "tuareg",
         "undo-tree": "undo-tree",
         "vertico": "vertico",
@@ -553,6 +554,22 @@
       "original": {
         "owner": "Malabarba",
         "repo": "spinner.el",
+        "type": "github"
+      }
+    },
+    "transient": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702844775,
+        "narHash": "sha256-5s8daK6uSmjNkCAZjNSiNkSgXxAS4hJGYDz9Ualfhyc=",
+        "owner": "magit",
+        "repo": "transient",
+        "rev": "ff16d373124159a85b35fc07150f295c7c18f81f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "transient",
         "type": "github"
       }
     },
