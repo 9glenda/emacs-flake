@@ -423,13 +423,19 @@ The main advantage of org-modern is it not using images for the prettifying.
   #+end_src
 *** Magit
 #+begin_src emacs-lisp :tangle yes
+(defun wait-for-buffer-deletion (buffer-name)
+  "Wait until the buffer with BUFFER-NAME is deleted."
+  (while (and (get-buffer buffer-name) (buffer-live-p (get-buffer buffer-name)))
+    (sleep-for 1))  ; Sleep for 1 second, adjust as needed
+  (message "Buffer %s deleted." buffer-name))
+
 (defun unlock-gpg () "run echo 1 | gpg -s inside term to unlock to gpg key."
    (interactive)
-    (maximize-window)
    (with-temp-file "/tmp/emacs-gpg-script"
     (insert "#!/usr/bin/env bash
 { echo 1 | gpg -s; } && exit 0")
-    (term "/var/run/current-system/sw/bin/bash -i /tmp/emacs-gpg-script")
+    (ansi-term "/var/run/current-system/sw/bin/bash -i /tmp/emacs-gpg-script" "*gpg-pinentry*")
+   (wait-for-buffer-deletion "*gpg-pinentry*")
     (delete-file "/tmp/emacs-gpg-script")))
 
 (use-package magit
