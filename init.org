@@ -516,6 +516,21 @@ Use =y= / =n= instead of =yes= / =no.=
 
 
 ** Terminal
+*** Vterm
+#+begin_src emacs-lisp :tangle yes
+(use-package vterm
+  :ensure t
+  :init
+  (setq vterm-max-scrollback 100000)
+)
+#+end_src
+#+begin_src emacs-lisp :tangle yes
+(use-package vterm-toggle
+  :ensure t
+  :bind 
+    ("C-`" . vterm-toggle)
+)
+#+end_src
 *** Ansi term
 #+begin_src emacs-lisp :tangle yes
 (defvar my-term-shell "/run/current-system/sw/bin/bash")
@@ -571,6 +586,15 @@ Use =y= / =n= instead of =yes= / =no.=
 (use-package nix-mode
   :mode "\\.nix\\'"
   :ensure t)
+  #+end_src
+
+**** Julia
+#+begin_src emacs-lisp :tangle yes
+(use-package lsp-julia
+  :ensure t
+  :mode "\\.jl\\'"
+  :config
+(setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
   #+end_src
 
 

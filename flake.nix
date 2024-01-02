@@ -1,11 +1,6 @@
 {
-  description = "Emacs config of Terje";
-
-  nixConfig = {
-    extra-substituters = "https://terlar.cachix.org";
-    extra-trusted-public-keys = "terlar.cachix.org-1:M8CXTOaJib7CP/jEfpNJAyrgW4qECnOUI02q7cnmh8U=";
-  };
-
+  description = "Emacs config of 9glenda";
+  
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.flake = true;
@@ -42,14 +37,19 @@
           (final: prev: let
             emacs = final.emacs-pgtk;
           in {
-            emacsEnv = final.emacsTwist {
+            emacsEnv = (final.emacsTwist {
               emacsPackage = emacs;
 
               initFiles = [(final.tangleOrgBabelFile "init.el" ./init.org {})];
 
               lockDir = ./lock;
               registries = import ./nix/registries.nix inputs;
-            };
+            }).overrideScope' (_tfinal: tprev: {
+                elispPackages = tprev.elispPackages.overrideScope' (
+                  prev.callPackage ./packageOverrides.nix {inherit (tprev) emacs;}
+                );
+              });
+
 
             emacsConfig = prev.callPackage inputs.self {
               trivialBuild = final.callPackage "${inputs.nixpkgs}/pkgs/build-support/emacs/trivial.nix" {

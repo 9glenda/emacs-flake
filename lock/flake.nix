@@ -110,6 +110,18 @@
       repo = "ht.el";
       type = "github";
     };
+    julia-mode = {
+      flake = false;
+      owner = "JuliaEditorSupport";
+      repo = "julia-emacs";
+      type = "github";
+    };
+    lsp-julia = {
+      flake = false;
+      owner = "gdkrmr";
+      repo = "lsp-julia";
+      type = "github";
+    };
     lsp-mode = {
       flake = false;
       owner = "emacs-lsp";
@@ -239,6 +251,18 @@
       flake = false;
       owner = "benma";
       repo = "visual-regexp-steroids.el";
+      type = "github";
+    };
+    vterm = {
+      flake = false;
+      owner = "akermu";
+      repo = "emacs-libvterm";
+      type = "github";
+    };
+    vterm-toggle = {
+      flake = false;
+      owner = "jixiuf";
+      repo = "vterm-toggle";
       type = "github";
     };
     which-key = {

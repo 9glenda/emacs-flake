@@ -288,6 +288,38 @@
         "type": "github"
       }
     },
+    "julia-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689175497,
+        "narHash": "sha256-IEzTkQsdqGNlooJBZoatg/l6HLZdcojmMl7lZPAkjXc=",
+        "owner": "JuliaEditorSupport",
+        "repo": "julia-emacs",
+        "rev": "7a8c868e0d3e51ba4a2c621ee22ca9599e0e4bbb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JuliaEditorSupport",
+        "repo": "julia-emacs",
+        "type": "github"
+      }
+    },
+    "lsp-julia": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694760878,
+        "narHash": "sha256-lwi4kET17a7VSTvlvvKPayQC2HoMEqfID3WCRcTYeFU=",
+        "owner": "gdkrmr",
+        "repo": "lsp-julia",
+        "rev": "c869b2f6c05a97e5495ed3cc6710a33b4faf41a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gdkrmr",
+        "repo": "lsp-julia",
+        "type": "github"
+      }
+    },
     "lsp-mode": {
       "flake": false,
       "locked": {
@@ -517,6 +549,8 @@
         "goto-chg": "goto-chg",
         "helpful": "helpful",
         "ht": "ht",
+        "julia-mode": "julia-mode",
+        "lsp-julia": "lsp-julia",
         "lsp-mode": "lsp-mode",
         "lsp-ui": "lsp-ui",
         "lv": "lv",
@@ -539,6 +573,8 @@
         "vertico": "vertico",
         "visual-regexp": "visual-regexp",
         "visual-regexp-steroids": "visual-regexp-steroids",
+        "vterm": "vterm",
+        "vterm-toggle": "vterm-toggle",
         "which-key": "which-key",
         "with-editor": "with-editor"
       }
@@ -684,6 +720,38 @@
       "original": {
         "owner": "benma",
         "repo": "visual-regexp-steroids.el",
+        "type": "github"
+      }
+    },
+    "vterm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681705456,
+        "narHash": "sha256-1+AbPtyl1dS73WTMrIUduyWeM4cOiD3CI7d0Ic3jpVw=",
+        "owner": "akermu",
+        "repo": "emacs-libvterm",
+        "rev": "94e2b0b2b4a750e7907dacd5b4c0584900846dd1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "akermu",
+        "repo": "emacs-libvterm",
+        "type": "github"
+      }
+    },
+    "vterm-toggle": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694486774,
+        "narHash": "sha256-cQseJK7ioDZuKtOkYz8Jxoi3Ul/JFypndYZCqCp11w4=",
+        "owner": "jixiuf",
+        "repo": "vterm-toggle",
+        "rev": "06cb4f3c565e46470a3c4505c11e26066d869715",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jixiuf",
+        "repo": "vterm-toggle",
         "type": "github"
       }
     },
