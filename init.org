@@ -568,17 +568,5 @@ Use =y= / =n= instead of =yes= / =no.=
   #+end_src
 
 
-** IRC
-TODO: broken
-#+begin_src emacs-lisp :tangle yes
-;; (require 'erc)
-;; (setq erc-server "irc.libera.chat"
-;;       erc-nick "cookieconsent"
-;;       erc-user-full-name "cookieconsent"
-;;       ;; erc-track-shorten-start 8
-;;       erc-autojoin-channels-alist '(("irc.libera.chat" "#systemcrafters" "#systemcrafters-emacs" "#emacs"))
-;;       erc-kill-buffer-on-part t
-;;       erc-auto-query 'bury)
-	    #+end_src
 * Keybingings
 =M-:= eval-expression
