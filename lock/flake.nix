@@ -2,6 +2,12 @@
   description =
     "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
+    adwaita-dark-theme = {
+      flake = false;
+      owner = "jessieh";
+      repo = "adwaita-dark-theme";
+      type = "gitlab";
+    };
     annalist = {
       flake = false;
       owner = "noctuid";
@@ -169,11 +175,11 @@
       repo = "markdown-mode";
       type = "github";
     };
-    nano-modeline = {
+    mood-line = {
       flake = false;
-      owner = "rougier";
-      repo = "nano-modeline";
-      type = "github";
+      owner = "jessieh";
+      repo = "mood-line";
+      type = "gitlab";
     };
     nix-mode = {
       flake = false;

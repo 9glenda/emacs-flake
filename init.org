@@ -91,23 +91,45 @@
 *** Theme
 =modus-operandi= is a light theme.
 #+begin_src emacs-lisp :tangle yes
+
+(use-package adwaita-dark-theme
+ :ensure t)
+;; (use-package nano-theme
+;;   :ensure t
+;;   :commands (nano-ligh nano-dark
+;; )
+;; )
+
 (load-theme 'modus-vivendi-tritanopia)
 ;; (load-theme 'modus-operandi)
 #+end_src
-*** TODO Modeline
-broken.
+*** Modeline 
 #+begin_src emacs-lisp :tangle yes
 ;; (use-package nano-modeline
-;;   :ensure t
+;;   :ensure nano-modeline-patched
+;;   :demand t
 ;;   :hook
 ;;   (prog-mode-hook . nano-modeline-prog-mode)
 ;;   (org-mode-hook . nano-modeline-org-mode)
 ;;   (term-mode-hook . nano-modeline-term-mode)
 ;;   (vterm-mode-hook . nano-modeline-term-mode)
-;;   (messages-buffer-mode-hook . nano-modeline-message-mode)
-;;   ;; (org-capture-mode-hook     . nano-modeline-org-capture-mode)
-;;   ;; (org-agenda-mode-hook      . nano-modeline-org-agenda-mode)
-;;   )
+;;   (messages-buffer-mode-hook . nano-modeline-message-mode))
+(use-package mood-line
+  :ensure t
+  :commands (mood-line-mode)
+  :config
+  (mood-line-mode)
+  :custom
+  (mood-line-glyph-alist mood-line-glyphs-fira-code))
+  #+end_src
+*** nano-vertico !recipe DISABLED
+#+begin_src emacs-lisp :tangle yes
+;; (use-package nano-vertico
+;;   :ensure t
+;;   :after vertico
+;;   :commands (nano-vertico-mode)
+;;   :config
+;;   (nano-vertico-mode 1))
 #+end_src
 
 *** Line numbers
@@ -347,6 +369,8 @@ Custom elisp function for C-S-v pasting.
 )
 #+end_src
 *** Vertico
+**** TODO copy selected item 
+**** TODO `C-j' movements
 #+begin_src emacs-lisp :tangle yes
 (use-package vertico
   :ensure t

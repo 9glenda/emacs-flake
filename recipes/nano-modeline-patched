@@ -1,0 +1,5 @@
+
+(nano-modeline-patched
+	:fetcher github :repo "aaronjensen/nano-modeline"
+	:branch "flat-button-style"
+	)

@@ -1,0 +1,2 @@
+(nano-theme
+	:fetcher github :repo "rougier/nano-theme")

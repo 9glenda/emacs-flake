@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "adwaita-dark-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702121568,
+        "narHash": "sha256-6esuigni89soHpPeGZ2J9FaynaaWFmXM4067zuJrn04=",
+        "owner": "jessieh",
+        "repo": "adwaita-dark-theme",
+        "rev": "a8d76c2bebd7b7a542cd62e6e6ce843623f20aab",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "jessieh",
+        "repo": "adwaita-dark-theme",
+        "type": "gitlab"
+      }
+    },
     "annalist": {
       "flake": false,
       "locked": {
@@ -448,20 +464,20 @@
         "type": "github"
       }
     },
-    "nano-modeline": {
+    "mood-line": {
       "flake": false,
       "locked": {
-        "lastModified": 1689153619,
-        "narHash": "sha256-fM/yp6zHW1j2JatQoj45r6g/DRQsMqkcoK8I92Lnvbo=",
-        "owner": "rougier",
-        "repo": "nano-modeline",
-        "rev": "631387df3f6835a975faa1f0c8b44da1fe4b57a9",
-        "type": "github"
+        "lastModified": 1702214727,
+        "narHash": "sha256-Y9n0p3jO5Ol/uUigrRNfrfxD5aeeb98NjNSDtroRffc=",
+        "owner": "jessieh",
+        "repo": "mood-line",
+        "rev": "a15d166249f04b047a6136856e5be109357762d3",
+        "type": "gitlab"
       },
       "original": {
-        "owner": "rougier",
-        "repo": "nano-modeline",
-        "type": "github"
+        "owner": "jessieh",
+        "repo": "mood-line",
+        "type": "gitlab"
       }
     },
     "nix-mode": {
@@ -563,6 +579,7 @@
     },
     "root": {
       "inputs": {
+        "adwaita-dark-theme": "adwaita-dark-theme",
         "annalist": "annalist",
         "caml": "caml",
         "command-log-mode": "command-log-mode",
@@ -591,7 +608,7 @@
         "magit-section": "magit-section",
         "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
-        "nano-modeline": "nano-modeline",
+        "mood-line": "mood-line",
         "nix-mode": "nix-mode",
         "orderless": "orderless",
         "org": "org",

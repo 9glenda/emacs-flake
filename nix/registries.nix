@@ -1,5 +1,5 @@
 inputs: [
-   {
+    {
     name = "custom";
     type = "melpa";
     path = ../recipes;
