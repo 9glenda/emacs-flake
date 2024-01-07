@@ -88,19 +88,21 @@
 #+end_src
 
 ** Visuals
-*** Theme
+*** TODO Theme
 =modus-operandi= is a light theme.
 #+begin_src emacs-lisp :tangle yes
-
 (use-package adwaita-dark-theme
- :ensure t)
+ :ensure t
+ :config
+ (load-theme 'adwaita-dark t))
+
 ;; (use-package nano-theme
 ;;   :ensure t
 ;;   :commands (nano-ligh nano-dark
 ;; )
 ;; )
 
-(load-theme 'modus-vivendi-tritanopia)
+;; (load-theme 'modus-vivendi-tritanopia)
 ;; (load-theme 'modus-operandi)
 #+end_src
 *** Modeline 
@@ -375,6 +377,12 @@ Custom elisp function for C-S-v pasting.
 (use-package vertico
   :ensure t
   :commands (vertico-mode)
+  :bind (:map vertico-map
+         ("C-j" . vertico-next)
+         ("C-k" . vertico-previous)
+         ("ESC" . vertico-exit)
+         :map minibuffer-local-map
+         ("C-w" . backward-kill-word))
   :init
   (vertico-mode)
   :custom
@@ -387,7 +395,7 @@ Custom elisp function for C-S-v pasting.
   :init
   (savehist-mode))
 #+end_src
-
+*** TODO Embark
 *** Marginalia
 Add extra information to minibuffer commands.
 #+begin_src emacs-lisp :tangle yes
@@ -425,6 +433,7 @@ Regexp match completions.
 #+end_src
 
 ** Org
+** TODO Fix grave
 *** No indentation 
 #+begin_src emacs-lisp :tangle yes
 (modify-all-frames-parameters
@@ -681,7 +690,8 @@ Use =y= / =n= instead of =yes= / =no.=
   :ensure t
   :mode "\\.jl\\'"
   :config
-(setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
+(setq lsp-julia-default-environment "~/.julia/environments/v1.9")
+)
   #+end_src
 
 
