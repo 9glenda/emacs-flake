@@ -86,6 +86,11 @@
       repo = "f.el";
       type = "github";
     };
+    gcmh = {
+      flake = false;
+      type = "git";
+      url = "https://gitlab.com/koral/gcmh";
+    };
     git-commit = {
       flake = false;
       owner = "magit";
@@ -162,6 +167,12 @@
       flake = false;
       owner = "jrblevin";
       repo = "markdown-mode";
+      type = "github";
+    };
+    nano-modeline = {
+      flake = false;
+      owner = "rougier";
+      repo = "nano-modeline";
       type = "github";
     };
     nix-mode = {

@@ -224,6 +224,22 @@
         "type": "github"
       }
     },
+    "gcmh": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605567102,
+        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
+        "ref": "refs/heads/master",
+        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
+        "revCount": 34,
+        "type": "git",
+        "url": "https://gitlab.com/koral/gcmh"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gitlab.com/koral/gcmh"
+      }
+    },
     "git-commit": {
       "flake": false,
       "locked": {
@@ -432,6 +448,22 @@
         "type": "github"
       }
     },
+    "nano-modeline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689153619,
+        "narHash": "sha256-fM/yp6zHW1j2JatQoj45r6g/DRQsMqkcoK8I92Lnvbo=",
+        "owner": "rougier",
+        "repo": "nano-modeline",
+        "rev": "631387df3f6835a975faa1f0c8b44da1fe4b57a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rougier",
+        "repo": "nano-modeline",
+        "type": "github"
+      }
+    },
     "nix-mode": {
       "flake": false,
       "locked": {
@@ -545,6 +577,7 @@
         "evil-nerd-commenter": "evil-nerd-commenter",
         "evil-visualstar": "evil-visualstar",
         "f": "f",
+        "gcmh": "gcmh",
         "git-commit": "git-commit",
         "goto-chg": "goto-chg",
         "helpful": "helpful",
@@ -558,6 +591,7 @@
         "magit-section": "magit-section",
         "marginalia": "marginalia",
         "markdown-mode": "markdown-mode",
+        "nano-modeline": "nano-modeline",
         "nix-mode": "nix-mode",
         "orderless": "orderless",
         "org": "org",

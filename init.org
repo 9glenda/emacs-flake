@@ -14,6 +14,28 @@
 #+end_src
 
 ** Startup
+
+*** GC
+#+begin_src emacs-lisp :tangle yes
+(use-package gcmh
+  :ensure t
+  :commands (gcmh-mode)
+  :demand t
+  :config
+  (gcmh-mode 1))
+#+end_src
+*** Startup time
+#+begin_src emacs-lisp :tangle yes
+(defun display-startup-time ()
+  (message
+   "Emacs loaded in %s with %d garbage collections."
+   (format
+    "%.2f seconds"
+    (float-time
+     (time-subtract after-init-time before-init-time)))
+   gcs-done))
+(add-hook 'emacs-startup-hook #'display-startup-time)
+#+end_src
 *** No welcome screen
 #+begin_src emacs-lisp :tangle yes
 (setq inhibit-splash-screen t)
@@ -70,9 +92,24 @@
 =modus-operandi= is a light theme.
 #+begin_src emacs-lisp :tangle yes
 (load-theme 'modus-vivendi-tritanopia)
-
 ;; (load-theme 'modus-operandi)
 #+end_src
+*** TODO Modeline
+broken.
+#+begin_src emacs-lisp :tangle yes
+;; (use-package nano-modeline
+;;   :ensure t
+;;   :hook
+;;   (prog-mode-hook . nano-modeline-prog-mode)
+;;   (org-mode-hook . nano-modeline-org-mode)
+;;   (term-mode-hook . nano-modeline-term-mode)
+;;   (vterm-mode-hook . nano-modeline-term-mode)
+;;   (messages-buffer-mode-hook . nano-modeline-message-mode)
+;;   ;; (org-capture-mode-hook     . nano-modeline-org-capture-mode)
+;;   ;; (org-agenda-mode-hook      . nano-modeline-org-agenda-mode)
+;;   )
+#+end_src
+
 *** Line numbers
 #+begin_src emacs-lisp :tangle yes
 (column-number-mode)
@@ -80,8 +117,9 @@
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
-                term-mode-hook
-                eshell-mode-hook))
+		term-mode-hook
+		vterm-mode-hook
+		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
@@ -365,28 +403,44 @@ Regexp match completions.
 ** Org
 *** No indentation 
 #+begin_src emacs-lisp :tangle yes
+(modify-all-frames-parameters
+ '((right-divider-width . 20)
+   (internal-border-width . 20)))
+
+(dolist (face '(window-divider
+		window-divider-first-pixel
+		window-divider-last-pixel))
+
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
+
 (use-package org
   :ensure t
   :config
-(setq
- ;; Indentation
-  org-src-preserve-indentation nil
- org-edit-src-content-indentation 0
+  (setq
+   ;; Indentation
+   org-src-preserve-indentation nil
+   org-edit-src-content-indentation 0
 
- ;; Edit settings
- org-auto-align-tags nil
- org-tags-column 0
- org-fold-catch-invisible-edits 'show-and-error ;; FIXME org-catch-invisible-edits in readme of org-modern
- org-special-ctrl-a/e t
- org-insert-heading-respect-content t
+   ;; Edit settings
+   org-auto-align-tags nil
+   org-tags-column 0
+   org-fold-catch-invisible-edits 'show-and-error ;; FIXME org-catch-invisible-edits in readme of org-modern
+   org-special-ctrl-a/e t
+   org-insert-heading-respect-content t
 
- ;; Org styling, hide markup etc.
- org-hide-emphasis-markers t
- org-pretty-entities t
- ;; org-ellipsis "…"
- org-ellipsis " ▾"))
-#+end_src
+   ;; Org styling, hide markup etc.
+   org-hide-emphasis-markers t
+   org-pretty-entities t
+   org-ellipsis "…"
+   ;; org-ellipsis " ▾"
+   ))
+   #+end_src
 *** org-modern
+**** TODO org-bullets like identing
+**** TODO 
+
 Make org mode look way more modern. This is another awesome package by minad. 
 An alternative worth taking a look at is [[https://github.com/rougier/svg-tag-mode][svg-tag-mode]].
 The main advantage of org-modern is it not using images for the prettifying.
@@ -444,7 +498,7 @@ The main advantage of org-modern is it not using images for the prettifying.
   :config
 ;;;###autoload
 (defun magit-commit-create (&optional args)
-  "[CUSTOM] Create a new commit on `HEAD'.
+  "[CUSTOM] Create a new commit on HEAD'.
 With a prefix argument, amend to the commit at `HEAD' instead.
 \n(git commit [--amend] ARGS)"
   (interactive (if current-prefix-arg
@@ -507,7 +561,7 @@ Scroll line by line.
   :init
   (rainbow-delimiters-mode))
 #+end_src
-*** Confirmation prompts
+******* Confirmation prompts
 Use =y= / =n= instead of =yes= / =no.=
 #+begin_src emacs-lisp :tangle yes
 (setq confirm-kill-emacs #'y-or-n-p)
@@ -521,15 +575,19 @@ Use =y= / =n= instead of =yes= / =no.=
 (use-package vterm
   :ensure t
   :init
-  (setq vterm-max-scrollback 100000)
-)
+  (setq vterm-max-scrollback 100000))
 #+end_src
+**** TODO fix keybinding
 #+begin_src emacs-lisp :tangle yes
 (use-package vterm-toggle
   :ensure t
+  :init
+  (setq
+   vterm-toggle-fullscreen-p t)
   :bind 
-    ("C-`" . vterm-toggle)
-)
+  ("C-t" . vterm-toggle)
+  ("C-`" . vterm-toggle)
+  )
 #+end_src
 *** Ansi term
 #+begin_src emacs-lisp :tangle yes
@@ -555,12 +613,17 @@ Use =y= / =n= instead of =yes= / =no.=
 (use-package lsp-mode
   :ensure t
   :init
-  (setq lsp-keymap-prefix "C-c l") 
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(flex))) ;; Configure flex  (setq lsp-keymap-prefix "C-c l") 
   :config
   (lsp-enable-which-key-integration t)
   :commands (lsp lsp-deferred lsp-enable-which-key-integration)
+  :custom
+  (lsp-completion-provider :none) ;; use corfu
   :hook
-  (prog-mode . lsp))
+  (prog-mode . lsp)
+  (lsp-completion-mode . my/lsp-mode-setup-completion))
 #+end_src
 **** LSP UI
 #+begin_src emacs-lisp :tangle yes

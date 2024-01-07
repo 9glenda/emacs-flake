@@ -1,4 +1,9 @@
 inputs: [
+   {
+    name = "custom";
+    type = "melpa";
+    path = ../recipes;
+  }
   {
     name = "gnu";
     type = "elpa";
