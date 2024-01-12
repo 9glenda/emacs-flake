@@ -109,6 +109,12 @@
       repo = "goto-chg";
       type = "github";
     };
+    haskell-mode = {
+      flake = false;
+      owner = "haskell";
+      repo = "haskell-mode";
+      type = "github";
+    };
     helpful = {
       flake = false;
       owner = "Wilfred";
@@ -125,6 +131,12 @@
       flake = false;
       owner = "JuliaEditorSupport";
       repo = "julia-emacs";
+      type = "github";
+    };
+    lsp-haskell = {
+      flake = false;
+      owner = "emacs-lsp";
+      repo = "lsp-haskell";
       type = "github";
     };
     lsp-julia = {

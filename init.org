@@ -49,8 +49,8 @@
 #+end_src
 *** Font
 #+begin_src emacs-lisp :tangle yes
-(set-face-attribute 'default nil :family "Iosevka")
-(set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
+;; (set-face-attribute 'default nil :family "Iosevka")
+;; (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
 #+end_src
 
 ** Keep folders clean
@@ -88,7 +88,7 @@
 #+end_src
 
 ** Visuals
-*** TODO Theme
+*** DONE Theme
 =modus-operandi= is a light theme.
 #+begin_src emacs-lisp :tangle yes
 (use-package adwaita-dark-theme
@@ -124,15 +124,6 @@
   :custom
   (mood-line-glyph-alist mood-line-glyphs-fira-code))
   #+end_src
-*** nano-vertico !recipe DISABLED
-#+begin_src emacs-lisp :tangle yes
-;; (use-package nano-vertico
-;;   :ensure t
-;;   :after vertico
-;;   :commands (nano-vertico-mode)
-;;   :config
-;;   (nano-vertico-mode 1))
-#+end_src
 
 *** Line numbers
 #+begin_src emacs-lisp :tangle yes
@@ -158,12 +149,11 @@
   (progn
     (setq evil-undo-system 'undo-tree)
     (setq evil-want-keybinding nil))
-  :commands (evil-mode evil-global-set-key evil-previous-visual-line evil-visual-line evil-next-visual-line)
+  :commands (evil-mode evil-global-set-key evil-previous-visual-line evil-visual-line evil-next-visual-line evil-ex evil-visual-char evil-define-key evil-execute-macro)
   :config
   (evil-mode 1)
 
   (setq evil-want-fine-undo t)
-
 
   ;; Keybindings for evilnc
   (define-key evil-normal-state-map (kbd "g c") 'evilnc-comment-or-uncomment-lines)
@@ -470,6 +460,7 @@ Regexp match completions.
    ;; org-ellipsis " ▾"
    ))
    #+end_src
+*** Org Agenda
 *** org-modern
 **** TODO org-bullets like identing
 **** TODO 
@@ -690,8 +681,20 @@ Use =y= / =n= instead of =yes= / =no.=
   :ensure t
   :mode "\\.jl\\'"
   :config
-(setq lsp-julia-default-environment "~/.julia/environments/v1.9")
-)
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
+  #+end_src
+**** Haskell
+#+begin_src emacs-lisp :tangle yes
+(use-package lsp-haskell
+  :ensure t
+  :mode "\\.hs\\'"
+  :config
+  (setq lsp-haskell-server-path "haskell-language-server"))
+
+
+(use-package haskell-mode
+  :ensure t
+  :mode "\\.hs\\'")
   #+end_src
 
 

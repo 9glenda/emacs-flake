@@ -288,6 +288,22 @@
         "type": "github"
       }
     },
+    "haskell-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701280817,
+        "narHash": "sha256-R9FN5dQr9RQAbd1Q1IwZV9bauRCAZ0J20czbym18SNU=",
+        "owner": "haskell",
+        "repo": "haskell-mode",
+        "rev": "79eaf444a72109f93f552abb53f834cc63bbf9f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "haskell",
+        "repo": "haskell-mode",
+        "type": "github"
+      }
+    },
     "helpful": {
       "flake": false,
       "locked": {
@@ -333,6 +349,22 @@
       "original": {
         "owner": "JuliaEditorSupport",
         "repo": "julia-emacs",
+        "type": "github"
+      }
+    },
+    "lsp-haskell": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697045000,
+        "narHash": "sha256-G6rC10O1n+WvVGdGEuAP6e3LsaJYDEvM3P2UvwMzKkg=",
+        "owner": "emacs-lsp",
+        "repo": "lsp-haskell",
+        "rev": "89d16370434e9a247e95b8b701f524f5abfc884b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-lsp",
+        "repo": "lsp-haskell",
         "type": "github"
       }
     },
@@ -597,9 +629,11 @@
         "gcmh": "gcmh",
         "git-commit": "git-commit",
         "goto-chg": "goto-chg",
+        "haskell-mode": "haskell-mode",
         "helpful": "helpful",
         "ht": "ht",
         "julia-mode": "julia-mode",
+        "lsp-haskell": "lsp-haskell",
         "lsp-julia": "lsp-julia",
         "lsp-mode": "lsp-mode",
         "lsp-ui": "lsp-ui",
