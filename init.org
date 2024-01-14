@@ -460,7 +460,13 @@ Regexp match completions.
    ;; org-ellipsis " ▾"
    ))
    #+end_src
-*** Org Agenda
+*** Org Babel
+#+begin_src emacs-lisp :tangle yes
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '((emacs-lisp . t)
+    (haskell . t)))
+#+end_src
 *** org-modern
 **** TODO org-bullets like identing
 **** TODO 
