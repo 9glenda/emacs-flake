@@ -1,3 +1,6 @@
+#+TITLE: Emacs Config
+
+* early-init.el
 #+begin_src emacs-lisp :tangle early-init.el
 ;; -*- lexical-binding: t; no-byte-compile: t; -*-
 #+end_src
@@ -12,8 +15,9 @@
 #+begin_src emacs-lisp :tangle yes
 ;;; init.el --- Initialization -*- lexical-binding: t; -*-
 #+end_src
-** Startup
-*** GC
+
+* Startup
+** GC
 #+begin_src emacs-lisp :tangle yes
 (use-package gcmh
   :ensure t
@@ -22,7 +26,7 @@
   :config
   (gcmh-mode 1))
 #+end_src
-*** Startup time
+** Startup time
 #+begin_src emacs-lisp :tangle yes
 (defun display-startup-time ()
   (message
@@ -34,18 +38,18 @@
    gcs-done))
 (add-hook 'emacs-startup-hook #'display-startup-time)
 #+end_src
-*** No welcome screen
+** No welcome screen
 #+begin_src emacs-lisp :tangle yes
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 #+end_src
-*** Menu bar
+** Menu bar
 #+begin_src emacs-lisp :tangle yes
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 #+end_src
-*** Font
+** Font
 #+begin_src emacs-lisp :tangle yes
 ;; (set-face-attribute 'default nil :family "Iosevka")
 ;; (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
@@ -64,7 +68,7 @@
 #+begin_src emacs-lisp :tangle yes
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs"))
 #+end_src
-** use-package
+* use-package
 #+begin_src emacs-lisp :tangle yes
 (eval-when-compile
 (require 'use-package))
@@ -85,8 +89,8 @@
 
 #+end_src
 
-** Visuals
-*** DONE Theme
+* Visuals
+** DONE Theme
 =modus-operandi= is a light theme.
 #+begin_src emacs-lisp :tangle yes
 (use-package adwaita-dark-theme
@@ -103,7 +107,7 @@
 ;; (load-theme 'modus-vivendi-tritanopia)
 ;; (load-theme 'modus-operandi)
 #+end_src
-*** Modeline 
+** Modeline 
 #+begin_src emacs-lisp :tangle yes
 ;; (use-package nano-modeline
 ;;   :ensure nano-modeline-patched
@@ -123,7 +127,7 @@
   (mood-line-glyph-alist mood-line-glyphs-fira-code))
   #+end_src
 
-*** Line numbers
+** Line numbers
 #+begin_src emacs-lisp :tangle yes
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -136,7 +140,7 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
-*** Emacs Frame
+** Emacs Frame
 #+begin_src emacs-lisp :tangle yes
 (modify-all-frames-parameters
  '((right-divider-width . 20)
@@ -151,8 +155,8 @@
   (set-face-background 'fringe (face-attribute 'default :background))
 #+end_src
 
-** Keybindings
-*** Evil
+* Keybindings
+** Evil
 #+begin_src emacs-lisp :tangle yes
 (use-package evil
   :ensure t
@@ -220,7 +224,7 @@ This is so useful. I often mess up my undo history which is not possibe anymore 
 
 #+end_src
 
-*** General keybindings
+** General keybindings
 **** which-key
 #+begin_src emacs-lisp :tangle yes
 (use-package which-key
@@ -283,9 +287,8 @@ Custom elisp function for C-S-v pasting.
 (global-set-key (kbd "C-S-c") 'copy-to-clipboard)
 #+end_src
 
-
-** Completion
-*** Corfu
+* Completion
+** Corfu
 #+begin_src emacs-lisp :tangle yes
 (use-package corfu
   :ensure t
@@ -327,7 +330,7 @@ Custom elisp function for C-S-v pasting.
   (global-corfu-mode))
 #+end_src
 
-*** Emacs 
+** Emacs 
 #+begin_src  emacs-lisp :tangle yes
 (use-package emacs
   :init
@@ -373,7 +376,7 @@ Custom elisp function for C-S-v pasting.
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 )
 #+end_src
-*** Vertico
+** Vertico
 **** TODO copy selected item 
 **** TODO `C-j' movements
 #+begin_src emacs-lisp :tangle yes
@@ -398,8 +401,8 @@ Custom elisp function for C-S-v pasting.
   :init
   (savehist-mode))
 #+end_src
-*** TODO Embark
-*** Marginalia
+** TODO Embark
+** Marginalia
 Add extra information to minibuffer commands.
 #+begin_src emacs-lisp :tangle yes
 (use-package marginalia
@@ -414,7 +417,7 @@ Add extra information to minibuffer commands.
   :init
   (marginalia-mode))
 #+end_src
-*** Orderless
+** Orderless
 Regexp match completions.
 #+begin_src emacs-lisp :tangle yes
 (use-package orderless
@@ -423,98 +426,21 @@ Regexp match completions.
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
-*** Consult
+** Consult
 #+begin_src emacs-lisp :tangle yes
 (use-package consult
   :ensure t)
 #+end_src
 
+* Misc
 ** Helpful
 #+begin_src emacs-lisp :tangle yes
 (use-package helpful
   :ensure t)
 #+end_src
 
-** Org
-#+begin_src emacs-lisp :tangle yes
-(use-package org
-  :ensure t
-  :config
-  (setq
-   org-src-preserve-indentation nil
-   org-edit-src-content-indentation 0
-   org-auto-align-tags nil
-   org-tags-column 0
-   org-fold-catch-invisible-edits 'show-and-error
-   org-special-ctrl-a/e t
-   org-insert-heading-respect-content t
 
-   ;; visuals
-   org-pretty-entities t
-   ;; Org styling, hide markup etc.
-   org-hide-emphasis-markers t
-   org-pretty-entities t
-   org-ellipsis "⤵"
-   ;; ⤵ ▼ ⬎    ▾ …
-
-   org-src-fontify-natively t ;; Syntax highlighting in org src blocks
-))
-#+end_src
-
-*** Org Babel
-#+begin_src emacs-lisp :tangle yes
-(org-babel-do-load-languages
-  'org-babel-load-languages
-  '(
-    (emacs-lisp . t)
-    (haskell . t)
-))
-(setq org-confirm-babel-evaluate nil)
-#+end_src
-
-*** Org Superstar
-#+begin_src emacs-lisp :tangle yes
-(use-package org-superstar
-  :ensure t
-  :demand t
-  :hook (org-mode . org-superstar-mode)
-  :config
-  (setq
-   org-superstar-leading-bullet " "
-   org-superstar-special-todo-items t
-   org-superstar-todo-bullet-alist '(
-      ("TODO" . 9744)
-      ("FIXME" . 9744)
-      ("DISABLED" . 9744) ;; For init.el
-      ("DONE" . 9745))
-   )
-)
-#+end_src
-
-*** DISABLED org-modern
-
-Make org mode look way more modern. This is another awesome package by minad. 
-An alternative worth taking a look at is [[https://github.com/rougier/svg-tag-mode][svg-tag-mode]].
-The main advantage of org-modern is it not using images for the prettifying.
-#+begin_src emacs-lisp :tangle yes
-;; (use-package org-modern
-;;   :ensure t
-;;   :hook (org-mode . org-modern-mode)
-;;   ;;:commands (global-org-modern-mode)
-;;   :config
-;;   ;; (global-org-modern-mode)
-;;   (setq
-;;    ;; org-modern-star '("●" "○" "✸" "✿")
-;;    org-modern-star '( "⌾" "✸" "◈" "◇")
-;;    org-modern-list '((42 . "◦") (43 . "•") (45 . "–"))
-;;    org-modern-tag nil
-;;    org-modern-priority nil
-;;    org-modern-todo nil
-;;    org-modern-table nil))
-#+end_src
-
-
-** Project managment/Git
+* Project managment/Git
 *** Pojectile
 #+begin_src emacs-lisp :tangle yes
 (use-package projectile
@@ -580,7 +506,7 @@ With a prefix argument, amend to the commit at `HEAD' instead.
 
 
 #+end_src
-** UX
+* UX
 *** Evil Googles
 Highlight yanked/pasted text. 
 #+begin_src emacs-lisp :tangle yes
@@ -626,8 +552,8 @@ Use =y= / =n= instead of =yes= / =no.=
 #+end_src
 
 
-** Terminal
-*** Vterm
+* Terminal
+** Vterm
 #+begin_src emacs-lisp :tangle yes
 (use-package vterm
   :ensure t
@@ -646,11 +572,11 @@ Use =y= / =n= instead of =yes= / =no.=
   ("C-`" . vterm-toggle)
   )
 #+end_src
-*** Ansi term
+** Ansi term
 #+begin_src emacs-lisp :tangle yes
 (defvar my-term-shell "/run/current-system/sw/bin/bash")
 #+end_src
-*** Kill buffer on exit
+** Kill buffer on exit
 #+begin_src emacs-lisp :tangle yes
 (defun my-term-handle-exit (&optional process-name msg)
   (message "%s | %s" process-name msg)
@@ -659,13 +585,94 @@ Use =y= / =n= instead of =yes= / =no.=
 (advice-add 'term-handle-exit :after 'my-term-handle-exit)
 #+end_src
 
-** Debugging
+* Debugging
 #+begin_src emacs-lisp :tangle yes
 (use-package command-log-mode
   :ensure t)
 #+end_src
 
-** LSP
+
+* Org
+** Org Package
+#+begin_src emacs-lisp :tangle yes
+(use-package org
+  :ensure t
+  :config
+  (setq
+   org-src-preserve-indentation nil
+   org-edit-src-content-indentation 0
+   org-auto-align-tags nil
+   org-tags-column 0
+   org-fold-catch-invisible-edits 'show-and-error
+   org-special-ctrl-a/e t
+   org-insert-heading-respect-content t
+
+   ;; visuals
+   org-pretty-entities t
+   ;; Org styling, hide markup etc.
+   org-hide-emphasis-markers t
+   org-pretty-entities t
+   org-ellipsis "⤵"
+   ;; ⤵ ▼ ⬎    ▾ …
+
+   org-src-fontify-natively t ;; Syntax highlighting in org src blocks
+))
+#+end_src
+
+** Org Babel
+#+begin_src emacs-lisp :tangle yes
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '(
+    (emacs-lisp . t)
+    (haskell . t)
+))
+(setq org-confirm-babel-evaluate nil)
+#+end_src
+
+** Org Superstar
+#+begin_src emacs-lisp :tangle yes
+(use-package org-superstar
+  :ensure t
+  :demand t
+  :hook (org-mode . org-superstar-mode)
+  :config
+  (setq
+   org-superstar-leading-bullet " "
+   org-superstar-special-todo-items t
+   org-superstar-todo-bullet-alist '(
+      ("TODO" . 9744)
+      ("FIXME" . 9744)
+      ("DISABLED" . 9744) ;; For init.el
+      ("DONE" . 9745))
+   )
+)
+#+end_src
+
+** DISABLED org-modern
+
+Make org mode look way more modern. This is another awesome package by minad. 
+An alternative worth taking a look at is [[https://github.com/rougier/svg-tag-mode][svg-tag-mode]].
+The main advantage of org-modern is it not using images for the prettifying.
+#+begin_src emacs-lisp :tangle yes
+;; (use-package org-modern
+;;   :ensure t
+;;   :hook (org-mode . org-modern-mode)
+;;   ;;:commands (global-org-modern-mode)
+;;   :config
+;;   ;; (global-org-modern-mode)
+;;   (setq
+;;    ;; org-modern-star '("●" "○" "✸" "✿")
+;;    org-modern-star '( "⌾" "✸" "◈" "◇")
+;;    org-modern-list '((42 . "◦") (43 . "•") (45 . "–"))
+;;    org-modern-tag nil
+;;    org-modern-priority nil
+;;    org-modern-todo nil
+;;    org-modern-table nil))
+#+end_src
+
+
+* LSP
 #+begin_src emacs-lisp :tangle yes
 (use-package lsp-mode
   :ensure t
