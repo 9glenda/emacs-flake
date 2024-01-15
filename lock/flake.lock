@@ -144,6 +144,22 @@
         "type": "github"
       }
     },
+    "emacsql": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702845411,
+        "narHash": "sha256-9lrjXFAGFqeH/Wqx0UqNn1X9gQtjvEWlLHMW2WDyRXw=",
+        "owner": "magit",
+        "repo": "emacsql",
+        "rev": "e2b2df570d213cbaa995dd500a70b1ec95758925",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "emacsql",
+        "type": "github"
+      }
+    },
     "evil": {
       "flake": false,
       "locked": {
@@ -561,6 +577,22 @@
         "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
       }
     },
+    "org-roam": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705261328,
+        "narHash": "sha256-XEM1EIVGigPeUtnPANlM3J3ueoVeCKPVLaPCbxN4Hcg=",
+        "owner": "org-roam",
+        "repo": "org-roam",
+        "rev": "8667e441876cd2583fbf7282a65796ea149f0e5f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "org-roam",
+        "repo": "org-roam",
+        "type": "github"
+      }
+    },
     "org-superstar": {
       "flake": false,
       "locked": {
@@ -620,6 +652,7 @@
         "corfu": "corfu",
         "dash": "dash",
         "elisp-refs": "elisp-refs",
+        "emacsql": "emacsql",
         "evil": "evil",
         "evil-collection": "evil-collection",
         "evil-goggles": "evil-goggles",
@@ -646,6 +679,7 @@
         "nix-mode": "nix-mode",
         "orderless": "orderless",
         "org": "org",
+        "org-roam": "org-roam",
         "org-superstar": "org-superstar",
         "projectile": "projectile",
         "rainbow-delimiters": "rainbow-delimiters",

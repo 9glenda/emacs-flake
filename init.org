@@ -110,15 +110,6 @@
 #+end_src
 ** Modeline 
 #+begin_src emacs-lisp :tangle yes
-;; (use-package nano-modeline
-;;   :ensure nano-modeline-patched
-;;   :demand t
-;;   :hook
-;;   (prog-mode-hook . nano-modeline-prog-mode)
-;;   (org-mode-hook . nano-modeline-org-mode)
-;;   (term-mode-hook . nano-modeline-term-mode)
-;;   (vterm-mode-hook . nano-modeline-term-mode)
-;;   (messages-buffer-mode-hook . nano-modeline-message-mode))
 (use-package mood-line
   :ensure t
   :commands (mood-line-mode)
@@ -126,7 +117,7 @@
   (mood-line-mode)
   :custom
   (mood-line-glyph-alist mood-line-glyphs-fira-code))
-  #+end_src
+#+end_src
 
 ** Line numbers
 #+begin_src emacs-lisp :tangle yes
@@ -541,9 +532,7 @@ Scroll line by line.
   :ensure t
   :demand t
   :commands (rainbow-delimiters-mode)
-  :config
-  (rainbow-delimiters-mode t)
-
+  :init (rainbow-delimiters-mode)
 )
 #+end_src
 *** Confirmation prompts
@@ -565,15 +554,13 @@ Use =y= / =n= instead of =yes= / =no.=
 *** Vterm toggle
 #+begin_src emacs-lisp :tangle yes
 (use-package vterm-toggle
-  :after xref
+  :after evil
   :ensure t
-  :demand t
   :bind*
     (("C-t" . vterm-toggle))
   :init
   (setq
-   vterm-toggle-fullscreen-p t)
-)
+   vterm-toggle-fullscreen-p t))
 #+end_src
 ** Ansi term
 #+begin_src emacs-lisp :tangle yes
@@ -595,6 +582,19 @@ Use =y= / =n= instead of =yes= / =no.=
 
 
 * Org Mode
+** Org roam
+#+begin_src emacs-lisp :tangle yes
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/RoamNotes")
+  :commands (org-roam-db-autosync-enable)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert))
+  :config
+  (org-roam-db-autosync-enable))
+#+end_src
 ** Latest Org Mode Package
 Pulling the latest version on org mode to make sure it’s always up to date/
 #+begin_src emacs-lisp :tangle yes
@@ -681,6 +681,7 @@ The main advantage of org-modern is it not using images for the prettifying.
 
 
 * LSP
+** LSP mode
 #+begin_src emacs-lisp :tangle yes
 (use-package lsp-mode
   :ensure t
@@ -697,34 +698,34 @@ The main advantage of org-modern is it not using images for the prettifying.
   (prog-mode . lsp)
   (lsp-completion-mode . my/lsp-mode-setup-completion))
 #+end_src
-**** LSP UI
+** LSP UI
 #+begin_src emacs-lisp :tangle yes
 (use-package lsp-ui
   :ensure t
   :hook (lsp-mode . lsp-ui-mode))
 #+end_src
-*** Langs
-**** Ocaml
+** Langs
+*** Ocaml
 #+begin_src emacs-lisp :tangle yes
 (use-package tuareg
   :mode "\\.ml\\'"
   :ensure t)
   #+end_src
-**** Rust
+*** Rust
 #+begin_src emacs-lisp :tangle yes
 (use-package rust-mode
   :mode "\\.rs\\'"
   :ensure t)
   #+end_src
 
-**** Nix
+*** Nix
 #+begin_src emacs-lisp :tangle yes
 (use-package nix-mode
   :mode "\\.nix\\'"
   :ensure t)
 #+end_src
 
-**** Julia
+*** Julia
 #+begin_src emacs-lisp :tangle yes
 (use-package lsp-julia
   :ensure t
@@ -733,7 +734,7 @@ The main advantage of org-modern is it not using images for the prettifying.
   (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
 #+end_src
 
-**** Haskell
+*** Haskell
 #+begin_src emacs-lisp :tangle yes
 (use-package lsp-haskell
   :ensure t
@@ -750,3 +751,4 @@ The main advantage of org-modern is it not using images for the prettifying.
 
 * Keybingings
 =M-:= eval-expression
+=C-c C-x C-l=: LaTeX preview

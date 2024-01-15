@@ -56,6 +56,12 @@
       repo = "elisp-refs";
       type = "github";
     };
+    emacsql = {
+      flake = false;
+      owner = "magit";
+      repo = "emacsql";
+      type = "github";
+    };
     evil = {
       flake = false;
       owner = "emacs-evil";
@@ -210,6 +216,12 @@
       ref = "bugfix";
       type = "git";
       url = "https://git.savannah.gnu.org/git/emacs/org-mode.git";
+    };
+    org-roam = {
+      flake = false;
+      owner = "org-roam";
+      repo = "org-roam";
+      type = "github";
     };
     org-superstar = {
       flake = false;
