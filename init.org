@@ -568,13 +568,12 @@ Use =y= / =n= instead of =yes= / =no.=
   :after xref
   :ensure t
   :demand t
+  :bind*
+    (("C-t" . vterm-toggle))
   :init
   (setq
    vterm-toggle-fullscreen-p t)
-  :bind*
-    (("C-t" . vterm-toggle))
-    ;; ("C-`" . vterm-toggle)
-  )
+)
 #+end_src
 ** Ansi term
 #+begin_src emacs-lisp :tangle yes
