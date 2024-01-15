@@ -211,12 +211,6 @@
       type = "git";
       url = "https://git.savannah.gnu.org/git/emacs/org-mode.git";
     };
-    org-modern = {
-      flake = false;
-      owner = "minad";
-      repo = "org-modern";
-      type = "github";
-    };
     org-superstar = {
       flake = false;
       owner = "integral-dw";

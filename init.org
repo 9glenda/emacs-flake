@@ -515,7 +515,6 @@ Highlight yanked/pasted text.
   :ensure t
   :demand t
   :commands (evil-goggles-mode evil-goggles-use-diff-faces)
-  :init
   :config
   (evil-goggles-mode)
   (setq 
@@ -543,9 +542,11 @@ Scroll line by line.
   :demand t
   :commands (rainbow-delimiters-mode)
   :config
-  (rainbow-delimiters-mode))
+  (rainbow-delimiters-mode t)
+
+)
 #+end_src
-***** Confirmation prompts
+*** Confirmation prompts
 Use =y= / =n= instead of =yes= / =no.=
 #+begin_src emacs-lisp :tangle yes
 (setq confirm-kill-emacs #'y-or-n-p)
@@ -561,16 +562,18 @@ Use =y= / =n= instead of =yes= / =no.=
   :init
   (setq vterm-max-scrollback 100000))
 #+end_src
-**** TODO fix keybinding
+*** Vterm toggle
 #+begin_src emacs-lisp :tangle yes
 (use-package vterm-toggle
+  :after xref
   :ensure t
+  :demand t
   :init
   (setq
    vterm-toggle-fullscreen-p t)
-  :bind 
-  ("C-t" . vterm-toggle)
-  ("C-`" . vterm-toggle)
+  :bind*
+    (("C-t" . vterm-toggle))
+    ;; ("C-`" . vterm-toggle)
   )
 #+end_src
 ** Ansi term
@@ -582,7 +585,6 @@ Use =y= / =n= instead of =yes= / =no.=
 (defun my-term-handle-exit (&optional process-name msg)
   (message "%s | %s" process-name msg)
   (kill-buffer (current-buffer)))
-
 (advice-add 'term-handle-exit :after 'my-term-handle-exit)
 #+end_src
 
@@ -629,7 +631,13 @@ Org Babel is used to execute/evaluate org source blocks.
   '(
     (emacs-lisp . t)
     (haskell . t)
+    (julia . t)
+    (ocaml . t)
+    (latex . t)
+    (shell . t)
+    (calc . t)
 ))
+
 (setq org-confirm-babel-evaluate nil)
 #+end_src
 

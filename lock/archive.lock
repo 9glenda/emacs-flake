@@ -1,4 +1,19 @@
 {
+  "auctex": {
+    "archive": {
+      "narHash": "sha256-b4rd4xlCIPiH6aKQAnYlndDvd8EgzKag071tONTX55Y=",
+      "type": "tarball",
+      "url": "https://elpa.gnu.org/packages/auctex-13.2.4.tar"
+    },
+    "inventory": {
+      "type": "archive",
+      "url": "https://elpa.gnu.org/packages/"
+    },
+    "packageRequires": {
+      "emacs": "26.1"
+    },
+    "version": "13.2.4"
+  },
   "queue": {
     "archive": {
       "narHash": "sha256-cbv1sqH7LJXdRZ/teyScnysvsn8/JcaPqrRBc7jGrZw=",
