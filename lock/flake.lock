@@ -224,6 +224,22 @@
         "type": "github"
       }
     },
+    "evil-org": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664667331,
+        "narHash": "sha256-RI8foTWceKQkvCQ05BHklQE37m2i+oCQMC94+09WVfY=",
+        "owner": "Somelauw",
+        "repo": "evil-org-mode",
+        "rev": "b1f309726b1326e1a103742524ec331789f2bf94",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Somelauw",
+        "repo": "evil-org-mode",
+        "type": "github"
+      }
+    },
     "evil-visualstar": {
       "flake": false,
       "locked": {
@@ -657,6 +673,7 @@
         "evil-collection": "evil-collection",
         "evil-goggles": "evil-goggles",
         "evil-nerd-commenter": "evil-nerd-commenter",
+        "evil-org": "evil-org",
         "evil-visualstar": "evil-visualstar",
         "f": "f",
         "gcmh": "gcmh",

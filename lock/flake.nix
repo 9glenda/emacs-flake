@@ -86,6 +86,12 @@
       repo = "evil-nerd-commenter";
       type = "github";
     };
+    evil-org = {
+      flake = false;
+      owner = "Somelauw";
+      repo = "evil-org-mode";
+      type = "github";
+    };
     evil-visualstar = {
       flake = false;
       owner = "bling";
