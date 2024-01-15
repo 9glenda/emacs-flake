@@ -1,4 +1,5 @@
 #+TITLE: Emacs Config
+#+AUTHOR: 9glenda
 
 * early-init.el
 #+begin_src emacs-lisp :tangle early-init.el
@@ -592,8 +593,9 @@ Use =y= / =n= instead of =yes= / =no.=
 #+end_src
 
 
-* Org
-** Org Package
+* Org Mode
+** Latest Org Mode Package
+Pulling the latest version on org mode to make sure it’s always up to date/
 #+begin_src emacs-lisp :tangle yes
 (use-package org
   :ensure t
@@ -620,6 +622,7 @@ Use =y= / =n= instead of =yes= / =no.=
 #+end_src
 
 ** Org Babel
+Org Babel is used to execute/evaluate org source blocks.
 #+begin_src emacs-lisp :tangle yes
 (org-babel-do-load-languages
   'org-babel-load-languages
@@ -631,11 +634,11 @@ Use =y= / =n= instead of =yes= / =no.=
 #+end_src
 
 ** Org Superstar
+Org Superstar replaces the =*= in Headings with a nice Unicode Symbol.
 #+begin_src emacs-lisp :tangle yes
 (use-package org-superstar
   :ensure t
-  :demand t
-  :hook (org-mode . org-superstar-mode)
+  :hook (org-mode-hook . org-superstar-mode)
   :config
   (setq
    org-superstar-leading-bullet " "
@@ -654,21 +657,19 @@ Use =y= / =n= instead of =yes= / =no.=
 Make org mode look way more modern. This is another awesome package by minad. 
 An alternative worth taking a look at is [[https://github.com/rougier/svg-tag-mode][svg-tag-mode]].
 The main advantage of org-modern is it not using images for the prettifying.
-#+begin_src emacs-lisp :tangle yes
-;; (use-package org-modern
-;;   :ensure t
-;;   :hook (org-mode . org-modern-mode)
-;;   ;;:commands (global-org-modern-mode)
-;;   :config
-;;   ;; (global-org-modern-mode)
-;;   (setq
-;;    ;; org-modern-star '("●" "○" "✸" "✿")
-;;    org-modern-star '( "⌾" "✸" "◈" "◇")
-;;    org-modern-list '((42 . "◦") (43 . "•") (45 . "–"))
-;;    org-modern-tag nil
-;;    org-modern-priority nil
-;;    org-modern-todo nil
-;;    org-modern-table nil))
+#+begin_src emacs-lisp :tangle no
+(use-package org-modern
+  :ensure t
+  :hook (org-mode-hook . org-modern-mode)
+  :config
+  (setq
+   ;; org-modern-star '("●" "○" "✸" "✿")
+   org-modern-star '( "⌾" "✸" "◈" "◇")
+   org-modern-list '((42 . "◦") (43 . "•") (45 . "–"))
+   org-modern-tag nil
+   org-modern-priority nil
+   org-modern-todo nil
+   org-modern-table nil))
 #+end_src
 
 
