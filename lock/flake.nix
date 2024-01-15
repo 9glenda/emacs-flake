@@ -217,6 +217,12 @@
       repo = "org-modern";
       type = "github";
     };
+    org-superstar = {
+      flake = false;
+      owner = "integral-dw";
+      repo = "org-superstar-mode";
+      type = "github";
+    };
     projectile = {
       flake = false;
       owner = "bbatsov";

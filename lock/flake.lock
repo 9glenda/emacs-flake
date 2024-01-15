@@ -564,16 +564,32 @@
     "org-modern": {
       "flake": false,
       "locked": {
-        "lastModified": 1703963587,
-        "narHash": "sha256-hChAserqPbXKXELjM7UDxpcPZJ2Y5O9yBRBq8+3eC2Q=",
+        "lastModified": 1704166155,
+        "narHash": "sha256-d1PxoFwRn+Xo7bRFw87O8j6wsz/pLjWd+fvnpRkqcsA=",
         "owner": "minad",
         "repo": "org-modern",
-        "rev": "0fd111d1f086a681aa68f323e337c256c3070305",
+        "rev": "5f056aad428a0e4207012a0efa447aacb74c75b9",
         "type": "github"
       },
       "original": {
         "owner": "minad",
         "repo": "org-modern",
+        "type": "github"
+      }
+    },
+    "org-superstar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673881825,
+        "narHash": "sha256-JziMi+ms7vtV5HLuBu7eq4noH/IeNRGNhOtWqgXdTRU=",
+        "owner": "integral-dw",
+        "repo": "org-superstar-mode",
+        "rev": "54c81c27dde2a6dc461bb064e79a8b2089093a2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "integral-dw",
+        "repo": "org-superstar-mode",
         "type": "github"
       }
     },
@@ -647,6 +663,7 @@
         "orderless": "orderless",
         "org": "org",
         "org-modern": "org-modern",
+        "org-superstar": "org-superstar",
         "projectile": "projectile",
         "rainbow-delimiters": "rainbow-delimiters",
         "rust-mode": "rust-mode",

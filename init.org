@@ -12,9 +12,7 @@
 #+begin_src emacs-lisp :tangle yes
 ;;; init.el --- Initialization -*- lexical-binding: t; -*-
 #+end_src
-
 ** Startup
-
 *** GC
 #+begin_src emacs-lisp :tangle yes
 (use-package gcmh
@@ -136,6 +134,21 @@
 		vterm-mode-hook
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
+*** Emacs Frame
+#+begin_src emacs-lisp :tangle yes
+(modify-all-frames-parameters
+ '((right-divider-width . 20)
+   (internal-border-width . 20)))
+
+(dolist (face '(window-divider
+		window-divider-first-pixel
+		window-divider-last-pixel))
+
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+  (set-face-background 'fringe (face-attribute 'default :background))
 #+end_src
 
 ** Keybindings
@@ -423,68 +436,81 @@ Regexp match completions.
 #+end_src
 
 ** Org
-** TODO Fix grave
-*** No indentation 
 #+begin_src emacs-lisp :tangle yes
-(modify-all-frames-parameters
- '((right-divider-width . 20)
-   (internal-border-width . 20)))
-
-(dolist (face '(window-divider
-		window-divider-first-pixel
-		window-divider-last-pixel))
-
-  (face-spec-reset-face face)
-  (set-face-foreground face (face-attribute 'default :background)))
-(set-face-background 'fringe (face-attribute 'default :background))
-
 (use-package org
   :ensure t
   :config
   (setq
-   ;; Indentation
    org-src-preserve-indentation nil
    org-edit-src-content-indentation 0
-
-   ;; Edit settings
    org-auto-align-tags nil
    org-tags-column 0
-   org-fold-catch-invisible-edits 'show-and-error ;; FIXME org-catch-invisible-edits in readme of org-modern
+   org-fold-catch-invisible-edits 'show-and-error
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
 
+   ;; visuals
+   org-pretty-entities t
    ;; Org styling, hide markup etc.
    org-hide-emphasis-markers t
    org-pretty-entities t
-   org-ellipsis "…"
-   ;; org-ellipsis " ▾"
-   ))
-   #+end_src
+   org-ellipsis "⤵"
+   ;; ⤵ ▼ ⬎    ▾ …
+
+   org-src-fontify-natively t ;; Syntax highlighting in org src blocks
+))
+#+end_src
+
 *** Org Babel
 #+begin_src emacs-lisp :tangle yes
 (org-babel-do-load-languages
   'org-babel-load-languages
-  '((emacs-lisp . t)
-    (haskell . t)))
+  '(
+    (emacs-lisp . t)
+    (haskell . t)
+))
+(setq org-confirm-babel-evaluate nil)
 #+end_src
-*** org-modern
-**** TODO org-bullets like identing
-**** TODO 
+
+*** Org Superstar
+#+begin_src emacs-lisp :tangle yes
+(use-package org-superstar
+  :ensure t
+  :demand t
+  :hook (org-mode . org-superstar-mode)
+  :config
+  (setq
+   org-superstar-leading-bullet " "
+   org-superstar-special-todo-items t
+   org-superstar-todo-bullet-alist '(
+      ("TODO" . 9744)
+      ("FIXME" . 9744)
+      ("DISABLED" . 9744) ;; For init.el
+      ("DONE" . 9745))
+   )
+)
+#+end_src
+
+*** DISABLED org-modern
 
 Make org mode look way more modern. This is another awesome package by minad. 
 An alternative worth taking a look at is [[https://github.com/rougier/svg-tag-mode][svg-tag-mode]].
 The main advantage of org-modern is it not using images for the prettifying.
 #+begin_src emacs-lisp :tangle yes
-(use-package org-modern
- :ensure t
- :demand t
- ;; :hook (org-mode . org-modern-mode)
- :commands (global-org-modern-mode)
- :config
- (global-org-modern-mode)
-
-  (set-face-attribute 'org-modern-symbol nil :family "Iosevka")
-)
+;; (use-package org-modern
+;;   :ensure t
+;;   :hook (org-mode . org-modern-mode)
+;;   ;;:commands (global-org-modern-mode)
+;;   :config
+;;   ;; (global-org-modern-mode)
+;;   (setq
+;;    ;; org-modern-star '("●" "○" "✸" "✿")
+;;    org-modern-star '( "⌾" "✸" "◈" "◇")
+;;    org-modern-list '((42 . "◦") (43 . "•") (45 . "–"))
+;;    org-modern-tag nil
+;;    org-modern-priority nil
+;;    org-modern-todo nil
+;;    org-modern-table nil))
 #+end_src
 
 
@@ -587,11 +613,12 @@ Scroll line by line.
 #+begin_src emacs-lisp :tangle yes
 (use-package rainbow-delimiters
   :ensure t
+  :demand t
   :commands (rainbow-delimiters-mode)
-  :init
+  :config
   (rainbow-delimiters-mode))
 #+end_src
-******* Confirmation prompts
+***** Confirmation prompts
 Use =y= / =n= instead of =yes= / =no.=
 #+begin_src emacs-lisp :tangle yes
 (setq confirm-kill-emacs #'y-or-n-p)
@@ -674,12 +701,13 @@ Use =y= / =n= instead of =yes= / =no.=
   :mode "\\.rs\\'"
   :ensure t)
   #+end_src
+
 **** Nix
 #+begin_src emacs-lisp :tangle yes
 (use-package nix-mode
   :mode "\\.nix\\'"
   :ensure t)
-  #+end_src
+#+end_src
 
 **** Julia
 #+begin_src emacs-lisp :tangle yes
@@ -688,7 +716,8 @@ Use =y= / =n= instead of =yes= / =no.=
   :mode "\\.jl\\'"
   :config
   (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
-  #+end_src
+#+end_src
+
 **** Haskell
 #+begin_src emacs-lisp :tangle yes
 (use-package lsp-haskell
@@ -701,7 +730,7 @@ Use =y= / =n= instead of =yes= / =no.=
 (use-package haskell-mode
   :ensure t
   :mode "\\.hs\\'")
-  #+end_src
+#+end_src
 
 
 * Keybingings
