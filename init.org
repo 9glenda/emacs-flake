@@ -770,6 +770,11 @@ The main advantage of org-modern is it not using images for the prettifying.
   :mode "\\.hs\\'")
 #+end_src
 
+* Nix
+#+begin_src emacs-lisp :tangle yes
+(use-package nix3
+  :ensure t)
+#+end_src
 
 * Keybingings
 =M-:= eval-expression
