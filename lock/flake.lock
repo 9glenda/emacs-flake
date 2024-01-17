@@ -560,6 +560,22 @@
         "type": "github"
       }
     },
+    "nix3": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705246116,
+        "narHash": "sha256-r96qXfYjaFJEv25Z713ojqVUmuL65xANDbfUInwbbs0=",
+        "owner": "emacs-twist",
+        "repo": "nix3.el",
+        "rev": "a2b855302567feebcf86c6a301a1a62b37aba144",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emacs-twist",
+        "repo": "nix3.el",
+        "type": "github"
+      }
+    },
     "orderless": {
       "flake": false,
       "locked": {
@@ -641,6 +657,22 @@
         "type": "github"
       }
     },
+    "promise": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1615102078,
+        "narHash": "sha256-p6HAx+uAQTWfUlPfJu0tk6x6EBxsSuRa+4n7Vd5rus8=",
+        "owner": "chuntaro",
+        "repo": "emacs-promise",
+        "rev": "cec51feb5f957e8febe6325335cf57dc2db6be30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chuntaro",
+        "repo": "emacs-promise",
+        "type": "github"
+      }
+    },
     "rainbow-delimiters": {
       "flake": false,
       "locked": {
@@ -694,11 +726,13 @@
         "markdown-mode": "markdown-mode",
         "mood-line": "mood-line",
         "nix-mode": "nix-mode",
+        "nix3": "nix3",
         "orderless": "orderless",
         "org": "org",
         "org-roam": "org-roam",
         "org-superstar": "org-superstar",
         "projectile": "projectile",
+        "promise": "promise",
         "rainbow-delimiters": "rainbow-delimiters",
         "rust-mode": "rust-mode",
         "s": "s",

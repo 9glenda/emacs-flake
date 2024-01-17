@@ -211,6 +211,12 @@
       repo = "nix-mode";
       type = "github";
     };
+    nix3 = {
+      flake = false;
+      owner = "emacs-twist";
+      repo = "nix3.el";
+      type = "github";
+    };
     orderless = {
       flake = false;
       owner = "oantolin";
@@ -239,6 +245,12 @@
       flake = false;
       owner = "bbatsov";
       repo = "projectile";
+      type = "github";
+    };
+    promise = {
+      flake = false;
+      owner = "chuntaro";
+      repo = "emacs-promise";
       type = "github";
     };
     rainbow-delimiters = {

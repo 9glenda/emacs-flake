@@ -42,6 +42,8 @@
 
               initFiles = [(final.tangleOrgBabelFile "init.el" ./init.org {})];
 
+              exportManifest = true;
+
               lockDir = ./lock;
               registries = import ./nix/registries.nix inputs;
             }).overrideScope' (_tfinal: tprev: {
