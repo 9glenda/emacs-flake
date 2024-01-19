@@ -377,7 +377,7 @@ Custom elisp function for C-S-v pasting.
          ("C-j" . vertico-next)
          ("C-k" . vertico-previous)
          ("ESC" . vertico-exit)
-         ("C-y" . vertico-save)
+         ("C-x" . vertico-save)
          :map minibuffer-local-map
          ("C-w" . backward-kill-word))
   :init
