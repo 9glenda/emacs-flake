@@ -181,6 +181,12 @@
       repo = "magit";
       type = "github";
     };
+    magit-nix3 = {
+      flake = false;
+      owner = "emacs-twist";
+      repo = "nix3.el";
+      type = "github";
+    };
     magit-section = {
       flake = false;
       owner = "magit";
@@ -287,6 +293,12 @@
       flake = false;
       owner = "ocaml";
       repo = "tuareg";
+      type = "github";
+    };
+    twist = {
+      flake = false;
+      owner = "emacs-twist";
+      repo = "twist.el";
       type = "github";
     };
     undo-tree = {
