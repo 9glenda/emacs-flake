@@ -91,7 +91,6 @@
 #+end_src
 
 * Visuals
-** DONE Theme
 =modus-operandi= is a light theme.
 #+begin_src emacs-lisp :tangle yes
 (use-package adwaita-dark-theme
@@ -228,7 +227,7 @@ This is so useful. I often mess up my undo history which is not possibe anymore 
   (setq which-key-idle-delay 1)
 )
 #+end_src
-**** Ehelloval to kill ring
+**** Eval to kill ring
 #+begin_src emacs-lisp :tangle yes
 (defun eval-to-kill-ring ()
   (interactive)
@@ -370,7 +369,6 @@ Custom elisp function for C-S-v pasting.
 #+end_src
 ** Vertico
 **** TODO copy selected item 
-**** TODO `C-j' movements
 #+begin_src emacs-lisp :tangle yes
 (use-package vertico
   :ensure t
@@ -379,6 +377,7 @@ Custom elisp function for C-S-v pasting.
          ("C-j" . vertico-next)
          ("C-k" . vertico-previous)
          ("ESC" . vertico-exit)
+         ("C-y" . vertico-save)
          :map minibuffer-local-map
          ("C-w" . backward-kill-word))
   :init
@@ -775,15 +774,19 @@ The main advantage of org-modern is it not using images for the prettifying.
 #+begin_src emacs-lisp :tangle yes
 (use-package nix3
   :ensure t)
-
+#+end_src
+*** Magit nix
+#+begin_src emacs-lisp :tangle yes
 (use-package magit-nix3
   :ensure t)
 #+end_src
-** twist.el
+
+*** twist.el
 #+begin_src emacs-lisp :tangle yes
 (use-package twist
   :ensure t)
 #+end_src
+
 
 * Keybingings
 =M-:= eval-expression
