@@ -1,0 +1,2 @@
+(consult-bibtex
+	:fetcher github :repo "mohkale/consult-bibtex")

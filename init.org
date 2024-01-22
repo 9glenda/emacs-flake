@@ -680,6 +680,12 @@ Org Superstar replaces the =*= in Headings with a nice Unicode Symbol.
 )
 
 #+end_src
+** Org Ref
+org-mode modules for citations, cross-references, bibliographies in org-mode and useful bibtex tools to go with it.
+#+begin_src emacs-lisp :tangle no
+(use-package org-ref
+   :ensure t)
+#+end_src
 ** DISABLED org-modern
 
 Make org mode look way more modern. This is another awesome package by minad. 
@@ -787,6 +793,24 @@ The main advantage of org-modern is it not using images for the prettifying.
   :ensure t)
 #+end_src
 
+* BibTeX
+** BibTeX
+#+begin_src emacs-lisp :tangle yes
+(use-package bibtex
+  :custom
+  (bibtex-dialect 'BibTeX)
+  (bibtex-user-optional-fields
+   '(("keywords" "Keywords to describe the entry" "")
+     ("file" "Link to a document file." "" )))
+  (bibtex-align-at-equal-sign t))
+#+end_src
+
+** consult-bibtex (DISABLED)
+NOTE: possible embark integration https://github.com/mohkale/consult-bibtex
+#+begin_src emacs-lisp :tangle yes
+;; (use-package consult-bibtex
+;; :ensure t)
+#+end_src
 
 * Keybingings
 =M-:= eval-expression
