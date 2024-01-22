@@ -793,16 +793,16 @@ The main advantage of org-modern is it not using images for the prettifying.
   :ensure t)
 #+end_src
 
-* BibTeX
+* BibLaTeX
 ** BibTeX
+BibTeX is a built in emacs package providing support for =BibTeX= and =BibLaTeX=
+
 #+begin_src emacs-lisp :tangle yes
 (use-package bibtex
   :custom
-  (bibtex-dialect 'BibTeX)
-  (bibtex-user-optional-fields
-   '(("keywords" "Keywords to describe the entry" "")
-     ("file" "Link to a document file." "" )))
-  (bibtex-align-at-equal-sign t))
+  (bibtex-dialect 'biblatex)
+  (bibtex-align-at-equal-sign t)
+)
 #+end_src
 
 ** consult-bibtex (DISABLED)
