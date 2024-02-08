@@ -779,22 +779,12 @@ The main advantage of org-modern is it not using images for the prettifying.
 ** Plumbing
 Function overwriting due to nixos not adding 9p to the path and using the 9 command instead.
 #+begin_src emacs-lisp :tangle yes
-(use-package sink
+(use-package sink2
   :ensure t
-  :commands (sink--make-filter)
-  :demand t
-  :config
-;;;###autoload
-(defun sink-open-port (ppair)
-  "return a new 9p process from the given port pair
-ppair is name . function"
-  (make-process :name (concat "9p " (car ppair)) :buffer 'nil
-                :command (list "9" "9p" "read"
-                               (concat "plumb/" (car ppair)))
-                :connection-type 'pipe
-                :filter (sink--make-filter (cdr ppair))))
-)
-
+  :commands (sink-mode)
+  :init
+(setq sink-use-frames nil)
+(sink-mode))
 #+end_src
 * Ripgrep
 ** rg.el

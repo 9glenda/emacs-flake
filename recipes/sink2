@@ -1,0 +1,3 @@
+(sink2 :fetcher github
+      :repo "9glenda/sink2.el"
+)

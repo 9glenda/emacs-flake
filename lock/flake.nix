@@ -283,10 +283,10 @@
       repo = "s.el";
       type = "github";
     };
-    sink = {
+    sink2 = {
       flake = false;
-      owner = "alcah";
-      repo = "sink.el";
+      owner = "9glenda";
+      repo = "sink2.el";
       type = "github";
     };
     spinner = {
