@@ -705,6 +705,22 @@
         "type": "github"
       }
     },
+    "rg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701512606,
+        "narHash": "sha256-sqe6GP20JY32P32nsQRvgZTvKpYAgItcfRw9IhSHUJk=",
+        "owner": "dajva",
+        "repo": "rg.el",
+        "rev": "4885473a6d248a6ee508b7b7ef3705762af631d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dajva",
+        "repo": "rg.el",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "adwaita-dark-theme": "adwaita-dark-theme",
@@ -751,8 +767,10 @@
         "projectile": "projectile",
         "promise": "promise",
         "rainbow-delimiters": "rainbow-delimiters",
+        "rg": "rg",
         "rust-mode": "rust-mode",
         "s": "s",
+        "sink": "sink",
         "spinner": "spinner",
         "transient": "transient",
         "tuareg": "tuareg",
@@ -763,6 +781,7 @@
         "visual-regexp-steroids": "visual-regexp-steroids",
         "vterm": "vterm",
         "vterm-toggle": "vterm-toggle",
+        "wgrep": "wgrep",
         "which-key": "which-key",
         "with-editor": "with-editor"
       }
@@ -796,6 +815,22 @@
       "original": {
         "owner": "magnars",
         "repo": "s.el",
+        "type": "github"
+      }
+    },
+    "sink": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1598675847,
+        "narHash": "sha256-qZfczDtLqERVczaAgxCtPt13q1XiS2cBCFbqxVKoUK8=",
+        "owner": "alcah",
+        "repo": "sink.el",
+        "rev": "d64ee23df974851352c48d17eeeb9376c40779a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alcah",
+        "repo": "sink.el",
         "type": "github"
       }
     },
@@ -956,6 +991,22 @@
       "original": {
         "owner": "jixiuf",
         "repo": "vterm-toggle",
+        "type": "github"
+      }
+    },
+    "wgrep": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702728594,
+        "narHash": "sha256-82cK3D1JZXr0XIx4P8HiWwfsQMttvqBNHHD9bC60Cmw=",
+        "owner": "mhayashi1120",
+        "repo": "Emacs-wgrep",
+        "rev": "208b9d01cfffa71037527e3a324684b3ce45ddc4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mhayashi1120",
+        "repo": "Emacs-wgrep",
         "type": "github"
       }
     },

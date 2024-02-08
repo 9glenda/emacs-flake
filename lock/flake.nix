@@ -265,6 +265,12 @@
       repo = "rainbow-delimiters";
       type = "github";
     };
+    rg = {
+      flake = false;
+      owner = "dajva";
+      repo = "rg.el";
+      type = "github";
+    };
     rust-mode = {
       flake = false;
       owner = "rust-lang";
@@ -275,6 +281,12 @@
       flake = false;
       owner = "magnars";
       repo = "s.el";
+      type = "github";
+    };
+    sink = {
+      flake = false;
+      owner = "alcah";
+      repo = "sink.el";
       type = "github";
     };
     spinner = {
@@ -334,6 +346,12 @@
       flake = false;
       owner = "jixiuf";
       repo = "vterm-toggle";
+      type = "github";
+    };
+    wgrep = {
+      flake = false;
+      owner = "mhayashi1120";
+      repo = "Emacs-wgrep";
       type = "github";
     };
     which-key = {
