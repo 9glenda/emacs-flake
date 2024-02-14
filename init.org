@@ -531,7 +531,8 @@ Scroll line by line.
   :ensure t
   :demand t
   :commands (rainbow-delimiters-mode)
-  :init (rainbow-delimiters-mode)
+  :config
+  (rainbow-delimiters-mode)
 )
 #+end_src
 *** Confirmation prompts
@@ -787,8 +788,8 @@ Function overwriting due to nixos not adding 9p to the path and using the 9 comm
 (sink-mode))
 #+end_src
 * Ripgrep
-** rg.el
-#+begin_src emacs-lisp :tangle yes
+** rg.el (DISABLED)
+#+begin_src emacs-lisp :tangle no
 (use-package rg
   :ensure t)
 #+end_src
@@ -810,6 +811,8 @@ Function overwriting due to nixos not adding 9p to the path and using the 9 comm
 (use-package twist
   :ensure t)
 #+end_src
+
+
 
 * BibLaTeX
 ** BibTeX
@@ -833,3 +836,21 @@ NOTE: possible embark integration https://github.com/mohkale/consult-bibtex
 * Keybingings
 =M-:= eval-expression
 =C-c C-x C-l=: LaTeX preview
+
+* direnv
+** envrc.el 
+#+begin_src emacs-lisp :tangle yes
+(use-package envrc
+  :ensure t
+  :commands (envrc-mode)
+  :bind (("C-c e e" . envrc-mode))
+  ;; (:map corfu-map 
+  ;;  ;; ("SPC" . corfu-insert-separator)
+  ;; ("<tab>" . corfu-next)
+  ;; ("<backtab>" . corfu-previous)
+  ;; ("<return>" . corfu-insert)
+  ;; ("C-j" . corfu-next)
+  ;; ("C-k" . corfu-previous)
+  ;; ("C-e" . corfu-quit))
+)
+#+end_src

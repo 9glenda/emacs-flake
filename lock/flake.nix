@@ -62,6 +62,12 @@
       repo = "emacsql";
       type = "github";
     };
+    envrc = {
+      flake = false;
+      owner = "purcell";
+      repo = "envrc";
+      type = "github";
+    };
     evil = {
       flake = false;
       owner = "emacs-evil";
@@ -137,6 +143,12 @@
       flake = false;
       owner = "Wilfred";
       repo = "ht.el";
+      type = "github";
+    };
+    inheritenv = {
+      flake = false;
+      owner = "purcell";
+      repo = "inheritenv";
       type = "github";
     };
     julia-mode = {
@@ -265,12 +277,6 @@
       repo = "rainbow-delimiters";
       type = "github";
     };
-    rg = {
-      flake = false;
-      owner = "dajva";
-      repo = "rg.el";
-      type = "github";
-    };
     rust-mode = {
       flake = false;
       owner = "rust-lang";
@@ -346,12 +352,6 @@
       flake = false;
       owner = "jixiuf";
       repo = "vterm-toggle";
-      type = "github";
-    };
-    wgrep = {
-      flake = false;
-      owner = "mhayashi1120";
-      repo = "Emacs-wgrep";
       type = "github";
     };
     which-key = {

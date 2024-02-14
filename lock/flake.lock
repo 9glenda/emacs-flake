@@ -160,6 +160,22 @@
         "type": "github"
       }
     },
+    "envrc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699637239,
+        "narHash": "sha256-XzrkMQLVkfmxuKofycqZdh4Z9iMlczqLHwkAA17m9GQ=",
+        "owner": "purcell",
+        "repo": "envrc",
+        "rev": "1385e72a730924664697a0961d43516a47a977d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "purcell",
+        "repo": "envrc",
+        "type": "github"
+      }
+    },
     "evil": {
       "flake": false,
       "locked": {
@@ -365,6 +381,22 @@
       "original": {
         "owner": "Wilfred",
         "repo": "ht.el",
+        "type": "github"
+      }
+    },
+    "inheritenv": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699638484,
+        "narHash": "sha256-1s9LUk3bqcNv+hHf9iszpZRbJdjcwUFo0D650NGBHpo=",
+        "owner": "purcell",
+        "repo": "inheritenv",
+        "rev": "bac62ca6324828623cf8ce5a3d6aee0fcb65d620",
+        "type": "github"
+      },
+      "original": {
+        "owner": "purcell",
+        "repo": "inheritenv",
         "type": "github"
       }
     },
@@ -705,22 +737,6 @@
         "type": "github"
       }
     },
-    "rg": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1701512606,
-        "narHash": "sha256-sqe6GP20JY32P32nsQRvgZTvKpYAgItcfRw9IhSHUJk=",
-        "owner": "dajva",
-        "repo": "rg.el",
-        "rev": "4885473a6d248a6ee508b7b7ef3705762af631d9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dajva",
-        "repo": "rg.el",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "adwaita-dark-theme": "adwaita-dark-theme",
@@ -733,6 +749,7 @@
         "dash": "dash",
         "elisp-refs": "elisp-refs",
         "emacsql": "emacsql",
+        "envrc": "envrc",
         "evil": "evil",
         "evil-collection": "evil-collection",
         "evil-goggles": "evil-goggles",
@@ -746,6 +763,7 @@
         "haskell-mode": "haskell-mode",
         "helpful": "helpful",
         "ht": "ht",
+        "inheritenv": "inheritenv",
         "julia-mode": "julia-mode",
         "lsp-haskell": "lsp-haskell",
         "lsp-julia": "lsp-julia",
@@ -767,7 +785,6 @@
         "projectile": "projectile",
         "promise": "promise",
         "rainbow-delimiters": "rainbow-delimiters",
-        "rg": "rg",
         "rust-mode": "rust-mode",
         "s": "s",
         "sink2": "sink2",
@@ -781,7 +798,6 @@
         "visual-regexp-steroids": "visual-regexp-steroids",
         "vterm": "vterm",
         "vterm-toggle": "vterm-toggle",
-        "wgrep": "wgrep",
         "which-key": "which-key",
         "with-editor": "with-editor"
       }
@@ -991,22 +1007,6 @@
       "original": {
         "owner": "jixiuf",
         "repo": "vterm-toggle",
-        "type": "github"
-      }
-    },
-    "wgrep": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1702728594,
-        "narHash": "sha256-82cK3D1JZXr0XIx4P8HiWwfsQMttvqBNHHD9bC60Cmw=",
-        "owner": "mhayashi1120",
-        "repo": "Emacs-wgrep",
-        "rev": "208b9d01cfffa71037527e3a324684b3ce45ddc4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mhayashi1120",
-        "repo": "Emacs-wgrep",
         "type": "github"
       }
     },
