@@ -436,6 +436,7 @@ Regexp match completions.
 #+begin_src emacs-lisp :tangle yes
 (use-package projectile
   :ensure t
+  :demand t
   :diminish projectile-mode
   :commands (projectile-mode projectile-dired)
   :config (projectile-mode)
@@ -853,17 +854,37 @@ Following my concept from [[id:4a571316-9a4b-42ca-84af-11b8ae4840dc][emacs-works
 - NOTE Coflicting keybindings with org mode
 Workspace managment for emacs by grouping buffers/windows together.
 #+begin_src emacs-lisp :tangle yes
-
-;; (add-hook 'kill-emacs-hook #'persp-state-save)
 (use-package perspective
   :ensure t
-  :commands (persp-mode)
-  :bind (("C-x b" . persp-switch-to-buffer*)
-         ("C-x k" . persp-kill-buffer*)) 
+  :demand t
+  :commands (persp-mode persp-kill-buffer persp-switch-buffer)
+  :bind (
+;; ("C-x k" . persp-kill-buffer*)
+;; ("C-x b" . persp-switch-buffer*)
+  )
   :custom
- (persp-mode-prefix-key (kbd "C-c C-p"))
+  (persp-mode-prefix-key (kbd "C-c C-p"))
   :init
   (persp-mode))
+
+#+end_src
+#+begin_src emacs-lisp :tangle yes
+;; (use-package tabspaces
+;;   :ensure t
+;;   :hook (after-init . tabspaces-mode) ;; use this only if you want the minor-mode loaded at startup. 
+;;   :commands (tabspaces-switch-or-create-workspace
+;;              tabspaces-open-or-create-project-and-workspace)
+;;   :custom
+;;   (tabspaces-use-filtered-buffers-as-default t)
+;;   (tabspaces-default-tab "Default")
+;;   (tabspaces-remove-to-default t)
+;;   (tabspaces-include-buffers '("*scratch*"))
+;;   (tabspaces-initialize-project-with-todo t)
+;;   (tabspaces-todo-file-name "project-todo.org")
+;;   ;; sessions
+;;   (tabspaces-session t)
+;;   (tabspaces-session-auto-restore t))
+  
 #+end_src
 
 * Stuff to add

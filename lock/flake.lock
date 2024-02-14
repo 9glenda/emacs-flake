@@ -806,6 +806,7 @@
         "s": "s",
         "sink2": "sink2",
         "spinner": "spinner",
+        "tabspaces": "tabspaces",
         "transient": "transient",
         "tuareg": "tuareg",
         "twist": "twist",
@@ -880,6 +881,22 @@
       "original": {
         "owner": "Malabarba",
         "repo": "spinner.el",
+        "type": "github"
+      }
+    },
+    "tabspaces": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707519633,
+        "narHash": "sha256-MVVRPPY6s3Py9qFm0fzGH2gZ2fDIBjcL9iJKU5vHNjg=",
+        "owner": "mclear-tools",
+        "repo": "tabspaces",
+        "rev": "b8799f477c2b467caf4cc5b740d3945d96b84eca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mclear-tools",
+        "repo": "tabspaces",
         "type": "github"
       }
     },

@@ -307,6 +307,12 @@
       repo = "spinner.el";
       type = "github";
     };
+    tabspaces = {
+      flake = false;
+      owner = "mclear-tools";
+      repo = "tabspaces";
+      type = "github";
+    };
     transient = {
       flake = false;
       owner = "magit";
