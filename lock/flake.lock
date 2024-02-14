@@ -689,6 +689,22 @@
         "type": "github"
       }
     },
+    "perspective": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691176924,
+        "narHash": "sha256-TcG8s0r1JCIDw+Pf2pJ60Wt9MEJEsKValt3vZfOS1g8=",
+        "owner": "nex3",
+        "repo": "perspective-el",
+        "rev": "17a4a1a6d34cef96c49c92ad3087e1a3bfc4ed7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nex3",
+        "repo": "perspective-el",
+        "type": "github"
+      }
+    },
     "projectile": {
       "flake": false,
       "locked": {
@@ -782,6 +798,7 @@
         "org": "org",
         "org-roam": "org-roam",
         "org-superstar": "org-superstar",
+        "perspective": "perspective",
         "projectile": "projectile",
         "promise": "promise",
         "rainbow-delimiters": "rainbow-delimiters",

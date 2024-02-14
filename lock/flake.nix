@@ -259,6 +259,12 @@
       repo = "org-superstar-mode";
       type = "github";
     };
+    perspective = {
+      flake = false;
+      owner = "nex3";
+      repo = "perspective-el";
+      type = "github";
+    };
     projectile = {
       flake = false;
       owner = "bbatsov";

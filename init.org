@@ -447,7 +447,7 @@ Regexp match completions.
     (setq projectile-project-search-path '("~/projects")))
   ;; open dired when switching the project
   (setq projectile-switch-project-action #'projectile-dired))
-  #+end_src
+#+end_src
 *** Magit
 #+begin_src emacs-lisp :tangle yes
 (defun wait-for-buffer-deletion (buffer-name)
@@ -844,13 +844,27 @@ NOTE: possible embark integration https://github.com/mohkale/consult-bibtex
   :ensure t
   :commands (envrc-mode)
   :bind (("C-c e e" . envrc-mode))
-  ;; (:map corfu-map 
-  ;;  ;; ("SPC" . corfu-insert-separator)
-  ;; ("<tab>" . corfu-next)
-  ;; ("<backtab>" . corfu-previous)
-  ;; ("<return>" . corfu-insert)
-  ;; ("C-j" . corfu-next)
-  ;; ("C-k" . corfu-previous)
-  ;; ("C-e" . corfu-quit))
 )
 #+end_src
+
+* Emacs workspaces
+Following my concept from [[id:4a571316-9a4b-42ca-84af-11b8ae4840dc][emacs-workspaces]]
+** Perspective.el
+- NOTE Coflicting keybindings with org mode
+Workspace managment for emacs by grouping buffers/windows together.
+#+begin_src emacs-lisp :tangle yes
+
+;; (add-hook 'kill-emacs-hook #'persp-state-save)
+(use-package perspective
+  :ensure t
+  :commands (persp-mode)
+  :bind (("C-x b" . persp-switch-to-buffer*)
+         ("C-x k" . persp-kill-buffer*)) 
+  :custom
+ (persp-mode-prefix-key (kbd "C-c C-p"))
+  :init
+  (persp-mode))
+#+end_src
+
+* Stuff to add
+[[id:14b86ea6-8376-4274-8dc8-f53bb71b94ed][emacs-config-features]]
