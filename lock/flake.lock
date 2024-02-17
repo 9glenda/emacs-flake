@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "app-launcher": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1650093975,
+        "narHash": "sha256-d0d5rkuxK/zKpSCa1UTdpV7o+RDDsEeab56rI7xUJ1E=",
+        "owner": "SebastienWae",
+        "repo": "app-launcher",
+        "rev": "d5015e394b0a666a8c7c4d4bdf786266e773b145",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SebastienWae",
+        "repo": "app-launcher",
+        "type": "github"
+      }
+    },
     "caml": {
       "flake": false,
       "locked": {
@@ -757,6 +773,7 @@
       "inputs": {
         "adwaita-dark-theme": "adwaita-dark-theme",
         "annalist": "annalist",
+        "app-launcher": "app-launcher",
         "caml": "caml",
         "command-log-mode": "command-log-mode",
         "compat": "compat",
@@ -806,7 +823,6 @@
         "s": "s",
         "sink2": "sink2",
         "spinner": "spinner",
-        "tabspaces": "tabspaces",
         "transient": "transient",
         "tuareg": "tuareg",
         "twist": "twist",
@@ -881,22 +897,6 @@
       "original": {
         "owner": "Malabarba",
         "repo": "spinner.el",
-        "type": "github"
-      }
-    },
-    "tabspaces": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1707519633,
-        "narHash": "sha256-MVVRPPY6s3Py9qFm0fzGH2gZ2fDIBjcL9iJKU5vHNjg=",
-        "owner": "mclear-tools",
-        "repo": "tabspaces",
-        "rev": "b8799f477c2b467caf4cc5b740d3945d96b84eca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mclear-tools",
-        "repo": "tabspaces",
         "type": "github"
       }
     },

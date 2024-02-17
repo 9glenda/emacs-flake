@@ -1,0 +1,2 @@
+(app-launcher :fetcher github
+    :repo "SebastienWae/app-launcher")

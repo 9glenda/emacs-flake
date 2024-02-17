@@ -14,6 +14,12 @@
       repo = "annalist.el";
       type = "github";
     };
+    app-launcher = {
+      flake = false;
+      owner = "SebastienWae";
+      repo = "app-launcher";
+      type = "github";
+    };
     caml = {
       flake = false;
       owner = "ocaml";
@@ -305,12 +311,6 @@
       flake = false;
       owner = "Malabarba";
       repo = "spinner.el";
-      type = "github";
-    };
-    tabspaces = {
-      flake = false;
-      owner = "mclear-tools";
-      repo = "tabspaces";
       type = "github";
     };
     transient = {

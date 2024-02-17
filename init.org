@@ -866,26 +866,16 @@ Workspace managment for emacs by grouping buffers/windows together.
   (persp-mode-prefix-key (kbd "C-c C-p"))
   :init
   (persp-mode))
-
 #+end_src
+
+* App launcher
+Basically dmenu in emacs.
+This requires a custom recipe.
 #+begin_src emacs-lisp :tangle yes
-;; (use-package tabspaces
-;;   :ensure t
-;;   :hook (after-init . tabspaces-mode) ;; use this only if you want the minor-mode loaded at startup. 
-;;   :commands (tabspaces-switch-or-create-workspace
-;;              tabspaces-open-or-create-project-and-workspace)
-;;   :custom
-;;   (tabspaces-use-filtered-buffers-as-default t)
-;;   (tabspaces-default-tab "Default")
-;;   (tabspaces-remove-to-default t)
-;;   (tabspaces-include-buffers '("*scratch*"))
-;;   (tabspaces-initialize-project-with-todo t)
-;;   (tabspaces-todo-file-name "project-todo.org")
-;;   ;; sessions
-;;   (tabspaces-session t)
-;;   (tabspaces-session-auto-restore t))
-  
+(use-package app-launcher
+:ensure t)
 #+end_src
 
 * Stuff to add
 [[id:14b86ea6-8376-4274-8dc8-f53bb71b94ed][emacs-config-features]]
+
