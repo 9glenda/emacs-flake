@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "cape": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707910792,
+        "narHash": "sha256-P1/0hfLyD/PY9x/23PJMYOnhdtnEtingqnu2j6DS5f8=",
+        "owner": "minad",
+        "repo": "cape",
+        "rev": "c56cd95f6df003f8928f11e8776d3a9a3eca6890",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "cape",
+        "type": "github"
+      }
+    },
     "command-log-mode": {
       "flake": false,
       "locked": {
@@ -689,6 +705,22 @@
         "type": "github"
       }
     },
+    "org-roam-ui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667644845,
+        "narHash": "sha256-dCoEQRi86eMerkMQPy3Ow/Kj9kzHxXRSrDk4cl8uLHo=",
+        "owner": "org-roam",
+        "repo": "org-roam-ui",
+        "rev": "5ac74960231db0bf7783c2ba7a19a60f582e91ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "org-roam",
+        "repo": "org-roam-ui",
+        "type": "github"
+      }
+    },
     "org-superstar": {
       "flake": false,
       "locked": {
@@ -775,6 +807,7 @@
         "annalist": "annalist",
         "app-launcher": "app-launcher",
         "caml": "caml",
+        "cape": "cape",
         "command-log-mode": "command-log-mode",
         "compat": "compat",
         "consult": "consult",
@@ -814,6 +847,7 @@
         "orderless": "orderless",
         "org": "org",
         "org-roam": "org-roam",
+        "org-roam-ui": "org-roam-ui",
         "org-superstar": "org-superstar",
         "perspective": "perspective",
         "projectile": "projectile",
@@ -821,6 +855,7 @@
         "rainbow-delimiters": "rainbow-delimiters",
         "rust-mode": "rust-mode",
         "s": "s",
+        "simple-httpd": "simple-httpd",
         "sink2": "sink2",
         "spinner": "spinner",
         "transient": "transient",
@@ -832,6 +867,7 @@
         "visual-regexp-steroids": "visual-regexp-steroids",
         "vterm": "vterm",
         "vterm-toggle": "vterm-toggle",
+        "websocket": "websocket",
         "which-key": "which-key",
         "with-editor": "with-editor"
       }
@@ -865,6 +901,22 @@
       "original": {
         "owner": "magnars",
         "repo": "s.el",
+        "type": "github"
+      }
+    },
+    "simple-httpd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703869136,
+        "narHash": "sha256-9XVDGVN/m5pEto+g3FYrExhFOeIZdypDkYUGlMezLIc=",
+        "owner": "skeeto",
+        "repo": "emacs-web-server",
+        "rev": "3982c55e9061475038a3ccd61aecb2de3d407cec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "skeeto",
+        "repo": "emacs-web-server",
         "type": "github"
       }
     },
@@ -1041,6 +1093,22 @@
       "original": {
         "owner": "jixiuf",
         "repo": "vterm-toggle",
+        "type": "github"
+      }
+    },
+    "websocket": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691550335,
+        "narHash": "sha256-pN3gTdVH5IWUq0eGvkXBgkUcxzni2Iq24ZrHnIfxAC8=",
+        "owner": "ahyatt",
+        "repo": "emacs-websocket",
+        "rev": "40c208eaab99999d7c1e4bea883648da24c03be3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ahyatt",
+        "repo": "emacs-websocket",
         "type": "github"
       }
     },

@@ -26,6 +26,12 @@
       repo = "caml-mode";
       type = "github";
     };
+    cape = {
+      flake = false;
+      owner = "minad";
+      repo = "cape";
+      type = "github";
+    };
     command-log-mode = {
       flake = false;
       owner = "lewang";
@@ -259,6 +265,12 @@
       repo = "org-roam";
       type = "github";
     };
+    org-roam-ui = {
+      flake = false;
+      owner = "org-roam";
+      repo = "org-roam-ui";
+      type = "github";
+    };
     org-superstar = {
       flake = false;
       owner = "integral-dw";
@@ -299,6 +311,12 @@
       flake = false;
       owner = "magnars";
       repo = "s.el";
+      type = "github";
+    };
+    simple-httpd = {
+      flake = false;
+      owner = "skeeto";
+      repo = "emacs-web-server";
       type = "github";
     };
     sink2 = {
@@ -364,6 +382,12 @@
       flake = false;
       owner = "jixiuf";
       repo = "vterm-toggle";
+      type = "github";
+    };
+    websocket = {
+      flake = false;
+      owner = "ahyatt";
+      repo = "emacs-websocket";
       type = "github";
     };
     which-key = {
