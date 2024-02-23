@@ -782,20 +782,34 @@ The main advantage of org-modern is it not using images for the prettifying.
 #+begin_src emacs-lisp :tangle yes
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (use-package org-caldav
+    :after org
     :ensure t
+    :commands (org-caldav-sync org-agenda-files copy-file-contents-to-kill-ring )
     :init
 (setq org-icalendar-include-todo 'all
     org-caldav-sync-todo t)
 (setq org-icalendar-categories '(local-tags))
-(setq org-caldav-url "http://localhost:5232/dired/")
-(setq org-caldav-calendars
-  '(
-    (:calendar-id "8eccb20e-6e4a-3248-ca55-187fb16d4805"
-     :files ("~/main.org")
-     :inbox "~/calendar.org")
-) )
-)
+(setq org-caldav-url "http://localhost:5232/glenda/"
+org-caldav-calendar-id "42026bac-6dcd-992e-789a-d2c6e4f1584f"
+org-caldav-inbox "~/calendar.org")
 
+(defun copy-file-contents-to-kill-ring (file-path)
+  "Read the contents of FILE-PATH and copy it into the kill ring."
+  (when (file-exists-p file-path)
+    (with-temp-buffer
+      (insert-file-contents file-path)
+      (kill-new (buffer-string)))
+    (message "Contents of %s copied to kill ring." file-path))
+  (message "File %s does not exist." file-path))
+
+
+(defun sync-cal ()
+  "optional-documentation"
+  (interactive)
+  (progn
+    (setq org-caldav-files (cl-delete-if (lambda (x) (string-match-p "~/RoamNotes" x)) (org-agenda-files)))
+    (copy-file-contents-to-kill-ring "~/.caldav")
+    (org-caldav-sync))))
 #+end_src
 * LSP
 ** LSP mode
