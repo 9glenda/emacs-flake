@@ -271,6 +271,12 @@
       repo = "org-roam-ui";
       type = "github";
     };
+    org-super-agenda = {
+      flake = false;
+      owner = "alphapapa";
+      repo = "org-super-agenda";
+      type = "github";
+    };
     org-superstar = {
       flake = false;
       owner = "integral-dw";
@@ -335,6 +341,12 @@
       flake = false;
       owner = "magit";
       repo = "transient";
+      type = "github";
+    };
+    ts = {
+      flake = false;
+      owner = "alphapapa";
+      repo = "ts.el";
       type = "github";
     };
     tuareg = {

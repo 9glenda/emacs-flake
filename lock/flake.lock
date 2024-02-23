@@ -721,6 +721,22 @@
         "type": "github"
       }
     },
+    "org-super-agenda": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700538279,
+        "narHash": "sha256-TQiRtohxJk5oZJoiNxbIasYiFCoHhqGOZ/JBPUDkF/0=",
+        "owner": "alphapapa",
+        "repo": "org-super-agenda",
+        "rev": "ee3379ae92b90c084717fb2a7614060ce12283cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alphapapa",
+        "repo": "org-super-agenda",
+        "type": "github"
+      }
+    },
     "org-superstar": {
       "flake": false,
       "locked": {
@@ -848,6 +864,7 @@
         "org": "org",
         "org-roam": "org-roam",
         "org-roam-ui": "org-roam-ui",
+        "org-super-agenda": "org-super-agenda",
         "org-superstar": "org-superstar",
         "perspective": "perspective",
         "projectile": "projectile",
@@ -859,6 +876,7 @@
         "sink2": "sink2",
         "spinner": "spinner",
         "transient": "transient",
+        "ts": "ts",
         "tuareg": "tuareg",
         "twist": "twist",
         "undo-tree": "undo-tree",
@@ -965,6 +983,22 @@
       "original": {
         "owner": "magit",
         "repo": "transient",
+        "type": "github"
+      }
+    },
+    "ts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1661210030,
+        "narHash": "sha256-2UU1cPaB+hyEtk4rjwoC54BERcAup99aCrTZn0pwkaI=",
+        "owner": "alphapapa",
+        "repo": "ts.el",
+        "rev": "552936017cfdec89f7fc20c254ae6b37c3f22c5b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alphapapa",
+        "repo": "ts.el",
         "type": "github"
       }
     },

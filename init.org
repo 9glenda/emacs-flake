@@ -720,10 +720,19 @@ Org Superstar replaces the =*= in Headings with a nice Unicode Symbol.
 #+begin_src emacs-lisp :tangle yes
 (use-package evil-org
   :ensure t
+:commands (evil-org-agenda-set-keys)
   :after org
   :hook (org-mode-hook . evil-org-mode)
-)
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+#+end_src
 
+** Org Super Agenda
+#+begin_src emacs-lisp :tangle yes
+(use-package org-super-agenda
+  :after org
+  :ensure t)
 #+end_src
 ** Org Ref
 org-mode modules for citations, cross-references, bibliographies in org-mode and useful bibtex tools to go with it.
