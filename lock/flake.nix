@@ -259,6 +259,12 @@
       type = "git";
       url = "https://git.savannah.gnu.org/git/emacs/org-mode.git";
     };
+    org-caldav = {
+      flake = false;
+      owner = "dengste";
+      repo = "org-caldav";
+      type = "github";
+    };
     org-roam = {
       flake = false;
       owner = "org-roam";
@@ -275,12 +281,6 @@
       flake = false;
       owner = "alphapapa";
       repo = "org-super-agenda";
-      type = "github";
-    };
-    org-superstar = {
-      flake = false;
-      owner = "integral-dw";
-      repo = "org-superstar-mode";
       type = "github";
     };
     perspective = {

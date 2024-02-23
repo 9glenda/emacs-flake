@@ -689,6 +689,22 @@
         "url": "https://git.savannah.gnu.org/git/emacs/org-mode.git"
       }
     },
+    "org-caldav": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708499096,
+        "narHash": "sha256-5RhIETvSe4pXOduxqsxjqid+hLDqGDJWBjfa7te6cCc=",
+        "owner": "dengste",
+        "repo": "org-caldav",
+        "rev": "9a3062cea3d1081450abbbef6a0d2b83014f31fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dengste",
+        "repo": "org-caldav",
+        "type": "github"
+      }
+    },
     "org-roam": {
       "flake": false,
       "locked": {
@@ -734,22 +750,6 @@
       "original": {
         "owner": "alphapapa",
         "repo": "org-super-agenda",
-        "type": "github"
-      }
-    },
-    "org-superstar": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1673881825,
-        "narHash": "sha256-JziMi+ms7vtV5HLuBu7eq4noH/IeNRGNhOtWqgXdTRU=",
-        "owner": "integral-dw",
-        "repo": "org-superstar-mode",
-        "rev": "54c81c27dde2a6dc461bb064e79a8b2089093a2e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "integral-dw",
-        "repo": "org-superstar-mode",
         "type": "github"
       }
     },
@@ -862,10 +862,10 @@
         "nix3": "nix3",
         "orderless": "orderless",
         "org": "org",
+        "org-caldav": "org-caldav",
         "org-roam": "org-roam",
         "org-roam-ui": "org-roam-ui",
         "org-super-agenda": "org-super-agenda",
-        "org-superstar": "org-superstar",
         "perspective": "perspective",
         "projectile": "projectile",
         "promise": "promise",

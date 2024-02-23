@@ -778,6 +778,25 @@ The main advantage of org-modern is it not using images for the prettifying.
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 #+end_src
+** Org Caldav
+#+begin_src emacs-lisp :tangle yes
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(use-package org-caldav
+    :ensure t
+    :init
+(setq org-icalendar-include-todo 'all
+    org-caldav-sync-todo t)
+(setq org-icalendar-categories '(local-tags))
+(setq org-caldav-url "http://localhost:5232/dired/")
+(setq org-caldav-calendars
+  '(
+    (:calendar-id "8eccb20e-6e4a-3248-ca55-187fb16d4805"
+     :files ("~/main.org")
+     :inbox "~/calendar.org")
+) )
+)
+
+#+end_src
 * LSP
 ** LSP mode
 #+begin_src emacs-lisp :tangle yes
