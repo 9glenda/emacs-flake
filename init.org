@@ -697,9 +697,9 @@ Org Babel is used to execute/evaluate org source blocks.
 (setq org-confirm-babel-evaluate nil)
 #+end_src
 
-** Org Superstar
+** Org Superstar (DISABLED)
 Org Superstar replaces the =*= in Headings with a nice Unicode Symbol.
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 (use-package org-superstar
   :ensure t
   :hook (org-mode-hook . org-superstar-mode)
@@ -724,15 +724,18 @@ Org Superstar replaces the =*= in Headings with a nice Unicode Symbol.
   :after org
   :hook (org-mode-hook . evil-org-mode)
   :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+  ;; (require 'evil-org-agenda)
+  ;; (evil-org-agenda-set-keys)
+)
 #+end_src
 
 ** Org Super Agenda
 #+begin_src emacs-lisp :tangle yes
 (use-package org-super-agenda
   :after org
-  :ensure t)
+  :ensure t
+:commands (org-super-agenda-mode)
+  :config (org-super-agenda-mode))
 #+end_src
 ** Org Ref
 org-mode modules for citations, cross-references, bibliographies in org-mode and useful bibtex tools to go with it.
