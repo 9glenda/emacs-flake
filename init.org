@@ -565,7 +565,6 @@ Scroll line by line.
 **** Auto close
 #+begin_src emacs-lisp :tangle yes
 (electric-pair-mode)
-(electric-quote-mode)
 (electric-indent-mode)
 #+end_src
 **** Rainbow delimiters
