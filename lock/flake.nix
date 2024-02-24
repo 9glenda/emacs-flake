@@ -283,6 +283,12 @@
       repo = "org-super-agenda";
       type = "github";
     };
+    pdf-tools = {
+      flake = false;
+      owner = "vedang";
+      repo = "pdf-tools";
+      type = "github";
+    };
     perspective = {
       flake = false;
       owner = "nex3";
@@ -337,6 +343,12 @@
       repo = "spinner.el";
       type = "github";
     };
+    tablist = {
+      flake = false;
+      owner = "emacsorphanage";
+      repo = "tablist";
+      type = "github";
+    };
     transient = {
       flake = false;
       owner = "magit";
@@ -359,12 +371,6 @@
       flake = false;
       owner = "emacs-twist";
       repo = "twist.el";
-      type = "github";
-    };
-    typst-preview = {
-      flake = false;
-      owner = "havarddj";
-      repo = "typst-preview.el";
       type = "github";
     };
     typst-ts-mode = {

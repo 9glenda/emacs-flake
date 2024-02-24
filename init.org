@@ -1043,6 +1043,11 @@ This requires a custom recipe.
 ;; )
 #+end_src
 
+* Pdf-tools
+#+begin_src emacs-lisp :tangle yes
+(use-package pdf-tools
+   :ensure t)
+#+end_src
 * Stuff to add
 [[id:14b86ea6-8376-4274-8dc8-f53bb71b94ed][emacs-config-features]]
 

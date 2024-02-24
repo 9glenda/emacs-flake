@@ -23,6 +23,11 @@
     '';
   });
 
+  # pdf-tools = esuper.pdf-tools.overrideAttrs (old: {
+  #   preBuild = ''
+  #      mkdir build
+  #   '';
+  # });
   # magit = prev.magit.overrideAttrs (old: {
   #   preBuild = ''
   #     substituteInPlace Makefile --replace "include ../default.mk" ""
