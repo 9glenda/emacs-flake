@@ -879,6 +879,7 @@
         "ts": "ts",
         "tuareg": "tuareg",
         "twist": "twist",
+        "typst-ts-mode": "typst-ts-mode",
         "undo-tree": "undo-tree",
         "vertico": "vertico",
         "visual-regexp": "visual-regexp",
@@ -888,7 +889,9 @@
         "websocket": "websocket",
         "which-key": "which-key",
         "with-editor": "with-editor",
-        "yasnippet": "yasnippet"
+        "yasnippet": "yasnippet",
+        "yasnippet-capf": "yasnippet-capf",
+        "yasnippet-snippets": "yasnippet-snippets"
       }
     },
     "rust-mode": {
@@ -1033,6 +1036,22 @@
         "owner": "emacs-twist",
         "repo": "twist.el",
         "type": "github"
+      }
+    },
+    "typst-ts-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708528757,
+        "narHash": "sha256-Bmt2kH+i4+OWEHJ68ZiW5U2DK+mwThxtahRaEHa45ro=",
+        "owner": "~meow_king",
+        "repo": "typst-ts-mode",
+        "rev": "c6e5e6b59a3a5897fcb7b1f0f18d8566188d6a58",
+        "type": "sourcehut"
+      },
+      "original": {
+        "owner": "~meow_king",
+        "repo": "typst-ts-mode",
+        "type": "sourcehut"
       }
     },
     "undo-tree": {
@@ -1192,6 +1211,38 @@
       "original": {
         "owner": "capitaomorte",
         "repo": "yasnippet",
+        "type": "github"
+      }
+    },
+    "yasnippet-capf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705423601,
+        "narHash": "sha256-xB3LOdgncLEJNqUoIr106l+G1Tj3CtcSLW5aJgfEsSg=",
+        "owner": "elken",
+        "repo": "yasnippet-capf",
+        "rev": "db12b55cd08b614cbba134008566e48d7faf660e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elken",
+        "repo": "yasnippet-capf",
+        "type": "github"
+      }
+    },
+    "yasnippet-snippets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708532505,
+        "narHash": "sha256-M4lmJbQzIs2pOPRarCyzKNH0T4MTgsG+FF0V6hbWd0s=",
+        "owner": "AndreaCrotti",
+        "repo": "yasnippet-snippets",
+        "rev": "e6ec9f1822913cea7dc67cde6aeb8f2625980950",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AndreaCrotti",
+        "repo": "yasnippet-snippets",
         "type": "github"
       }
     }

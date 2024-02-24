@@ -1,0 +1,2 @@
+(typst-ts-mode
+	:fetcher sourcehut :repo "meow_king/typst-ts-mode")

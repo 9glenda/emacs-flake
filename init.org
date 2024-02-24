@@ -980,13 +980,33 @@ This requires a custom recipe.
 * Yasnippet 
 #+begin_src emacs-lisp :tangle yes
 (use-package yasnippet
-   :ensure t)
+   :ensure t
+   :commands (yas-global-mode))
+
+
+(use-package yasnippet-snippets
+  :after yasnippet
+  :ensure t
+  :config
+  (yas-global-mode +1))
 
 (use-package yasnippet-capf
+  :ensure t
   :after cape
   :commands (yasnippet-capf)
   :config
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+#+end_src
+
+* Typst
+#+begin_src emacs-lisp
+(use-package typst-ts-mode
+  :ensure t
+  :custom
+  (typst-ts-mode-watch-options "--open")
+  
+  (typst-ts-mode-enable-raw-blocks-highlight t)
+  (typst-ts-mode-highlight-raw-blocks-at-startup t))
 #+end_src
 
 * Stuff to add

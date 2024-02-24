@@ -361,6 +361,12 @@
       repo = "twist.el";
       type = "github";
     };
+    typst-ts-mode = {
+      flake = false;
+      owner = "~meow_king";
+      repo = "typst-ts-mode";
+      type = "sourcehut";
+    };
     undo-tree = {
       flake = false;
       type = "git";
@@ -418,6 +424,18 @@
       flake = false;
       owner = "capitaomorte";
       repo = "yasnippet";
+      type = "github";
+    };
+    yasnippet-capf = {
+      flake = false;
+      owner = "elken";
+      repo = "yasnippet-capf";
+      type = "github";
+    };
+    yasnippet-snippets = {
+      flake = false;
+      owner = "AndreaCrotti";
+      repo = "yasnippet-snippets";
       type = "github";
     };
   };
