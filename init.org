@@ -822,7 +822,7 @@ org-caldav-inbox "~/calendar.org")
           '(flex))) ;; Configure flex  (setq lsp-keymap-prefix "C-c l") 
   :config
   (lsp-enable-which-key-integration t)
-  :commands (lsp lsp-deferred lsp-enable-which-key-integration lsp-stdio-connection make-lsp-client lsp-register-client)
+  :commands (lsp lsp-deferred lsp-enable-which-key-integration lsp-stdio-connection make-lsp-client lsp-register-client lsp-activate-on)
   :custom
   (lsp-completion-provider :none) ;; use corfu
   :hook
@@ -1002,7 +1002,7 @@ This requires a custom recipe.
 #+begin_src emacs-lisp :tangle yes
 (use-package typst-ts-mode
   :ensure t
-  :after lsp
+  :mode "\\.typ\\'"
   :commands (typst-ts-mode)
   :custom
   (typst-ts-mode-watch-options "--open")
@@ -1012,13 +1012,21 @@ This requires a custom recipe.
   :config
   ;; make sure to install typst-lsp from
   ;; https://github.com/nvarner/typst-lsp/releases/tag/v0.12.1
- (with-eval-after-load 'lsp-mode
-  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst")))
+;; (setq lsp-file-watch-threshold 2000)
+(defun lsp-typst ()
+(interactive)
+  (progn
+(require 'lsp)
+  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
   (lsp-register-client
    (make-lsp-client
     :new-connection (lsp-stdio-connection "typst-lsp")
+    :activation-fn (lsp-activate-on "typst")
     :major-modes '(typst-ts-mode)
-    :server-id 'typst-lsp)))
+    :server-id 'typst-lsp))
+  (lsp)
+)
+))
 
 ;; (use-package websocket
 ;;    :commands (websocket-open)
