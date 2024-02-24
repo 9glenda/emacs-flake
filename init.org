@@ -977,6 +977,17 @@ This requires a custom recipe.
 (use-package app-launcher
 :ensure t)
 #+end_src
+* Yasnippet 
+#+begin_src emacs-lisp :tangle yes
+(use-package yasnippet
+   :ensure t)
+
+(use-package yasnippet-capf
+  :after cape
+  :commands (yasnippet-capf)
+  :config
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+#+end_src
 
 * Stuff to add
 [[id:14b86ea6-8376-4274-8dc8-f53bb71b94ed][emacs-config-features]]

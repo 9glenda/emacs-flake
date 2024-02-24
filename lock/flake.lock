@@ -887,7 +887,8 @@
         "vterm-toggle": "vterm-toggle",
         "websocket": "websocket",
         "which-key": "which-key",
-        "with-editor": "with-editor"
+        "with-editor": "with-editor",
+        "yasnippet": "yasnippet"
       }
     },
     "rust-mode": {
@@ -1175,6 +1176,22 @@
       "original": {
         "owner": "magit",
         "repo": "with-editor",
+        "type": "github"
+      }
+    },
+    "yasnippet": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708029285,
+        "narHash": "sha256-u5JaGGI2hyPE0KqbyGZOJ+9hi1XHmh6NWm4k3ePspgk=",
+        "owner": "capitaomorte",
+        "repo": "yasnippet",
+        "rev": "5b565c54b0dce77f6f0e4dd12111f43379e26d8d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "capitaomorte",
+        "repo": "yasnippet",
         "type": "github"
       }
     }

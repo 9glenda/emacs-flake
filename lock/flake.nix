@@ -414,6 +414,12 @@
       repo = "with-editor";
       type = "github";
     };
+    yasnippet = {
+      flake = false;
+      owner = "capitaomorte";
+      repo = "yasnippet";
+      type = "github";
+    };
   };
   outputs = { ... }: { };
 }
