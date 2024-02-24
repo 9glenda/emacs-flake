@@ -719,7 +719,7 @@ Org Superstar replaces the =*= in Headings with a nice Unicode Symbol.
 #+begin_src emacs-lisp :tangle yes
 (use-package evil-org
   :ensure t
-:commands (evil-org-agenda-set-keys)
+  :commands (evil-org-agenda-set-keys)
   :after org
   :hook (org-mode-hook . evil-org-mode)
   :config
