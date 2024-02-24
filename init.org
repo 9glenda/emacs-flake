@@ -1017,6 +1017,8 @@ This requires a custom recipe.
 (interactive)
   (progn
 (require 'lsp)
+  (setq browse-url-browser-function 'browse-url-generic
+          browse-url-generic-program "zathura")
   (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
   (lsp-register-client
    (make-lsp-client
