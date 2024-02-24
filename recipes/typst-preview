@@ -1,0 +1,2 @@
+(typst-preview
+	:fetcher github :repo "havarddj/typst-preview.el")

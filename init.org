@@ -822,7 +822,7 @@ org-caldav-inbox "~/calendar.org")
           '(flex))) ;; Configure flex  (setq lsp-keymap-prefix "C-c l") 
   :config
   (lsp-enable-which-key-integration t)
-  :commands (lsp lsp-deferred lsp-enable-which-key-integration)
+  :commands (lsp lsp-deferred lsp-enable-which-key-integration lsp-stdio-connection make-lsp-client lsp-register-client)
   :custom
   (lsp-completion-provider :none) ;; use corfu
   :hook
@@ -999,14 +999,39 @@ This requires a custom recipe.
 #+end_src
 
 * Typst
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle yes
 (use-package typst-ts-mode
   :ensure t
+  :after lsp
+  :commands (typst-ts-mode)
   :custom
   (typst-ts-mode-watch-options "--open")
   
   (typst-ts-mode-enable-raw-blocks-highlight t)
-  (typst-ts-mode-highlight-raw-blocks-at-startup t))
+  (typst-ts-mode-highlight-raw-blocks-at-startup t)
+  :config
+  ;; make sure to install typst-lsp from
+  ;; https://github.com/nvarner/typst-lsp/releases/tag/v0.12.1
+ (with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst")))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection "typst-lsp")
+    :major-modes '(typst-ts-mode)
+    :server-id 'typst-lsp)))
+
+;; (use-package websocket
+;;    :commands (websocket-open)
+;;    :ensure t)
+
+;; (use-package typst-preview
+;;   :demand t
+;;   :ensure t
+;;   :after websocket
+;;   :config
+;;   (setq typst-preview-browser "default")
+;;   ;; (define-key typst-preview-mode-map (kbd "C-c C-j") 'typst-preview-send-position)
+;; )
 #+end_src
 
 * Stuff to add

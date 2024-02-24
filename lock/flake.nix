@@ -361,6 +361,12 @@
       repo = "twist.el";
       type = "github";
     };
+    typst-preview = {
+      flake = false;
+      owner = "havarddj";
+      repo = "typst-preview.el";
+      type = "github";
+    };
     typst-ts-mode = {
       flake = false;
       owner = "~meow_king";

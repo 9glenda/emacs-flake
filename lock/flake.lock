@@ -879,6 +879,7 @@
         "ts": "ts",
         "tuareg": "tuareg",
         "twist": "twist",
+        "typst-preview": "typst-preview",
         "typst-ts-mode": "typst-ts-mode",
         "undo-tree": "undo-tree",
         "vertico": "vertico",
@@ -1035,6 +1036,22 @@
       "original": {
         "owner": "emacs-twist",
         "repo": "twist.el",
+        "type": "github"
+      }
+    },
+    "typst-preview": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705694826,
+        "narHash": "sha256-xg4dtuUYzqUjs0lcvhhAYMWsTeCJgSkK2+WC9LmKiHU=",
+        "owner": "havarddj",
+        "repo": "typst-preview.el",
+        "rev": "4d886043742895a6dbb2c2fbb42fc1129c8c094d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "havarddj",
+        "repo": "typst-preview.el",
         "type": "github"
       }
     },
